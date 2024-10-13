@@ -13,6 +13,7 @@ use App\Http\Controllers\KategoriGambarController;
 use App\Http\Controllers\KontakController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\VideoController;
+use App\Http\Controllers\Auth\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,7 +28,15 @@ use App\Http\Controllers\VideoController;
 
 Route::get('/', function () {
     return view('dashboard');
-});
+})->name('dashboard');
+
+
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [LoginController::class, 'login']);
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+Route::post('/register', [RegisterController::class, 'register']);
+
 
 // Rute untuk Agenda
 Route::get('/agenda', [AgendaController::class, 'index'])->name('agenda.index');
