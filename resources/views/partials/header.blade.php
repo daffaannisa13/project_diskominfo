@@ -1,4 +1,3 @@
-
 <nav
   class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
   id="layout-navbar"
@@ -26,16 +25,8 @@
 
     <ul class="navbar-nav flex-row align-items-center ms-auto">
       <!-- GitHub Star Button -->
-      <li class="nav-item lh-1 me-3">
-        <a
-          class="github-button"
-          href="https://github.com/themeselection/sneat-html-admin-template-free"
-          data-icon="octicon-star"
-          data-size="large"
-          data-show-count="true"
-          aria-label="Star themeselection/sneat-html-admin-template-free on GitHub"
-        >
-          Star
+      <li class="nav-item lh-1 me-3">      
+        <span class="fw-semibold d-block">{{ Auth::user()->name }}</span>
         </a>
       </li>
 
@@ -56,8 +47,8 @@
                   </div>
                 </div>
                 <div class="flex-grow-1">
-                  <span class="fw-semibold d-block">John Doe</span>
-                  <small class="text-muted">Admin</small>
+                  <span class="fw-semibold d-block">{{ Auth::user()->name }}</span>
+                  <small class="text-muted">{{ Auth::user()->username }}</small>
                 </div>
               </div>
             </a>
@@ -65,18 +56,18 @@
           <li>
             <div class="dropdown-divider"></div>
           </li>
-          <li>
-            <a class="dropdown-item" href="#">
+          {{-- <li>
+            <a class="dropdown-item" href="{{ route('profile') }}">
               <i class="bx bx-user me-2"></i>
               <span class="align-middle">My Profile</span>
             </a>
-          </li>
-          <li>
-            <a class="dropdown-item" href="#">
+          </li> --}}
+          {{-- <li>
+            <a class="dropdown-item" href="{{ route('settings') }}">
               <i class="bx bx-cog me-2"></i>
               <span class="align-middle">Settings</span>
             </a>
-          </li>
+          </li> --}}
           <li>
             <a class="dropdown-item" href="#">
               <span class="d-flex align-items-center align-middle">
@@ -90,10 +81,10 @@
             <div class="dropdown-divider"></div>
           </li>
           <li>
-            {{-- <a class="dropdown-item" href="{{ route('logout') }}">
+            <a class="dropdown-item" href="{{ route('logout') }}">
               <i class="bx bx-power-off me-2"></i>
               <span class="align-middle">Log Out</span>
-            </a> --}}
+            </a>
           </li>
         </ul>
       </li>
