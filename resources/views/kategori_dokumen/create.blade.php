@@ -7,42 +7,43 @@
             <div class="col-xxl">
                 <div class="card mb-4">
                     <div class="card-header d-flex align-items-center justify-content-between">
-                        <h5 class="mb-0">Edit Kategori Gambar</h5>
-                        <small class="text-muted float-end">Form untuk mengedit kategori gambar</small>
+                        <h5 class="mb-0">Tambah Kategori Dokumen</h5>
+                        <small class="text-muted float-end">Form untuk menambahkan kategori dokumen baru</small>
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('kategori-gambar.update', $kategoriGambar->id) }}" method="POST">
+                        <form action="{{ route('kategori-dokumen.store') }}" method="POST">
                             @csrf
-                            @method('PUT')
-
-                            <!-- Nama Kategori -->
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label" for="nama_kategori">Nama Kategori</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="nama_kategori" name="nama_kategori" placeholder="Masukkan nama kategori" value="{{ old('nama_kategori', $kategoriGambar->nama_kategori) }}" required />
+                                    <input type="text" class="form-control" id="nama_kategori" name="nama_kategori" placeholder="Masukkan nama kategori" value="{{ old('nama_kategori') }}" required />
                                     @error('nama_kategori')
                                         <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
                             </div>
 
-                            <!-- URL Gambar -->
                             <div class="row mb-3">
-                                <label class="col-sm-2 col-form-label" for="url">URL Gambar</label>
+                                <label class="col-sm-2 col-form-label" for="users_id">Pilih User</label>
                                 <div class="col-sm-10">
-                                    <input type="url" class="form-control" id="url" name="url" placeholder="Masukkan URL gambar" value="{{ old('url', $kategoriGambar->url) }}" required />
-                                    <small class="form-text text-muted">Masukkan URL gambar yang valid (contoh: https://example.com/image.jpg).</small>
-                                    @error('url')
+                                    <select name="users_id" id="users_id" class="form-select" required>
+                                        <option value="">-- Pilih User --</option>
+                                        @foreach($users as $user)
+                                            <option value="{{ $user->id }}" {{ old('users_id') == $user->id ? 'selected' : '' }}>
+                                                {{ $user->name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    @error('users_id')
                                         <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
                             </div>
 
-                            <!-- Button Actions -->
                             <div class="row justify-content-end">
                                 <div class="col-sm-10">
                                     <button type="submit" class="btn btn-primary">Simpan</button>
-                                    <a href="{{ route('kategori-gambar.index') }}" class="btn btn-secondary ms-2">Kembali</a>
+                                    <a href="{{ route('kategori-dokumen.index') }}" class="btn btn-secondary ms-2">Kembali</a>
                                 </div>
                             </div>
                         </form>

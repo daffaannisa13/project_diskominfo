@@ -5,7 +5,6 @@
         <!-- SVG logo -->
       </span>
       <span class="app-brand-text demo menu-text fw-bolder ms-2" style="text-transform: capitalize;">Diskominfo</span>
-
     </a>
     <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
       <i class="bx bx-chevron-left bx-sm align-middle"></i>
@@ -67,6 +66,25 @@
       </ul>
     </li>
 
+ <li class="menu-item">
+    <a href="javascript:void(0);" class="menu-link menu-toggle">
+        <i class="menu-icon tf-icons bx bx-file"></i>
+        <div>Dokumen</div>
+    </a>
+    <ul class="menu-sub">
+        <li class="menu-item">
+            <a href="{{ url('/dokumen-kategori') }}" class="menu-link">
+                <div>Kategori Dokumen</div>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="{{ url('/dokumen/daftar') }}" class="menu-link">
+                <div>Daftar Dokumen</div>
+            </a>
+        </li>
+    </ul>
+</li>
+
     <!-- Berita -->
     <li class="menu-item">
       <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -86,11 +104,11 @@
         </li>
       </ul>
     </li>
+
     <!-- Agenda -->
     <li class="menu-item">
       <a href="javascript:void(0);" class="menu-link menu-toggle">
         <i class="menu-icon tf-icons bx bx-calendar-check"></i>
-
         <div>Agenda</div>
       </a>
       <ul class="menu-sub">
@@ -129,6 +147,11 @@
             <div>Dokumen</div>
           </a>
         </li>
+        <li class="menu-item">
+          <a href="{{ url('/informasi/video') }}" class="menu-link">
+            <div>Video</div>
+          </a>
+        </li>
       </ul>
     </li>
 
@@ -154,7 +177,6 @@
   </ul>
 </aside>
 
-
 <script>
   document.querySelectorAll('.menu-toggle').forEach(function(toggle) {
       toggle.addEventListener('click', function(e) {
@@ -172,4 +194,4 @@
 .menu-sub.show {
   display: block;
 }
-  </style>
+</style>

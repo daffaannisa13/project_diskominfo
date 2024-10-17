@@ -90,22 +90,21 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/kategori-berita/{kategoriBerita}', [KategoriBeritaController::class, 'update'])->name('kategori-berita.update');
     Route::delete('/kategori-berita/{kategoriBerita}', [KategoriBeritaController::class, 'destroy'])->name('kategori-berita.destroy');
 
-    // Rute untuk Kategori Dokumen
-    Route::get('/kategori-dokumen', [KategoriDokumenController::class, 'index'])->name('kategori-dokumen.index');
+    Route::get('/dokumen-kategori', [KategoriDokumenController::class, 'index'])->name('kategori-dokumen.index');
     Route::get('/kategori-dokumen/create', [KategoriDokumenController::class, 'create'])->name('kategori-dokumen.create');
     Route::post('/kategori-dokumen', [KategoriDokumenController::class, 'store'])->name('kategori-dokumen.store');
-    Route::get('/kategori-dokumen/{kategori}', [KategoriDokumenController::class, 'show'])->name('kategori-dokumen.show');
-    Route::get('/kategori-dokumen/{kategori}/edit', [KategoriDokumenController::class, 'edit'])->name('kategori-dokumen.edit');
-    Route::put('/kategori-dokumen/{kategori}', [KategoriDokumenController::class, 'update'])->name('kategori-dokumen.update');
-    Route::delete('/kategori-dokumen/{kategori}', [KategoriDokumenController::class, 'destroy'])->name('kategori-dokumen.destroy');
+    Route::get('/kategori-dokumen/{kategoriDokumen}', [KategoriDokumenController::class, 'show'])->name('kategori-dokumen.show');
+    Route::get('/kategori-dokumen/{kategoriDokumen}/edit', [KategoriDokumenController::class, 'edit'])->name('kategori-dokumen.edit');
+    Route::put('/kategori-dokumen/{kategoriDokumen}', [KategoriDokumenController::class, 'update'])->name('kategori-dokumen.update');
+    Route::delete('/kategori-dokumen/{kategoriDokumen}', [KategoriDokumenController::class, 'destroy'])->name('kategori-dokumen.destroy');
 
-    // Rute untuk Kategori Video
-    Route::get('/kategori-video', [KategoriVideoController::class, 'index'])->name('kategori-video.index');
+
+    Route::get('/galeri/video/kategori', [KategoriVideoController::class, 'index'])->name('kategori-video.index');
     Route::get('/kategori-video/create', [KategoriVideoController::class, 'create'])->name('kategori-video.create');
     Route::post('/kategori-video', [KategoriVideoController::class, 'store'])->name('kategori-video.store');
     Route::get('/kategori-video/{kategori}', [KategoriVideoController::class, 'show'])->name('kategori-video.show');
     Route::get('/kategori-video/{kategori}/edit', [KategoriVideoController::class, 'edit'])->name('kategori-video.edit');
-    Route::put('/kategori-video/{kategori}', [KategoriVideoController::class, 'update'])->name('kategori-video.update');
+    Route::put('/kategori-video/{id}', [KategoriVideoController::class, 'update'])->name('kategori-video.update');
     Route::delete('/kategori-video/{kategori}', [KategoriVideoController::class, 'destroy'])->name('kategori-video.destroy');
 
     // Rute untuk Kategori Gambar

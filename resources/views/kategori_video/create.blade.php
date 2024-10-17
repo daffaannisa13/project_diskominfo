@@ -7,11 +7,27 @@
             <div class="col-xxl">
                 <div class="card mb-4">
                     <div class="card-header d-flex align-items-center justify-content-between">
-                        <h5 class="mb-0">Tambah Kategori Gambar</h5>
-                        <small class="text-muted float-end">Form untuk menambahkan kategori gambar baru</small>
+                        <h5 class="mb-0">Tambah Kategori Video</h5>
+                        <small class="text-muted float-end">Form untuk menambahkan kategori video baru</small>
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('kategori-gambar.store') }}" method="POST">
+                        <!-- Success message -->
+                        @if(session('success'))
+                            <div class="alert alert-success">{{ session('success') }}</div>
+                        @endif
+
+                        <!-- Validation Errors -->
+                        @if($errors->any())
+                            <div class="alert alert-danger">
+                                <ul class="mb-0">
+                                    @foreach($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+
+                        <form action="{{ route('kategori-video.store') }}" method="POST">
                             @csrf
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label" for="nama_kategori">Nama Kategori</label>
@@ -23,10 +39,10 @@
                                 </div>
                             </div>
                             <div class="row mb-3">
-                                <label class="col-sm-2 col-form-label" for="url">URL Gambar</label>
+                                <label class="col-sm-2 col-form-label" for="url">URL Video</label>
                                 <div class="col-sm-10">
-                                    <input type="url" class="form-control" id="url" name="url" placeholder="Masukkan URL gambar" value="{{ old('url') }}" required />
-                                    <small class="form-text text-muted">Masukkan URL gambar yang valid (contoh: https://example.com/image.jpg).</small>
+                                    <input type="url" class="form-control" id="url" name="url" required placeholder="Masukkan URL video" value="{{ old('url') }}" />
+                                    <small class="form-text text-muted">Masukkan URL video yang valid (contoh: https://example.com/video.mp4).</small>
                                     @error('url')
                                         <small class="text-danger">{{ $message }}</small>
                                     @enderror
@@ -36,7 +52,7 @@
                             <div class="row justify-content-end">
                                 <div class="col-sm-10">
                                     <button type="submit" class="btn btn-primary">Simpan</button>
-                                    <a href="{{ route('kategori-gambar.index') }}" class="btn btn-secondary ms-2">Kembali</a>
+                                    <a href="{{ route('kategori-video.index') }}" class="btn btn-secondary ms-2">Kembali</a>
                                 </div>
                             </div>
                         </form>
