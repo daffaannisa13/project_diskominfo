@@ -21,7 +21,7 @@ class Gambar extends Model
 
     public function kategori()
     {
-        return $this->belongsTo(KategoriAgenda::class, 'kategori_id');
+        return $this->belongsTo(KategoriGambar::class, 'kategori_id');
     }
 
     public function user()

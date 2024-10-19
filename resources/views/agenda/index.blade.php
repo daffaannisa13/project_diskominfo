@@ -6,7 +6,7 @@
 <div class="container">
     <div class="card">
         <h5 class="card-header d-flex justify-content-between align-items-center">
-            Kategori Agenda
+            Agenda
             <!-- Tombol Tambah Data -->
             <a href="{{ route('agenda.create') }}" class="btn btn-primary">
                 <i class="bx bx-plus"></i> Tambah Data

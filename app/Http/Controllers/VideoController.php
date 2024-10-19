@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\KategoriVideo;
 use Illuminate\Http\Request;
 use App\Models\Video;
 
@@ -21,25 +22,29 @@ class VideoController extends Controller
      */
     public function create()
     {
-        return view('videos.create'); // Show form to create a new video
+        $kategoris = KategoriVideo::all(); // Fetch all categories
+        return view('videos.create', compact('kategoris')); // Pass the categories to the view
     }
-
+    
+    
     /**
      * Store a newly created video in storage.
      */
     public function store(Request $request)
     {
+        // dd($request->all());
         // Validate request data
         $validated = $request->validate([
-            'title' => 'required|max:255',
-            'description' => 'nullable',
+            'judul' => 'required|string|max:255',
             'url' => 'required|url',
+            'kategori_id' => 'required', // Validate that the category exists
+            'users_id' => 'required|exists:users,id', // Validate that the user exists if needed
         ]);
-
+    
         // Create a new video record in the database
         Video::create($validated);
 
-        return redirect()->route('videos.index')->with('success', 'Video created successfully!');
+        return redirect()->route('video.index')->with('success', 'Video created successfully!');
     }
 
     /**
@@ -57,7 +62,8 @@ class VideoController extends Controller
     public function edit($id)
     {
         $video = Video::findOrFail($id); // Fetch the video by ID
-        return view('videos.edit', compact('video')); // Show form to edit the video
+        $kategoris = KategoriVideo::all(); // Fetch all categories
+        return view('videos.edit', compact('video','kategoris')); // Show form to edit the video
     }
 
     /**
@@ -67,16 +73,17 @@ class VideoController extends Controller
     {
         // Validate request data
         $validated = $request->validate([
-            'title' => 'required|max:255',
-            'description' => 'nullable',
+            'judul' => 'required|string|max:255',
             'url' => 'required|url',
+            'kategori_id' => 'required', // Validate that the category exists
+            'users_id' => 'required|exists:users,id', // Validate that the user exists if needed
         ]);
 
         // Update the video record in the database
         $video = Video::findOrFail($id);
         $video->update($validated);
 
-        return redirect()->route('videos.index')->with('success', 'Video updated successfully!');
+        return redirect()->route('video.index')->with('success', 'Video updated successfully!');
     }
 
     /**
@@ -88,6 +95,6 @@ class VideoController extends Controller
         $video = Video::findOrFail($id);
         $video->delete();
 
-        return redirect()->route('videos.index')->with('success', 'Video deleted successfully!');
+        return redirect()->route('video.index')->with('success', 'Video deleted successfully!');
     }
 }

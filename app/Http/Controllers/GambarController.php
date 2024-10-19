@@ -5,6 +5,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Gambar;
+use App\Models\KategoriGambar;
 use Illuminate\Http\Request;
 
 class GambarController extends Controller
@@ -17,8 +18,16 @@ class GambarController extends Controller
 
     public function create()
     {
-        return view('gambar.create');
+        
+        $kategori = KategoriGambar::all();
+
+    // Pass the categories and the logged-in user ID to the view
+    $userId = auth()->user()->id;
+
+    return view('gambar.create', compact('kategori', 'userId'));
+
     }
+    
 
     public function store(Request $request)
     {
@@ -40,7 +49,12 @@ class GambarController extends Controller
 
     public function edit(Gambar $gambar)
     {
-        return view('gambar.edit', compact('gambar'));
+        $kategori = KategoriGambar::all();
+
+        // Pass the categories and the logged-in user ID to the view
+        $userId = auth()->user()->id;
+    
+        return view('gambar.edit', compact('gambar','kategori', 'userId'));
     }
 
     public function update(Request $request, Gambar $gambar)

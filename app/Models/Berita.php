@@ -27,6 +27,9 @@ class Berita extends Model
         'img_slider',
     ];
 
+    protected $casts = [
+        'tanggal' => 'date', // atau 'datetime' jika termasuk waktu
+    ];
     public function kategori()
     {
         return $this->belongsTo(KategoriBerita::class, 'kategori_id');

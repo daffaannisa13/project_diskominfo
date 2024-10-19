@@ -5,6 +5,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Dokumen;
+use App\Models\KategoriDokumen;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class DokumenController extends Controller
@@ -17,7 +19,9 @@ class DokumenController extends Controller
 
     public function create()
     {
-        return view('dokumen.create');
+        $users = User::all(); // Fetch all users
+        $kategoris = KategoriDokumen::all(); // Fetch all categories
+        return view('dokumen.create', compact('users', 'kategoris'));
     }
 
     public function store(Request $request)
@@ -28,11 +32,20 @@ class DokumenController extends Controller
             'kategori_id' => 'required|exists:kategori_dokumen,id',
             'users_id' => 'required|exists:users,id',
         ]);
-
-        Dokumen::create($validated);
-
+    
+        // Create a new Dokumen instance
+        $dokumen = new Dokumen();
+        $dokumen->judul = $validated['judul'];
+        $dokumen->url = $validated['url'];
+        $dokumen->kategori_id = $validated['kategori_id'];
+        $dokumen->users_id = $validated['users_id'];
+    // dd($dokumen );
+        // Save the Dokumen instance
+        $dokumen->save();
+    
         return redirect()->route('dokumen.index')->with('success', 'Dokumen berhasil ditambahkan');
     }
+    
 
     public function show(Dokumen $dokumen)
     {

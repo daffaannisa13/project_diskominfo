@@ -28,43 +28,56 @@
       </a>
     </li>
 
-    <!-- Profil -->
-    <li class="menu-item">
-      <a href="{{ url('/profil') }}" class="menu-link">
-        <i class="menu-icon tf-icons bx bx-id-card"></i>
-        <div>Profil</div>
-      </a>
-    </li>
+ <!-- Profil -->
+<li class="menu-item dropdown">
+  <a href="javascript:void(0);" class="menu-link menu-toggle">
+      <i class="menu-icon tf-icons bx bx-id-card"></i>
+      <div>Profil</div>
+  </a>
+  <ul class="menu-sub">
+      <li class="menu-item">
+          <a href="{{ url('/profil') }}" class="menu-link">
+              <div>Profil</div>
+          </a>
+      </li>
+      <li class="menu-item">
+          <a href="{{ url('/kontak') }}" class="menu-link">
+              <div>Kontak</div>
+          </a>
+      </li>
+  </ul>
+</li>
 
-    <!-- Galeri -->
-    <li class="menu-item">
-      <a href="javascript:void(0);" class="menu-link menu-toggle">
-        <i class="menu-icon tf-icons bx bx-image"></i>
-        <div>Galeri</div>
-      </a>
-      <ul class="menu-sub">
-        <li class="menu-item">
+<!-- Galeri -->
+<li class="menu-item">
+  <a href="javascript:void(0);" class="menu-link menu-toggle">
+      <i class="menu-icon tf-icons bx bx-image"></i>
+      <div>Galeri</div>
+  </a>
+  <ul class="menu-sub">
+      <li class="menu-item">
           <a href="{{ url('/kategori-gambar') }}" class="menu-link">
-            <div>Kategori Gambar</div>
+              <div>Kategori Gambar</div>
           </a>
-        </li>
-        <li class="menu-item">
-          <a href="{{ url('/galeri/gambar/daftar') }}" class="menu-link">
-            <div>Daftar Gambar</div>
+      </li>
+      <li class="menu-item">
+          <a href="{{ url('/gambar') }}" class="menu-link">
+              <div>Daftar Gambar</div>
           </a>
-        </li>
-        <li class="menu-item">
+      </li>
+      <li class="menu-item">
           <a href="{{ url('/galeri/video/kategori') }}" class="menu-link">
-            <div>Kategori Video</div>
+              <div>Kategori Video</div>
           </a>
-        </li>
-        <li class="menu-item">
-          <a href="{{ url('/galeri/video/daftar') }}" class="menu-link">
-            <div>Daftar Video</div>
+      </li>
+      <li class="menu-item">
+          <a href="{{ url('/video') }}" class="menu-link">
+              <div>Daftar Video</div>
           </a>
-        </li>
-      </ul>
-    </li>
+      </li>
+  </ul>
+</li>
+
 
  <li class="menu-item">
     <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -78,7 +91,7 @@
             </a>
         </li>
         <li class="menu-item">
-            <a href="{{ url('/dokumen/daftar') }}" class="menu-link">
+            <a href="{{ url('/dokumen') }}" class="menu-link">
                 <div>Daftar Dokumen</div>
             </a>
         </li>
@@ -98,7 +111,7 @@
           </a>
         </li>
         <li class="menu-item">
-          <a href="{{ url('/berita/daftar') }}" class="menu-link">
+          <a href="{{ url('/berita') }}" class="menu-link">
             <div>Daftar Berita</div>
           </a>
         </li>
