@@ -22,7 +22,7 @@
                                 <th>Isi</th>
                                 <th>Tanggal</th>
                                 <th>Kategori</th>                                
-                                <th>Autor</th>
+                                <th>Author</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -31,7 +31,7 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td><strong>{{ $berita->judul }}</strong></td>
-                                <td>{{ $berita->isi }}</td>
+                                <td>{{ Str::limit($berita->isi, 50) }}</td> <!-- Limiting text display -->
                                 <td>{{ $berita->tanggal->format('d-m-Y') }}</td>
                                 <td>{{ $berita->kategori_nama }}</td>                              
                                 <td>{{ $berita->author }}</td>
@@ -68,18 +68,22 @@
                                         <div class="modal-body">
                                             <strong>Judul:</strong> {{ $berita->judul }}<br>
                                             <strong>Isi:</strong> {{ $berita->isi }}<br>
+                                            <strong>Isi Pendukung:</strong> {{ $berita->isi_p }}<br> <!-- Show isi_p -->
                                             <strong>Tanggal:</strong> {{ $berita->tanggal->format('d-m-Y') }}<br>
-                                            <strong>Kategori:</strong> {{ $berita->kategori->nama_kategori }}<br>
-                                            <strong>Autor:</strong> {{ $berita->author }}<br>
-                                            <strong>Gambar:</strong><br>
-                                            <strong>Gambar:</strong><br>
+                                            <strong>Kategori:</strong> {{ $berita->kategori_nama }}<br>
+                                            <strong>Author:</strong> {{ $berita->author }}<br>
                                             <strong>Gambar:</strong><br>
                                             @if ($berita->gambar)
                                                 <img src="{{ asset('storage/' . $berita->gambar) }}" alt="Gambar" class="img-fluid">
                                             @else
                                                 No Image
                                             @endif
-                                                                             
+                                            @if ($berita->img_slider)
+                                                <strong>Slider Image:</strong><br>
+                                                <img src="{{ asset('storage/' . $berita->img_slider) }}" alt="Slider Image" class="img-fluid">
+                                            @else
+                                                No Slider Image
+                                            @endif
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

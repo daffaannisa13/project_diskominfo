@@ -35,6 +35,17 @@
                             </div>
                         </div>
 
+                        <!-- Isi Pendukung -->
+                        <div class="row mb-3">
+                            <label class="col-sm-2 col-form-label" for="isi_p">Isi Pendukung</label>
+                            <div class="col-sm-10">
+                                <textarea name="isi_p" class="form-control" rows="5">{{ old('isi_p') }}</textarea>
+                                @error('isi_p')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
+                        </div>
+
                         <!-- Tanggal -->
                         <div class="row mb-3">
                             <label class="col-sm-2 col-form-label" for="tanggal">Tanggal</label>
@@ -68,6 +79,17 @@
                             <div class="col-sm-10">
                                 <input type="file" name="gambar" class="form-control" accept="image/*">
                                 @error('gambar')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <!-- Gambar Slider -->
+                        <div class="row mb-3">
+                            <label class="col-sm-2 col-form-label" for="img_slider">Upload Gambar Slider</label>
+                            <div class="col-sm-10">
+                                <input type="file" name="img_slider" class="form-control" accept="image/*">
+                                @error('img_slider')
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror
                             </div>

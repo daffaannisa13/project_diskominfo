@@ -30,7 +30,7 @@
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label" for="tanggal">Tanggal</label>
                                 <div class="col-sm-10">
-                                    <input type="date" name="tanggal" class="form-control" value="{{ old('tanggal', $agenda->tanggal) }}">
+                                    <input type="date" name="tanggal" class="form-control" value="{{ old('tanggal', $agenda->tanggal->format('Y-m-d')) }}">
                                     @error('tanggal')
                                         <small class="text-danger">{{ $message }}</small>
                                     @enderror
@@ -77,7 +77,7 @@
                                     <select name="kategori_id" class="form-select">
                                         <option value="">-- Pilih Kategori --</option>
                                         @foreach ($kategoriAgenda as $kategori)
-                                            <option value="{{ $kategori->id }}" {{ $agenda->kategori_id == $kategori->id ? 'selected' : '' }}>
+                                            <option value="{{ $kategori->id }}" {{ (old('kategori_id', $agenda->kategori_id) == $kategori->id) ? 'selected' : '' }}>
                                                 {{ $kategori->nama_kategori }}
                                             </option>
                                         @endforeach
@@ -92,7 +92,7 @@
                             <!-- Tombol Submit -->
                             <div class="row justify-content-end">
                                 <div class="col-sm-10">
-                                    <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+                                    <button type="submit" class="btn btn-primary">Simpan</button>
                                     <a href="{{ route('agenda.index') }}" class="btn btn-secondary ms-2">Kembali</a>
                                 </div>
                             </div>

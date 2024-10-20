@@ -19,7 +19,7 @@
                                 <th>#</th>
                                 <th>Judul</th>
                                 <th>URL</th>
-                                <th>Kategori ID</th>
+                                <th>Kategori</th>
                                 <th>User</th>
                                 <th>Aksi</th>
                             </tr>
@@ -30,18 +30,15 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td><strong>{{ $dokumen->judul }}</strong></td>
                                 <td><a href="{{ $dokumen->url }}" target="_blank">{{ $dokumen->url }}</a></td>
-                                <td>{{ $dokumen->kategori_id }}</td>
-                                <td>{{ $dokumen->user->name }}</td> <!-- Display the user who created the document -->
+                                <td>{{ $dokumen->kategori->nama_kategori }}</td>
+                                <td>{{ $dokumen->user->name }}</td>
                                 <td>
-                                    <!-- Show details button -->
                                     <button type="button" class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#showModal{{ $dokumen->id }}">
                                         <i class="bx bx-show"></i>
                                     </button>
-                                    <!-- Edit button -->
                                     <a href="{{ route('dokumen.edit', $dokumen->id) }}" class="btn btn-sm btn-warning">
                                         <i class="bx bx-pencil"></i>
                                     </a>
-                                    <!-- Delete form -->
                                     <form action="{{ route('dokumen.destroy', $dokumen->id) }}" method="POST" class="d-inline">
                                         @csrf
                                         @method('DELETE')
@@ -65,7 +62,7 @@
                                             <br>
                                             <strong>URL:</strong> <a href="{{ $dokumen->url }}" target="_blank">{{ $dokumen->url }}</a>
                                             <br>
-                                            <strong>Kategori ID:</strong> {{ $dokumen->kategori_id }}
+                                            <strong>Kategori:</strong> {{ $dokumen->kategori->nama_kategori }}
                                             <br>
                                             <strong>Nama User:</strong> {{ $dokumen->user->name }}
                                         </div>
@@ -79,4 +76,8 @@
                         </tbody>
                     </table>
                 </div>
-                @endsection
+            </div>
+        </div>
+    </div>
+</div>
+@endsection

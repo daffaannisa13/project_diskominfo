@@ -78,12 +78,14 @@
                                         <option value="{{ $kategori->id }}">{{ $kategori->nama_kategori }}</option>
                                     @endforeach
                                 </select>
-
                                 @error('kategori_id')
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror
                             </div>
                         </div>
+
+                        <!-- Hidden Input for User ID -->
+                        <input type="hidden" name="users_id" value="{{ auth()->user()->id }}">
 
                         <!-- Tombol Submit -->
                         <div class="row justify-content-end">

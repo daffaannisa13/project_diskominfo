@@ -22,6 +22,7 @@ class Agenda extends Model
         'kategori_id',
         'users_id',
     ];
+    
 
     public function kategori()
     {

@@ -26,7 +26,7 @@
 
                     <div class="row justify-content-end">
                         <div class="col-sm-10">
-                            <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+                            <button type="submit" class="btn btn-primary">Simpan</button>
                             <a href="{{ route('kategori-berita.index') }}" class="btn btn-secondary ms-2">Kembali</a>
                         </div>
                     </div>

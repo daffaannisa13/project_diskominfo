@@ -13,7 +13,7 @@
   <div class="menu-inner-shadow"></div>
   <ul class="menu-inner py-1">
     <!-- Dashboard -->
-    <li class="menu-item active">
+    <li class="menu-item">
       <a href="{{ url('/') }}" class="menu-link">
         <i class="menu-icon tf-icons bx bx-home-circle"></i>
         <div>Dashboard</div>
@@ -135,11 +135,6 @@
             <div>Kategori Agenda</div>
           </a>
         </li>
-        <li class="menu-item">
-          <a href="{{ url('/berita/daftar') }}" class="menu-link">
-            <div>Daftar Berita</div>
-          </a>
-        </li>
       </ul>
     </li>
 
@@ -168,25 +163,39 @@
       </ul>
     </li>
 
-    <!-- Hubungi Kami -->
-    <li class="menu-item">
-      <a href="javascript:void(0);" class="menu-link menu-toggle">
+ <!-- Pesan -->
+<li class="menu-item">
+    <a href="{{ url('/pesan') }}" class="menu-link">
         <i class="menu-icon tf-icons bx bx-envelope"></i>
-        <div>Hubungi Kami</div>
-      </a>
-      <ul class="menu-sub">
-        <li class="menu-item">
-          <a href="{{ url('/hubungi-kami/pesan') }}" class="menu-link">
-            <div>Pesan</div>
-          </a>
-        </li>
-        <li class="menu-item">
-          <a href="{{ url('/hubungi-kami/kontak') }}" class="menu-link">
-            <div>Kontak</div>
-          </a>
-        </li>
-      </ul>
+        <div>Pesan</div>
+    </a>
+</li>
+
+<!-- Deskripsi Sistem -->
+<li class="menu-item">
+    <a href="{{ url('/deskripsi-sistem') }}" class="menu-link">
+        <i class="menu-icon tf-icons bx bx-info-circle"></i>
+        <div>Deskripsi Sistem</div>
+    </a>
+</li>
+
+
+
+    <!-- Sosial Media -->
+<li class="menu-item">
+    <a href="{{ url('/sosial-media') }}" class="menu-link">
+        <i class="menu-icon tf-icons bx bx-share-alt"></i>
+        <div>Sosial Media</div>
+    </a>
+</li>
+
+<li class="menu-item">
+        <a href="{{ url('/bidang') }}" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-list-ul"></i> <!-- Anda bisa mengganti ikon sesuai keinginan -->
+            <div>Bidang</div>
+        </a>
     </li>
+
   </ul>
 </aside>
 

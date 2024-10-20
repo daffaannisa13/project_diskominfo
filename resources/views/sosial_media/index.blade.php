@@ -6,40 +6,38 @@
         <div class="container">
             <div class="card">
                 <h5 class="card-header d-flex justify-content-between align-items-center">
-                    Gambar
-                    <a href="{{ route('gambar.create') }}" class="btn btn-primary">
+                    Daftar Sosial Media
+                    <a href="{{ route('sosial_media.create') }}" class="btn btn-primary">
                         <i class="bx bx-plus"></i> Tambah Data
                     </a>
                 </h5>
-
+                <br>
                 <div class="table-responsive text-nowrap">
-                    <table class="table table-hover">
+                    <table class="table">
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>URL Gambar</th>
-                                <th>Kategori</th>
-                                <th>User</th>
-                                <th>Aksi</th>
+                                <th>Nama</th>
+                                <th>Icon</th>
+                                <th>Warna</th>
+                                <th>URL</th>
+                                <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody class="table-border-bottom-0">
-                            @foreach($gambars as $gambar)
+                            @foreach($sosialMedia as $media)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
+                                <td><strong>{{ $media->nama }}</strong></td>
+                                <td>{{ $media->icon }}</td>
+                                <td style="color: {{ $media->color }}">{{ $media->color }}</td>
+                                <td><a href="{{ $media->url }}" target="_blank">{{ $media->url }}</a></td>
                                 <td>
-                                    <a href="{{ $gambar->url }}" target="_blank">{{ $gambar->url }}</a>
-                                </td>
-                                <td>{{ $gambar->kategori->nama_kategori }}</td>
-                                <td>{{ $gambar->user->name }}</td>
-                                <td>
-                                    <button type="button" class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#showModal{{ $gambar->id }}">
-                                        <i class="bx bx-show"></i>
-                                    </button>
-                                    <a href="{{ route('gambar.edit', $gambar->id) }}" class="btn btn-sm btn-warning">
+                                    <a href="{{ route('sosial_media.edit', $media->id) }}" class="btn btn-sm btn-warning">
                                         <i class="bx bx-pencil"></i>
                                     </a>
-                                    <form action="{{ route('gambar.destroy', $gambar->id) }}" method="POST" class="d-inline">
+
+                                    <form action="{{ route('sosial_media.destroy', $media->id) }}" method="POST" class="d-inline">
                                         @csrf
                                         @method('DELETE')
                                         <button class="btn btn-sm btn-danger" type="submit" onclick="return confirm('Yakin ingin menghapus?')">
@@ -49,23 +47,22 @@
                                 </td>
                             </tr>
 
-                            <div class="modal fade" id="showModal{{ $gambar->id }}" tabindex="-1" aria-labelledby="modalLabel{{ $gambar->id }}" aria-hidden="true">
-                                <div class="modal-dialog modal-lg">
+                            <!-- Modal untuk Show -->
+                            <div class="modal fade" id="showModal{{ $media->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="modalLabel{{ $gambar->id }}">Detail Gambar</h5>
+                                            <h5 class="modal-title" id="exampleModalLabel">Detail Sosial Media</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <strong>URL Gambar:</strong> 
-                                            <a href="{{ $gambar->url }}" target="_blank">{{ $gambar->url }}</a>
-                                            <br>
-                                            <strong>Kategori:</strong> {{ $gambar->kategori->nama_kategori }}
-                                            <br>
-                                            <strong>User:</strong> {{ $gambar->user->name }}
+                                            <strong>Nama:</strong> {{ $media->nama }}<br>
+                                            <strong>Icon:</strong> {{ $media->icon }}<br>
+                                            <strong>Warna:</strong> <span style="color: {{ $media->color }}">{{ $media->color }}</span><br>
+                                            <strong>URL:</strong> <a href="{{ $media->url }}" target="_blank">{{ $media->url }}</a>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                         </div>
                                     </div>
                                 </div>

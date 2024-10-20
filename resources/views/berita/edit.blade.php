@@ -12,13 +12,13 @@
                 <div class="card-body">
                     <form action="{{ route('berita.update', $berita->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
-                        @method('PUT') <!-- Ini penting untuk method PUT -->
+                        @method('PUT') <!-- Penting untuk method PUT -->
 
                         <!-- Judul -->
                         <div class="row mb-3">
                             <label class="col-sm-2 col-form-label" for="judul">Judul Berita</label>
                             <div class="col-sm-10">
-                                <input type="text" name="judul" class="form-control" value="{{ old('judul', $berita->judul) }}" required>
+                                <input type="text" name="judul" id="judul" class="form-control" value="{{ old('judul', $berita->judul) }}" required>
                                 @error('judul')
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror
@@ -29,7 +29,7 @@
                         <div class="row mb-3">
                             <label class="col-sm-2 col-form-label" for="isi">Isi Berita</label>
                             <div class="col-sm-10">
-                                <textarea name="isi" class="form-control" rows="5" required>{{ old('isi', $berita->isi) }}</textarea>
+                                <textarea name="isi" id="isi" class="form-control" rows="5" required>{{ old('isi', $berita->isi) }}</textarea>
                                 @error('isi')
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror
@@ -40,7 +40,7 @@
                         <div class="row mb-3">
                             <label class="col-sm-2 col-form-label" for="tanggal">Tanggal</label>
                             <div class="col-sm-10">
-                                <input type="date" name="tanggal" class="form-control" value="{{ old('tanggal', $berita->tanggal) }}" required>
+                                <input type="date" name="tanggal" id="tanggal" class="form-control" value="{{ old('tanggal', $berita->tanggal) }}" required>
                                 @error('tanggal')
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror
@@ -51,7 +51,7 @@
                         <div class="row mb-3">
                             <label class="col-sm-2 col-form-label" for="kategori_id">Nama Kategori</label>
                             <div class="col-sm-10">
-                                <select name="kategori_id" class="form-select" required>
+                                <select name="kategori_id" id="kategori_id" class="form-select" required>
                                     <option value="">-- Pilih Kategori --</option>
                                     @foreach ($kategoriBerita as $kategori)
                                         <option value="{{ $kategori->id }}" {{ $berita->kategori_id == $kategori->id ? 'selected' : '' }}>
@@ -69,7 +69,7 @@
                         <div class="row mb-3">
                             <label class="col-sm-2 col-form-label" for="gambar">Upload Gambar</label>
                             <div class="col-sm-10">
-                                <input type="file" name="gambar" class="form-control" accept="image/*">
+                                <input type="file" name="gambar" id="gambar" class="form-control" accept="image/*">
                                 <small class="text-muted">Kosongkan jika tidak ingin mengubah gambar</small>
                                 @error('gambar')
                                     <small class="text-danger">{{ $message }}</small>
@@ -90,7 +90,7 @@
                         <!-- Tombol Submit -->
                         <div class="row justify-content-end">
                             <div class="col-sm-10">
-                                <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+                                <button type="submit" class="btn btn-primary">Simpan</button>
                                 <a href="{{ route('berita.index') }}" class="btn btn-secondary ms-2">Kembali</a>
                             </div>
                         </div>

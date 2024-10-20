@@ -58,7 +58,7 @@
                                 <label class="col-sm-2 col-form-label" for="kategori_id">Kategori</label>
                                 <div class="col-sm-10">
                                     <select class="form-select" id="kategori_id" name="kategori_id" required>
-                                        <option value="" disabled>Pilih Kategori</option>
+                                        <option value="" disabled selected>Pilih Kategori</option> <!-- Placeholder -->
                                         @foreach($kategoris as $kategori)
                                             <option value="{{ $kategori->id }}" {{ old('kategori_id') == $kategori->id ? 'selected' : '' }}>{{ $kategori->nama_kategori }}</option>
                                         @endforeach
@@ -69,8 +69,21 @@
                                 </div>
                             </div>
 
-                            <!-- Hidden Input for Logged-in User ID -->
-                            <input type="hidden" name="users_id" value="{{ auth()->id() }}"> <!-- Assuming you're using Laravel's auth system -->
+                            <!-- Select for Users -->
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label" for="users_id">Pengguna</label>
+                                <div class="col-sm-10">
+                                    <select class="form-select" id="users_id" name="users_id" required>
+                                        <option value="" disabled selected>Pilih Pengguna</option> <!-- Placeholder -->
+                                        @foreach($users as $user)
+                                            <option value="{{ $user->id }}" {{ old('users_id') == $user->id ? 'selected' : '' }}>{{ $user->name }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('users_id')
+                                        <small class="text-danger">{{ $message }}</small>
+                                    @enderror
+                                </div>
+                            </div>
 
                             <div class="row justify-content-end">
                                 <div class="col-sm-10">

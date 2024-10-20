@@ -42,8 +42,21 @@
                                 </div>
                             </div>
 
-                            <!-- Hidden Input for Logged-in User ID -->
-                            <input type="hidden" name="users_id" value="{{ $userId }}">
+                            <!-- Select for User -->
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label" for="users_id">Pilih User</label>
+                                <div class="col-sm-10">
+                                    <select class="form-select" id="users_id" name="users_id" required>
+                                        <option value="" disabled selected>Pilih User</option>
+                                        @foreach($users as $user)
+                                            <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('users_id')
+                                        <small class="text-danger">{{ $message }}</small>
+                                    @enderror
+                                </div>
+                            </div>
 
                             <!-- Form Submission Buttons -->
                             <div class="row justify-content-end">

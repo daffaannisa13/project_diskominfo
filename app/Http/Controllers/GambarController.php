@@ -4,6 +4,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User; 
 use App\Models\Gambar;
 use App\Models\KategoriGambar;
 use Illuminate\Http\Request;
@@ -11,22 +12,21 @@ use Illuminate\Http\Request;
 class GambarController extends Controller
 {
     public function index()
-    {
-        $gambars = Gambar::all();
-        return view('gambar.index', compact('gambars'));
-    }
+{
+    $gambars = Gambar::with('kategori', 'user')->get(); // Eager load kategori and user
+    return view('gambar.index', compact('gambars'));
+}
 
     public function create()
-    {
-        
-        $kategori = KategoriGambar::all();
+{
+    $kategori = KategoriGambar::all(); // Fetch categories
+    $users = User::all(); // Fetch users
 
-    // Pass the categories and the logged-in user ID to the view
+    // Pass the categories and users along with the logged-in user ID to the view
     $userId = auth()->user()->id;
 
-    return view('gambar.create', compact('kategori', 'userId'));
-
-    }
+    return view('gambar.create', compact('kategori', 'users', 'userId'));
+}
     
 
     public function store(Request $request)
@@ -47,15 +47,17 @@ class GambarController extends Controller
         return view('gambar.show', compact('gambar'));
     }
 
-    public function edit(Gambar $gambar)
-    {
-        $kategori = KategoriGambar::all();
+   public function edit(Gambar $gambar)
+{
+    $kategori = KategoriGambar::all(); // Fetch categories
+    $users = User::all(); // Fetch users
 
-        // Pass the categories and the logged-in user ID to the view
-        $userId = auth()->user()->id;
-    
-        return view('gambar.edit', compact('gambar','kategori', 'userId'));
-    }
+    // Pass the categories, users, and the logged-in user ID to the view
+    $userId = auth()->user()->id;
+
+    return view('gambar.edit', compact('gambar', 'kategori', 'users', 'userId'));
+}
+
 
     public function update(Request $request, Gambar $gambar)
     {

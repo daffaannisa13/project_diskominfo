@@ -13,6 +13,12 @@ use App\Http\Controllers\KategoriGambarController;
 use App\Http\Controllers\KontakController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\VideoController;
+use App\Http\Controllers\ProfilController;
+use App\Http\Controllers\SosialMediaController;
+use App\Http\Controllers\PesanController;
+use App\Http\Controllers\DeskripsiSistemController;
+use App\Http\Controllers\BidangController;
+
 
 /*
 |---------------------------------------------------------------------------
@@ -142,4 +148,55 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/video/{video}/edit', [VideoController::class, 'edit'])->name('video.edit');
     Route::put('/video/{video}', [VideoController::class, 'update'])->name('video.update');
     Route::delete('/video/{video}', [VideoController::class, 'destroy'])->name('video.destroy');
+
+    
+
+Route::get('/profil', [ProfilController::class, 'index'])->name('profil.index');
+Route::get('/profil/create', [ProfilController::class, 'create'])->name('profil.create');
+Route::post('/profil', [ProfilController::class, 'store'])->name('profil.store');
+Route::get('/profil/{profil}', [ProfilController::class, 'show'])->name('profil.show');
+Route::get('/profil/{profil}/edit', [ProfilController::class, 'edit'])->name('profil.edit');
+Route::put('/profil/{profil}', [ProfilController::class, 'update'])->name('profil.update');
+Route::delete('/profil/{profil}', [ProfilController::class, 'destroy'])->name('profil.destroy');
+
+
+
+
+// Sosial Media Routes
+Route::get('/sosial-media', [SosialMediaController::class, 'index'])->name('sosial_media.index');
+Route::get('/sosial-media/create', [SosialMediaController::class, 'create'])->name('sosial_media.create');
+Route::post('/sosial-media', [SosialMediaController::class, 'store'])->name('sosial_media.store');
+Route::get('/sosial-media/{sosialMedia}', [SosialMediaController::class, 'show'])->name('sosial_media.show');
+Route::get('/sosial-media/{sosialMedia}/edit', [SosialMediaController::class, 'edit'])->name('sosial_media.edit');
+Route::put('/sosial-media/{sosialMedia}', [SosialMediaController::class, 'update'])->name('sosial_media.update');
+Route::delete('/sosial-media/{sosialMedia}', [SosialMediaController::class, 'destroy'])->name('sosial_media.destroy');
+
+
+Route::get('/pesan', [PesanController::class, 'index'])->name('pesan.index');
+Route::get('/pesan/create', [PesanController::class, 'create'])->name('pesan.create');
+Route::post('/pesan', [PesanController::class, 'store'])->name('pesan.store');
+Route::get('/pesan/{pesan}', [PesanController::class, 'show'])->name('pesan.show');
+Route::get('/pesan/{pesan}/edit', [PesanController::class, 'edit'])->name('pesan.edit');
+Route::put('/pesan/{pesan}', [PesanController::class, 'update'])->name('pesan.update');
+Route::delete('/pesan/{pesan}', [PesanController::class, 'destroy'])->name('pesan.destroy');
+
+
+Route::get('/deskripsi-sistem', [DeskripsiSistemController::class, 'index'])->name('deskripsi_sistem.index');
+Route::get('/deskripsi-sistem/create', [DeskripsiSistemController::class, 'create'])->name('deskripsi_sistem.create');
+Route::post('/deskripsi-sistem', [DeskripsiSistemController::class, 'store'])->name('deskripsi_sistem.store');
+Route::get('/deskripsi-sistem/{deskripsiSistem}', [DeskripsiSistemController::class, 'show'])->name('deskripsi_sistem.show');
+Route::get('/deskripsi-sistem/{deskripsiSistem}/edit', [DeskripsiSistemController::class, 'edit'])->name('deskripsi_sistem.edit');
+Route::put('/deskripsi-sistem/{deskripsiSistem}', [DeskripsiSistemController::class, 'update'])->name('deskripsi_sistem.update');
+Route::delete('/deskripsi-sistem/{deskripsiSistem}', [DeskripsiSistemController::class, 'destroy'])->name('deskripsi_sistem.destroy');
+
+
+Route::get('/bidang', [BidangController::class, 'index'])->name('bidang.index');
+Route::get('/bidang/create', [BidangController::class, 'create'])->name('bidang.create');
+Route::post('/bidang', [BidangController::class, 'store'])->name('bidang.store');
+Route::get('/bidang/{bidang}', [BidangController::class, 'show'])->name('bidang.show');
+Route::get('/bidang/{bidang}/edit', [BidangController::class, 'edit'])->name('bidang.edit');
+Route::put('/bidang/{bidang}', [BidangController::class, 'update'])->name('bidang.update');
+Route::delete('/bidang/{bidang}', [BidangController::class, 'destroy'])->name('bidang.destroy');
+
+
 });

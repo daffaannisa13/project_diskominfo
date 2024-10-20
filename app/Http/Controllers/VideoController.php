@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\KategoriVideo;
+use App\Models\User; 
 use Illuminate\Http\Request;
 use App\Models\Video;
 
@@ -17,15 +18,13 @@ class VideoController extends Controller
         return view('videos.index', compact('videos')); // Pass videos to the index view
     }
 
-    /**
-     * Show the form for creating a new video.
-     */
-    public function create()
-    {
-        $kategoris = KategoriVideo::all(); // Fetch all categories
-        return view('videos.create', compact('kategoris')); // Pass the categories to the view
-    }
-    
+public function create()
+{
+    $kategoris = KategoriVideo::all(); // Fetch all categories
+    $users = User::all(); // Fetch all users
+    return view('videos.create', compact('kategoris', 'users')); // Pass the categories and users to the view
+}
+
     
     /**
      * Store a newly created video in storage.
@@ -61,9 +60,10 @@ class VideoController extends Controller
      */
     public function edit($id)
     {
-        $video = Video::findOrFail($id); // Fetch the video by ID
+         $video = Video::findOrFail($id); // Fetch the video by ID
         $kategoris = KategoriVideo::all(); // Fetch all categories
-        return view('videos.edit', compact('video','kategoris')); // Show form to edit the video
+        $users = User::all(); // Fetch all users
+        return view('videos.edit', compact('video', 'kategoris', 'users'));// Show form to edit the video
     }
 
     /**

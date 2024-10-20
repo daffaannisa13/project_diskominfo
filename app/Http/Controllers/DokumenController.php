@@ -11,11 +11,12 @@ use Illuminate\Http\Request;
 
 class DokumenController extends Controller
 {
-    public function index()
-    {
-        $dokumens = Dokumen::all();
-        return view('dokumen.index', compact('dokumens'));
-    }
+   public function index()
+{
+    $dokumens = Dokumen::with('kategori', 'user')->get();
+    return view('dokumen.index', compact('dokumens'));
+}
+
 
     public function create()
     {
@@ -52,10 +53,14 @@ class DokumenController extends Controller
         return view('dokumen.show', compact('dokumen'));
     }
 
-    public function edit(Dokumen $dokumen)
-    {
-        return view('dokumen.edit', compact('dokumen'));
-    }
+  public function edit(Dokumen $dokumen)
+{
+    $kategoriDokumen = KategoriDokumen::all(); 
+    $users = User::all(); 
+    return view('dokumen.edit', compact('dokumen', 'kategoriDokumen', 'users'));
+}
+
+
 
     public function update(Request $request, Dokumen $dokumen)
     {
