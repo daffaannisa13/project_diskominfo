@@ -31,8 +31,12 @@
                                 <td><strong>{{ $media->nama }}</strong></td>
                                 <td>{{ $media->icon }}</td>
                                 <td style="color: {{ $media->color }}">{{ $media->color }}</td>
-                                <td><a href="{{ $media->url }}" target="_blank">{{ $media->url }}</a></td>
+                                <td><a href="{{ $media->url }}" target="_blank" class="long-url">{{ $media->url }}</a></td>
                                 <td>
+                                    <button type="button" class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#showModal{{ $media->id }}">
+                                        <i class="bx bx-show"></i>
+                                    </button>
+
                                     <a href="{{ route('sosial_media.edit', $media->id) }}" class="btn btn-sm btn-warning">
                                         <i class="bx bx-pencil"></i>
                                     </a>
@@ -56,13 +60,13 @@
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <strong>Nama:</strong> {{ $media->nama }}<br>
-                                            <strong>Icon:</strong> {{ $media->icon }}<br>
-                                            <strong>Warna:</strong> <span style="color: {{ $media->color }}">{{ $media->color }}</span><br>
-                                            <strong>URL:</strong> <a href="{{ $media->url }}" target="_blank">{{ $media->url }}</a>
+                                            <p><strong>Nama:</strong> {{ $media->nama }}</p>
+                                            <p><strong>Icon:</strong> {{ $media->icon }}</p>
+                                            <p><strong>Warna:</strong> <span style="color: {{ $media->color }}">{{ $media->color }}</span></p>
+                                            <p><strong>URL:</strong> <a href="{{ $media->url }}" target="_blank" class="long-url-modal">{{ $media->url }}</a></p>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
                                         </div>
                                     </div>
                                 </div>
@@ -75,4 +79,21 @@
         </div>
     </div>
 </div>
+
+<style>
+    /* CSS untuk memotong teks URL yang terlalu panjang */
+    .long-url, .long-url-modal {
+        display: inline-block;
+        max-width: 200px; /* Sesuaikan dengan lebar yang diinginkan */
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        vertical-align: middle;
+    }
+
+    /* Memperbaiki jarak teks dalam modal */
+    .modal-body p {
+        margin-bottom: 0.4rem;
+    }
+</style>
 @endsection

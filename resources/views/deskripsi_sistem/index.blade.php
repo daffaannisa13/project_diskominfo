@@ -11,9 +11,9 @@
                         <i class="bx bx-plus"></i> Tambah Data
                     </a>
                 </h5>
-                <br>
+
                 <div class="table-responsive text-nowrap">
-                    <table class="table">
+                    <table class="table table-hover">
                         <thead>
                             <tr>
                                 <th>#</th>
@@ -22,9 +22,7 @@
                                 <th>Deskripsi</th>
                                 <th>Tahun</th>
                                 <th>Nama Organisasi</th>
-                                <th>Logo Frontend</th>
-                                <th>Logo Backend</th>
-                                <th>Actions</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody class="table-border-bottom-0">
@@ -37,44 +35,33 @@
                                 <td>{{ $deskripsiSistem->tahun }}</td>
                                 <td>{{ $deskripsiSistem->nama_organisasi }}</td>
                                 <td>
-                                    @if($deskripsiSistem->logo_frontend)
-                                        <img src="{{ asset('storage/'.$deskripsiSistem->logo_frontend) }}" class="img-fluid" alt="Logo Frontend" style="width: 50px; height: auto;">
-                                    @else
-                                        <span>No Image</span>
-                                    @endif
-                                </td>
-                                <td>
-                                    @if($deskripsiSistem->logo_backend)
-                                        <img src="{{ asset('storage/'.$deskripsiSistem->logo_backend) }}" class="img-fluid" alt="Logo Backend" style="width: 50px; height: auto;">
-                                    @else
-                                        <span>No Image</span>
-                                    @endif
-                                </td>
-                                <td>
+                                    <!-- Show details button -->
                                     <button type="button" class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#showModal{{ $deskripsiSistem->id }}">
                                         <i class="bx bx-show"></i>
                                     </button>
 
-                                   <a href="{{ route('deskripsi_sistem.edit', $deskripsiSistem->id) }}" class="btn btn-sm btn-warning">
+                                    <!-- Edit button -->
+                                    <a href="{{ route('deskripsi_sistem.edit', $deskripsiSistem->id) }}" class="btn btn-sm btn-warning">
                                         <i class="bx bx-pencil"></i>
                                     </a>
 
+                                    <!-- Delete form -->
                                     <form action="{{ route('deskripsi_sistem.destroy', $deskripsiSistem->id) }}" method="POST" class="d-inline">
                                         @csrf
                                         @method('DELETE')
                                         <button class="btn btn-sm btn-danger" type="submit" onclick="return confirm('Yakin ingin menghapus?')">
                                             <i class="bx bx-trash"></i>
                                         </button>
-                                    </form>
+                                    </form>                                  
                                 </td>
                             </tr>
 
-                            <!-- Modal untuk Show -->
-                            <div class="modal fade" id="showModal{{ $deskripsiSistem->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-lg"> <!-- Set the modal to be large -->
+                            <!-- Modal for Show -->
+                            <div class="modal fade" id="showModal{{ $deskripsiSistem->id }}" tabindex="-1" aria-labelledby="modalLabel{{ $deskripsiSistem->id }}" aria-hidden="true">
+                                <div class="modal-dialog"> <!-- Changed to modal-sm for a smaller modal -->
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Detail Deskripsi Sistem</h5>
+                                            <h5 class="modal-title" id="modalLabel{{ $deskripsiSistem->id }}">Detail Deskripsi Sistem</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
@@ -83,27 +70,9 @@
                                             <strong>Deskripsi:</strong> {{ $deskripsiSistem->deskripsi }}<br>
                                             <strong>Tahun:</strong> {{ $deskripsiSistem->tahun }}<br>
                                             <strong>Nama Organisasi:</strong> {{ $deskripsiSistem->nama_organisasi }}<br>
-                                            
-                                            <!-- Images displayed below the text -->
-                                            <div class="mt-2">
-                                                @if($deskripsiSistem->logo_frontend)
-                                                    <strong>Logo Frontend:</strong><br>
-                                                    <img src="{{ asset('storage/'.$deskripsiSistem->logo_frontend) }}" class="img-fluid" alt="Logo Frontend" style="max-width: 100%; height: auto;">
-                                                @else
-                                                    <span>No Frontend Logo</span>
-                                                @endif
-                                            </div>
-                                            <div class="mt-2">
-                                                @if($deskripsiSistem->logo_backend)
-                                                    <strong>Logo Backend:</strong><br>
-                                                    <img src="{{ asset('storage/'.$deskripsiSistem->logo_backend) }}" class="img-fluid" alt="Logo Backend" style="max-width: 100%; height: auto;">
-                                                @else
-                                                    <span>No Backend Logo</span>
-                                                @endif
-                                            </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
                                         </div>
                                     </div>
                                 </div>

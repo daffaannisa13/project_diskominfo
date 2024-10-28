@@ -8,7 +8,7 @@
                 <h5 class="card-header d-flex justify-content-between align-items-center">
                     Kontak
                     <a href="{{ route('kontak.create') }}" class="btn btn-primary">
-                        <i class="bx bx-plus"></i> Tambah Kontak
+                        <i class="bx bx-plus"></i> Tambah Data
                     </a>
                 </h5>
 
@@ -54,13 +54,13 @@
 
                             <!-- Modal untuk menampilkan detail kontak -->
                             <div class="modal fade" id="showModal{{ $kontak->id }}" tabindex="-1" aria-labelledby="modalLabel{{ $kontak->id }}" aria-hidden="true">
-                                <div class="modal-dialog modal-lg">
+                                <div class="modal-dialog"> <!-- Removed modal size classes for default size -->
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="modalLabel{{ $kontak->id }}">Detail Kontak</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
-                                        <div class="modal-body text-center">
+                                        <div class="modal-body">
                                             <strong>Nama:</strong> {{ $kontak->nama }}
                                             <br>
                                             <strong>Email:</strong> {{ $kontak->email }}

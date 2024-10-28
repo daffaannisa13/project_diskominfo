@@ -50,13 +50,13 @@
 
                             <!-- Modal for Show -->
                             <div class="modal fade" id="showModal{{ $kategori->id }}" tabindex="-1" aria-labelledby="modalLabel{{ $kategori->id }}" aria-hidden="true">
-                                <div class="modal-dialog modal-lg">
+                                <div class="modal-dialog"> <!-- Removed modal size classes for default size -->
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="modalLabel{{ $kategori->id }}">Detail Kategori Dokumen</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
-                                        <div class="modal-body text-center">
+                                        <div class="modal-body">
                                             <strong>Nama Kategori:</strong> {{ $kategori->nama_kategori }}
                                             <br>
                                             <strong>Nama User:</strong> {{ $kategori->user->name }}

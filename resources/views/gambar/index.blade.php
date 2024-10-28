@@ -28,7 +28,7 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>
-                                    <a href="{{ $gambar->url }}" target="_blank">{{ $gambar->url }}</a>
+                                    <a href="{{ $gambar->url }}" target="_blank" class="long-url">{{ $gambar->url }}</a>
                                 </td>
                                 <td>{{ $gambar->kategori->nama_kategori }}</td>
                                 <td>{{ $gambar->user->name }}</td>
@@ -49,20 +49,20 @@
                                 </td>
                             </tr>
 
+                            <!-- Modal for showing image details -->
                             <div class="modal fade" id="showModal{{ $gambar->id }}" tabindex="-1" aria-labelledby="modalLabel{{ $gambar->id }}" aria-hidden="true">
-                                <div class="modal-dialog modal-lg">
+                                <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="modalLabel{{ $gambar->id }}">Detail Gambar</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <strong>URL Gambar:</strong> 
-                                            <a href="{{ $gambar->url }}" target="_blank">{{ $gambar->url }}</a>
-                                            <br>
-                                            <strong>Kategori:</strong> {{ $gambar->kategori->nama_kategori }}
-                                            <br>
-                                            <strong>User:</strong> {{ $gambar->user->name }}
+                                            <p><strong>URL Gambar:</strong> 
+                                                <a href="{{ $gambar->url }}" target="_blank" class="long-url-modal">{{ $gambar->url }}</a>
+                                            </p>
+                                            <p><strong>Kategori:</strong> {{ $gambar->kategori->nama_kategori }}</p>
+                                            <p><strong>User:</strong> {{ $gambar->user->name }}</p>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
@@ -78,4 +78,21 @@
         </div>
     </div>
 </div>
+
+<style>
+    /* CSS untuk memotong teks URL yang terlalu panjang */
+    .long-url, .long-url-modal {
+        display: inline-block;
+        max-width: 200px; /* Sesuaikan dengan lebar yang diinginkan */
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        vertical-align: middle;
+    }
+
+    /* Memperbaiki jarak teks dalam modal */
+    .modal-body p {
+        margin-bottom: 0.4rem;
+    }
+</style>
 @endsection

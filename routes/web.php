@@ -18,6 +18,7 @@ use App\Http\Controllers\SosialMediaController;
 use App\Http\Controllers\PesanController;
 use App\Http\Controllers\DeskripsiSistemController;
 use App\Http\Controllers\BidangController;
+use App\Http\Controllers\UserController;
 
 use App\Http\Controllers\PageController;
 
@@ -45,7 +46,7 @@ Route::get('/404.html', [PageController::class, 'notFound'])->name('404');
 */
 
 // Route untuk login dan logout
-Route::get('/admin', [LoginController::class, 'showLoginForm']);
+Route::get('/', [LoginController::class, 'showLoginForm'])->name('showLoginForm');
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
@@ -61,7 +62,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/agenda', [AgendaController::class, 'store'])->name('agenda.store');
     Route::get('/agenda/{agenda}', [AgendaController::class, 'show'])->name('agenda.show');
     Route::get('/agenda/{agenda}/edit', [AgendaController::class, 'edit'])->name('agenda.edit');
-    Route::put('/agenda/{agenda}', [AgendaController::class, 'update'])->name('agenda.update');
+    Route::put('/agenda/{agenda}/udate', [AgendaController::class, 'update'])->name('agenda.updatebro');
     Route::delete('/agenda/{agenda}', [AgendaController::class, 'destroy'])->name('agenda.destroy');
 
     // Rute untuk Berita
@@ -145,13 +146,13 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/kontak/{kontak}', [KontakController::class, 'destroy'])->name('kontak.destroy');
 
     // Rute untuk Users
-    Route::get('/users', [UsersController::class, 'index'])->name('users.index');
-    Route::get('/users/create', [UsersController::class, 'create'])->name('users.create');
-    Route::post('/users', [UsersController::class, 'store'])->name('users.store');
-    Route::get('/users/{user}', [UsersController::class, 'show'])->name('users.show');
-    Route::get('/users/{user}/edit', [UsersController::class, 'edit'])->name('users.edit');
-    Route::put('/users/{user}', [UsersController::class, 'update'])->name('users.update');
-    Route::delete('/users/{user}', [UsersController::class, 'destroy'])->name('users.destroy');
+    Route::get('/users', [UserController::class, 'index'])->name('users.index');
+    Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
+    Route::post('/users', [UserController::class, 'store'])->name('users.store');
+    Route::get('/users/{user}', [UserController::class, 'show'])->name('users.show');
+    Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
+    Route::put('/users/{user}', [UserController::class, 'update'])->name('users.update');
+    Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
 
     // Rute untuk Video
     Route::get('/video', [VideoController::class, 'index'])->name('video.index');
@@ -200,7 +201,7 @@ Route::post('/deskripsi-sistem', [DeskripsiSistemController::class, 'store'])->n
 Route::get('/deskripsi-sistem/{deskripsiSistem}', [DeskripsiSistemController::class, 'show'])->name('deskripsi_sistem.show');
 Route::get('/deskripsi-sistem/{deskripsiSistem}/edit', [DeskripsiSistemController::class, 'edit'])->name('deskripsi_sistem.edit');
 Route::put('/deskripsi-sistem/{deskripsiSistem}', [DeskripsiSistemController::class, 'update'])->name('deskripsi_sistem.update');
-Route::delete('/deskripsi-sistem/{deskripsiSistem}', [DeskripsiSistemController::class, 'destroy'])->name('deskripsi_sistem.destroy');
+Route::delete('/deskripsi-sistembro/{deskripsiSistem}', [DeskripsiSistemController::class, 'destroy'])->name('deskripsi_sistem.destroy');
 
 
 Route::get('/bidang', [BidangController::class, 'index'])->name('bidang.index');

@@ -6,61 +6,60 @@
         <div class="container">
             <div class="card">
                 <h5 class="card-header d-flex justify-content-between align-items-center">
-                    Daftar Bidang
-                    <a href="{{ route('bidang.create') }}" class="btn btn-primary">
+                    Users
+                    <a href="{{ route('users.create') }}" class="btn btn-primary">
                         <i class="bx bx-plus"></i> Tambah Data
                     </a>
                 </h5>
-                <br>
                 <div class="table-responsive text-nowrap">
                     <table class="table">
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Nama Bidang</th>
+                                <th>Name</th>
+                                <th>Username</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
-                        <tbody class="table-border-bottom-0">
-                            @foreach($bidangs as $bidang)
+                        <tbody>
+                            @foreach($users as $user)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td><strong>{{ $bidang->nama_bidang }}</strong></td>
+                                <td>{{ $user->name }}</td>
+                                <td>{{ $user->username }}</td>
                                 <td>
-                                    <!-- Tombol untuk membuka modal detail -->
-                                    <button type="button" class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#showModal{{ $bidang->id }}">
-                                        <i class="bx bx-show"></i>
+                                    <button type="button" class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#detailModal{{ $user->id }}">
+                                        <i class="bx bx-show"></i> 
                                     </button>
 
-                                    <a href="{{ route('bidang.edit', $bidang->id) }}" class="btn btn-sm btn-warning">
-                                        <i class="bx bx-pencil"></i>
+                                    <a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm btn-warning">
+                                        <i class="bx bx-pencil"></i> 
                                     </a>
 
-                                    <form action="{{ route('bidang.destroy', $bidang->id) }}" method="POST" class="d-inline">
+                                    <form action="{{ route('users.destroy', $user->id) }}" method="POST" class="d-inline">
                                         @csrf
                                         @method('DELETE')
-                                        <button class="btn btn-sm btn-danger" type="submit" onclick="return confirm('Yakin ingin menghapus?')">
-                                            <i class="bx bx-trash"></i>
+                                        <button class="btn btn-sm btn-danger" type="submit" onclick="return confirm('Are you sure you want to delete this user?')">
+                                            <i class="bx bx-trash"></i> 
                                         </button>
                                     </form>
                                 </td>
                             </tr>
 
-                            <!-- Modal untuk Show -->
-                            <div class="modal fade" id="showModal{{ $bidang->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog"> <!-- Set the modal to be large -->
+                            <!-- Modal for User Details -->
+                            <div class="modal fade" id="detailModal{{ $user->id }}" tabindex="-1" aria-labelledby="detailModalLabel{{ $user->id }}" aria-hidden="true">
+                                <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Detail Bidang: {{ $bidang->nama_bidang }}</h5>
+                                            <h5 class="modal-title" id="detailModalLabel{{ $user->id }}">User Details</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <strong>Nama Bidang:</strong> {{ $bidang->nama_bidang }}<br>
-                                            <!-- Tambahkan detail lain yang relevan di sini -->
-                                            
+                                            <p><strong>Name:</strong> {{ $user->name }}</p>
+                                            <p><strong>Username:</strong> {{ $user->username }}</p>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                         </div>
                                     </div>
                                 </div>
