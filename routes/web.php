@@ -19,6 +19,19 @@ use App\Http\Controllers\PesanController;
 use App\Http\Controllers\DeskripsiSistemController;
 use App\Http\Controllers\BidangController;
 
+use App\Http\Controllers\PageController;
+
+Route::get('/', [PageController::class, 'index'])->name('index');
+Route::get('/berita.html', [PageController::class, 'berita'])->name('berita');
+Route::get('/contact.html', [PageController::class, 'contact'])->name('contact');
+Route::get('/design.html', [PageController::class, 'design'])->name('design');
+Route::get('/gallery.html', [PageController::class, 'gallery'])->name('gallery');
+Route::get('/info.html', [PageController::class, 'info'])->name('info');
+Route::get('/layanan.html', [PageController::class, 'layanan'])->name('layanan');
+Route::get('/teknologi.html', [PageController::class, 'teknologi'])->name('teknologi');
+Route::get('/404.html', [PageController::class, 'notFound'])->name('404');
+
+
 
 /*
 |---------------------------------------------------------------------------
@@ -32,7 +45,7 @@ use App\Http\Controllers\BidangController;
 */
 
 // Route untuk login dan logout
-Route::get('/', [LoginController::class, 'showLoginForm']);
+Route::get('/admin', [LoginController::class, 'showLoginForm']);
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
