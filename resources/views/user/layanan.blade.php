@@ -45,7 +45,7 @@
         <div class="col-lg-12 text-end">
             <div class="d-inline-flex align-items-center justify-content-end" style="height: 45px;">
                 <!-- Login Link -->
-                <a href="#"><small class="me-3 text-light"><i class="fa fa-sign-in-alt me-2"></i>Login</small></a>
+                <a href="/admin"><small class="me-3 text-light"><i class="fa fa-sign-in-alt me-2"></i>Login</small></a>
             </div>
         </div>
     </div>
@@ -66,7 +66,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto py-0">
-                <a href="index.html" class="nav-item nav-link">Beranda</a>
+                <a href="/" class="nav-item nav-link">Beranda</a>
                 <a href="berita.html" class="nav-item nav-link">Berita</a>
                 <a href="layanan.html" class="nav-item nav-link active">Layanan</a>
                 <a href="info.html" class="nav-item nav-link">Info Penting</a>

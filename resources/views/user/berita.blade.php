@@ -45,7 +45,7 @@
         <div class="col-lg-12 text-end">
             <div class="d-inline-flex align-items-center justify-content-end" style="height: 45px;">
                 <!-- Login Link -->
-                <a href="#"><small class="me-3 text-light"><i class="fa fa-sign-in-alt me-2"></i>Login</small></a>
+                <a href="/admin"><small class="me-3 text-light"><i class="fa fa-sign-in-alt me-2"></i>Login</small></a>
             </div>
         </div>
     </div>
@@ -66,7 +66,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto py-0">
-                <a href="index.html" class="nav-item nav-link">Beranda</a>
+                <a href="/" class="nav-item nav-link">Beranda</a>
                 <a href="berita.html" class="nav-item nav-link active">Berita</a>
                 <a href="layanan.html" class="nav-item nav-link">Layanan</a>
                 <a href="info.html" class="nav-item nav-link">Info Penting</a>
@@ -109,7 +109,7 @@
             <div class="packages-carousel owl-carousel">
                 <div class="packages-item">
                     <div class="packages-img">
-                        <img src="img/packages-4.jpg" class="img-fluid w-100 rounded-top" alt="Image">
+                        <img src="user/img/packages-4.jpg" class="img-fluid w-100 rounded-top" alt="Image">
                         <div class="packages-info d-flex border border-start-0 border-end-0 position-absolute"
                             style="width: 100%; bottom: 0; left: 0; z-index: 5;">
                             <small class="flex-fill text-center border-end py-2"><i
@@ -146,7 +146,7 @@
                 </div>
                 <div class="packages-item">
                     <div class="packages-img">
-                        <img src="img/packages-2.jpg" class="img-fluid w-100 rounded-top" alt="Image">
+                        <img src="user/img/packages-2.jpg" class="img-fluid w-100 rounded-top" alt="Image">
                         <div class="packages-info d-flex border border-start-0 border-end-0 position-absolute"
                             style="width: 100%; bottom: 0; left: 0; z-index: 5;">
                             <small class="flex-fill text-center border-end py-2"><i
@@ -183,7 +183,7 @@
                 </div>
                 <div class="packages-item">
                     <div class="packages-img">
-                        <img src="img/packages-3.jpg" class="img-fluid w-100 rounded-top" alt="Image">
+                        <img src="user/img/packages-3.jpg" class="img-fluid w-100 rounded-top" alt="Image">
                         <div class="packages-info d-flex border border-start-0 border-end-0 position-absolute"
                             style="width: 100%; bottom: 0; left: 0; z-index: 5;">
                             <small class="flex-fill text-center border-end py-2"><i
@@ -220,7 +220,7 @@
                 </div>
                 <div class="packages-item">
                     <div class="packages-img">
-                        <img src="img/packages-1.jpg" class="img-fluid w-100 rounded-top" alt="Image">
+                        <img src="user/img/packages-1.jpg" class="img-fluid w-100 rounded-top" alt="Image">
                         <div class="packages-info d-flex border border-start-0 border-end-0 position-absolute"
                             style="width: 100%; bottom: 0; left: 0; z-index: 5;">
                             <small class="flex-fill text-center border-end py-2"><i

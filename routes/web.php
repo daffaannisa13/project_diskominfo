@@ -46,7 +46,7 @@ Route::get('/404.html', [PageController::class, 'notFound'])->name('404');
 */
 
 // Route untuk login dan logout
-Route::get('/', [LoginController::class, 'showLoginForm'])->name('showLoginForm');
+Route::get('/admin', [LoginController::class, 'showLoginForm']);
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
