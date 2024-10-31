@@ -13,9 +13,16 @@ class GambarController extends Controller
 {
     public function index()
 {
+    $kategoriGambar = KategoriGambar::all();
     $gambars = Gambar::with('kategori', 'user')->get(); // Eager load kategori and user
     return view('gambar.index', compact('gambars'));
 }
+
+    public function getImagesByCategory($categoryId)
+    {
+        $gambars = Gambar::with('kategori', 'user')->where('kategori_id', $categoryId)->get(); // Get images by category
+        return response()->json($gambars);
+    }
 
     public function create()
 {

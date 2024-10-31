@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pesan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class PesanController extends Controller
 {

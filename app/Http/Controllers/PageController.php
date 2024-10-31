@@ -3,22 +3,37 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Berita;
+use App\Models\Kontak;
+use App\Models\Profil;
+use App\Models\KategoriGambar;
+use App\Models\Gambar;
+use Illuminate\Support\Facades\Storage;
 
 class PageController extends Controller
 {
     public function index()
     {
-        return view('user.index');
+        $kontaks = Kontak::all();
+        $profil = Profil::orderBy('created_at', 'asc')->first(); // Get the oldest profile
+        $beritas = Berita::all();
+        $gambars = Gambar::with('kategori', 'user')->get();
+        $kategoriGambar = KategoriGambar::all(); // Fetch all categories
+        return view('user.index', compact('beritas', 'kontaks', 'profil', 'kategoriGambar', 'gambars'));
     }
+
 
     public function berita()
     {
-        return view('user.berita');
+        // Ambil semua berita
+        $beritas = Berita::all();
+        return view('user.berita', compact('beritas'));
     }
 
     public function contact()
     {
-        return view('user.contact');
+        $kontaks = Kontak::all();
+        return view('user.contact', compact('kontaks'));
     }
 
     public function design()

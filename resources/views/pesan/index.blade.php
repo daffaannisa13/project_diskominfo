@@ -7,9 +7,7 @@
             <div class="card">
                 <h5 class="card-header d-flex justify-content-between align-items-center">
                     Daftar Pesan
-                    <a href="{{ route('pesan.create') }}" class="btn btn-primary">
-                        <i class="bx bx-plus"></i> Tambah Data
-                    </a>
+                    
                 </h5>
                 <br>
                 <div class="table-responsive text-nowrap">

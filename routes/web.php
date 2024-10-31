@@ -195,6 +195,7 @@ Route::put('/pesan/{pesan}', [PesanController::class, 'update'])->name('pesan.up
 Route::delete('/pesan/{pesan}', [PesanController::class, 'destroy'])->name('pesan.destroy');
 
 
+
 Route::get('/deskripsi-sistem', [DeskripsiSistemController::class, 'index'])->name('deskripsi_sistem.index');
 Route::get('/deskripsi-sistem/create', [DeskripsiSistemController::class, 'create'])->name('deskripsi_sistem.create');
 Route::post('/deskripsi-sistem', [DeskripsiSistemController::class, 'store'])->name('deskripsi_sistem.store');

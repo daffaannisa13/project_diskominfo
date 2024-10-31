@@ -6,6 +6,7 @@ use App\Models\Berita;
 use App\Models\KategoriBerita;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class BeritaController extends Controller
 {
@@ -85,35 +86,39 @@ class BeritaController extends Controller
     }
 
     public function update(Request $request, Berita $berita)
-    {
-        // Validasi input
-        $validated = $request->validate([
-            'judul' => 'required|string|max:255',
-            'isi' => 'required',
-            'tanggal' => 'required|date',
-            'kategori_id' => 'required|exists:kategori_berita,id',
-            'gambar' => 'nullable|image|max:2048', // Validasi gambar
-        ]);
+{
+    // Validasi input
+    $validated = $request->validate([
+        'judul' => 'required|string|max:255',
+        'isi' => 'required',
+        'tanggal' => 'required|date',
+        'kategori_id' => 'required|exists:kategori_berita,id',
+        'gambar' => 'nullable|image|max:2048', // Validasi gambar
+    ]);
 
-        // Ambil nama kategori berdasarkan kategori_id
-        $kategori = KategoriBerita::find($validated['kategori_id']);
-        $validated['kategori_nama'] = $kategori->nama_kategori;
+    // Ambil nama kategori berdasarkan kategori_id
+    $kategori = KategoriBerita::find($validated['kategori_id']);
+    $validated['kategori_nama'] = $kategori->nama_kategori;
 
-        // Jika ada file gambar yang di-upload, simpan file gambar
-        if ($request->hasFile('gambar')) {
-            $gambarPath = $request->file('gambar')->store('gambar'); // Simpan di storage/app/gambar
-            $validated['gambar'] = $gambarPath; // Hanya simpan path relatif
+    // Jika ada file gambar yang di-upload, simpan file gambar
+    if ($request->hasFile('gambar')) {
+        // Delete old image if it exists
+        if ($berita->gambar) {
+            Storage::disk('public')->delete($berita->gambar);
         }
 
-        // Ambil ID user yang sedang login
-        $validated['users_id'] = auth()->id();
-
-        // Update berita
-        $berita->update($validated);
-
-        // Redirect ke index berita dengan pesan sukses
-        return redirect()->route('berita.index')->with('success', 'Berita berhasil diperbarui');
+        // Store the new image
+        $gambarPath = $request->file('gambar')->store('gambar', 'public');
+        $validated['gambar'] = $gambarPath; // Store the relative path
     }
+
+    // Update berita
+    $berita->update($validated);
+
+    // Redirect ke index berita dengan pesan sukses
+    return redirect()->route('berita.index')->with('success', 'Berita berhasil diperbarui');
+}
+
 
     public function destroy(Berita $berita)
     {
