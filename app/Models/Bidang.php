@@ -14,4 +14,9 @@ class Bidang extends Model
     protected $fillable = [
         'nama_bidang',
     ];
+
+    public function users()
+    {
+        return $this->hasMany(User::class); // Relasi satu ke banyak
+    }
 }

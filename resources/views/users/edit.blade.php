@@ -15,7 +15,7 @@
                         @method('PUT') <!-- Penting untuk method PUT -->
 
                         <!-- Nama -->
-                        <div class="row mb-3">
+                        <div class="mb-3 row">
                             <label class="col-sm-2 col-form-label" for="name">Nama</label>
                             <div class="col-sm-10">
                                 <input type="text" name="name" id="name" class="form-control" value="{{ old('name', $user->name) }}" required>
@@ -26,7 +26,7 @@
                         </div>
 
                         <!-- Username -->
-                        <div class="row mb-3">
+                        <div class="mb-3 row">
                             <label class="col-sm-2 col-form-label" for="username">Username</label>
                             <div class="col-sm-10">
                                 <input type="text" name="username" id="username" class="form-control" value="{{ old('username', $user->username) }}" required>
@@ -36,12 +36,30 @@
                             </div>
                         </div>
 
-                        <!-- Password -->
-                        <div class="row mb-3">
-                            <label class="col-sm-2 col-form-label" for="password">Password</label>
+                        <!-- Bidang Dropdown -->
+                        <div class="mb-3 row">
+                            <label class="col-sm-2 col-form-label" for="bidang_id">Bidang</label>
+                            <div class="col-sm-10">
+                                <select name="bidang_id" id="bidang_id" class="form-control" required>
+                                    <option value="">Pilih Bidang</option>
+                                    @foreach ($bidangs as $bidang)
+                                        <option value="{{ $bidang->id }}" {{ (old('bidang_id', $user->bidang_id) == $bidang->id) ? 'selected' : '' }}>
+                                            {{ $bidang->nama_bidang }} <!-- Ganti 'name' dengan atribut yang sesuai dari model Bidang -->
+                                        </option>
+                                    @endforeach
+                                </select>
+                                @error('bidang_id')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <!-- Password Baru -->
+                        <div class="mb-3 row">
+                            <label class="col-sm-2 col-form-label" for="password">Password Baru</label>
                             <div class="col-sm-10">
                                 <input type="password" name="password" id="password" class="form-control">
-                                <small class="text-muted">Kosongkan jika tidak ingin mengubah password</small>
+                                <small class="text-muted">Masukkan password baru jika ingin mengganti password.</small>
                                 @error('password')
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror

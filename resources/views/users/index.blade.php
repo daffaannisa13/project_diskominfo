@@ -6,19 +6,20 @@
         <div class="container">
             <div class="card">
                 <h5 class="card-header d-flex justify-content-between align-items-center">
-                    Users
+                    Pengguna
                     <a href="{{ route('users.create') }}" class="btn btn-primary">
                         <i class="bx bx-plus"></i> Tambah Data
                     </a>
                 </h5>
                 <div class="table-responsive text-nowrap">
-                    <table class="table">
+                    <table class="table table-hover">
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Name</th>
+                                <th>Nama</th>
                                 <th>Username</th>
-                                <th>Actions</th>
+                                <th>Bidang</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -27,20 +28,24 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->username }}</td>
+                                <td>{{ $user->bidang->nama_bidang ?? 'Tidak ada bidang' }}</td> <!-- Menampilkan bidang pengguna -->
                                 <td>
-                                    <button type="button" class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#detailModal{{ $user->id }}">
-                                        <i class="bx bx-show"></i> 
+                                    <!-- Detail Button -->
+                                    <button type="button" class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#detailModal{{ $user->id }}" title="Detail">
+                                        <i class="bx bx-show"></i>
                                     </button>
 
-                                    <a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm btn-warning">
-                                        <i class="bx bx-pencil"></i> 
+                                    <!-- Edit Button -->
+                                    <a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm btn-warning" title="Edit">
+                                        <i class="bx bx-pencil"></i>
                                     </a>
 
+                                    <!-- Delete Form -->
                                     <form action="{{ route('users.destroy', $user->id) }}" method="POST" class="d-inline">
                                         @csrf
                                         @method('DELETE')
-                                        <button class="btn btn-sm btn-danger" type="submit" onclick="return confirm('Are you sure you want to delete this user?')">
-                                            <i class="bx bx-trash"></i> 
+                                        <button class="btn btn-sm btn-danger" type="submit" onclick="return confirm('Anda yakin ingin menghapus pengguna ini?')" title="Hapus">
+                                            <i class="bx bx-trash"></i>
                                         </button>
                                     </form>
                                 </td>
@@ -51,15 +56,16 @@
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="detailModalLabel{{ $user->id }}">User Details</h5>
+                                            <h5 class="modal-title" id="detailModalLabel{{ $user->id }}">Detail Pengguna</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <p><strong>Name:</strong> {{ $user->name }}</p>
+                                            <p><strong>Nama:</strong> {{ $user->name }}</p>
                                             <p><strong>Username:</strong> {{ $user->username }}</p>
+                                            <p><strong>Bidang:</strong> {{ $user->bidang->nama_bidang ?? 'Tidak ada bidang' }}</p> <!-- Menampilkan bidang pengguna -->
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
                                         </div>
                                     </div>
                                 </div>

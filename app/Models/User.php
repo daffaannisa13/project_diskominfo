@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'username',
         'password',
+        'bidang_id',
     ];
 
     /**
@@ -69,5 +70,9 @@ class User extends Authenticatable
     public function videos()
     {
         return $this->hasMany(Video::class, 'users_id');
+    }
+    public function bidang()
+    {
+        return $this->belongsTo(Bidang::class); // Asumsikan Anda memiliki model Bidang
     }
 }

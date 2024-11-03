@@ -156,15 +156,6 @@
             </ul>
         </li>
 
-
-        <!-- Pesan -->
-        <li class="menu-item">
-            <a href="{{ url('/pesan') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-envelope"></i>
-                <div>Pesan</div>
-            </a>
-        </li>
-
         <!-- Deskripsi Sistem -->
         <li class="menu-item">
             <a href="{{ url('/deskripsi-sistem') }}" class="menu-link">

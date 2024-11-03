@@ -14,7 +14,7 @@
                         @csrf
 
                         <!-- Nama -->
-                        <div class="row mb-3">
+                        <div class="mb-3 row">
                             <label class="col-sm-2 col-form-label" for="name">Nama Pengguna</label>
                             <div class="col-sm-10">
                                 <input type="text" name="name" class="form-control" value="{{ old('name') }}" required>
@@ -25,7 +25,7 @@
                         </div>
 
                         <!-- Username -->
-                        <div class="row mb-3">
+                        <div class="mb-3 row">
                             <label class="col-sm-2 col-form-label" for="username">Username</label>
                             <div class="col-sm-10">
                                 <input type="text" name="username" class="form-control" value="{{ old('username') }}" required>
@@ -36,7 +36,7 @@
                         </div>
 
                         <!-- Password -->
-                        <div class="row mb-3">
+                        <div class="mb-3 row">
                             <label class="col-sm-2 col-form-label" for="password">Password</label>
                             <div class="col-sm-10">
                                 <input type="password" name="password" class="form-control" required>
@@ -46,11 +46,27 @@
                             </div>
                         </div>
 
-                        <!-- Confirm Password -->
-                        <div class="row mb-3">
+                        <!-- Konfirmasi Password -->
+                        <div class="mb-3 row">
                             <label class="col-sm-2 col-form-label" for="password_confirmation">Konfirmasi Password</label>
                             <div class="col-sm-10">
                                 <input type="password" name="password_confirmation" class="form-control" required>
+                            </div>
+                        </div>
+
+                        <!-- Bidang -->
+                        <div class="mb-3 row">
+                            <label class="col-sm-2 col-form-label" for="bidang_id">Bidang</label>
+                            <div class="col-sm-10">
+                                <select name="bidang_id" class="form-select" required>
+                                    <option value="" disabled selected>Pilih Bidang</option>
+                                    @foreach($bidangs as $bidang)
+                                        <option value="{{ $bidang->id }}">{{ $bidang->nama_bidang }}</option>
+                                    @endforeach
+                                </select>
+                                @error('bidang_id')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
                             </div>
                         </div>
 
