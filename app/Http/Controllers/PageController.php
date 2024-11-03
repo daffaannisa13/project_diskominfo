@@ -67,7 +67,8 @@ class PageController extends Controller
 
     public function design()
     {
-        return view('user.design');
+        $agenda = Agenda::all();
+        return view('user.design', compact('agenda'));
     }
 
     public function gallery()

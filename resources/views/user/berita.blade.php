@@ -38,53 +38,57 @@
         </div>
         <!-- Spinner End -->
 
-<!-- Topbar Start -->
-<div class="container-fluid bg-primary px-5 d-none d-lg-block">
-    <div class="row gx-0">
-        <!-- Atur ke col-lg-12 agar kontainer memanjang penuh, kemudian text-end untuk rata kanan -->
-        <div class="col-lg-12 text-end">
-            <div class="d-inline-flex align-items-center justify-content-end" style="height: 45px;">
-                <!-- Login Link -->
-                <a href="/admin"><small class="me-3 text-light"><i class="fa fa-sign-in-alt me-2"></i>Login</small></a>
+ <div class="container-fluid bg-primary px-5 d-none d-lg-block">
+        <div class="row gx-0">
+            <!-- Atur ke col-lg-12 agar kontainer memanjang penuh, kemudian text-end untuk rata kanan -->
+            <div class="col-lg-12 text-end">
+                <div class="d-inline-flex align-items-center justify-content-end" style="height: 45px;">
+                    <!-- Login Link -->
+                    <a href="/admin"><small class="me-3 text-light"><i class="fa fa-sign-in-alt me-2"></i>Login</small></a>
+                </div>
             </div>
         </div>
     </div>
-</div>
-
-
-<!-- Topbar End -->
-
-<!-- Navbar & Hero Start -->
-<div class="container-fluid position-relative p-0">
-    <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
-        <a href="" class="navbar-brand p-0">
-            <h1 class="m-0"><i class="fa fa-map-marker-alt me-3"></i>Travela</h1>
-            <!-- <img src="img/logo.png" alt="Logo"> -->
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-            <span class="fa fa-bars"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <div class="navbar-nav ms-auto py-0">
-                <a href="/" class="nav-item nav-link">Beranda</a>
-                <a href="berita.html" class="nav-item nav-link active">Berita</a>
-                <a href="layanan.html" class="nav-item nav-link">Layanan</a>
-                <a href="info.html" class="nav-item nav-link">Info Penting</a>
-                <a href="blog.html" class="nav-item nav-link">Download File</a>
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pojok Kita</a>
-                    <div class="dropdown-menu m-0">
-                        <a href="design.html" class="dropdown-item">pojok design grafis</a>
-                        <a href="teknologi.html" class="dropdown-item">pojok teknologi</a>
-                        <a href="404.html" class="dropdown-item">404 Page</a>
+    
+    
+    <!-- Topbar End -->
+    
+    <!-- Navbar & Hero Start -->
+    <div class="container-fluid position-relative p-0">
+        <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+            <a href="" class="navbar-brand p-0">
+                <h1 class="m-0"><i class="fa fa-map-marker-alt me-3"></i>Travela</h1>
+                <!-- <img src="img/logo.png" alt="Logo"> -->
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="fa fa-bars"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav ms-auto py-0">
+                    <a href="/" class="nav-item nav-link">Beranda</a>
+                    <a href="berita.html" class="nav-item nav-link active">Berita</a>
+                    <a href="layanan.html" class="nav-item nav-link">Layanan</a>
+                    <a href="info.html" class="nav-item nav-link">Info Penting</a>
+                    <a href="blog.html" class="nav-item nav-link">Download File</a>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pojok Kita</a>
+                        <div class="dropdown-menu m-0">
+                            <a href="destination.html" class="dropdown-item">Agenda</a>
+                            <a href="tour.html" class="dropdown-item">pojok teknologi</a>
+                            <a href="booking.html" class="dropdown-item">Travel Booking</a>
+                            <a href="gallery.html" class="dropdown-item">Our Gallery</a>
+                            <a href="guides.html" class="dropdown-item">Travel Guides</a>
+                            <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+                            <a href="404.html" class="dropdown-item">404 Page</a>
+                        </div>
                     </div>
+                    <a href="contact.html" class="nav-item nav-link">Kontak Kami</a>
                 </div>
-                <a href="contact.html" class="nav-item nav-link">Kontak Kami</a>
             </div>
-        </div>
-    </nav>
-</div>
-<!-- Navbar & Hero End -->
+        </nav>
+    
+      
+    </div>
 
         <!-- Header Start -->
         <div class="container-fluid bg-breadcrumb">
@@ -99,7 +103,7 @@
         </div>
         <!-- Header End -->
         
-    <!-- Packages Start -->
+  <!-- Packages Start -->
 <div class="container-fluid packages py-5">
     <div class="container py-5">
         <div class="mx-auto text-center mb-5" style="max-width: 900px;">
@@ -113,7 +117,7 @@
                     <img src="{{ asset('storage/' . $berita->gambar) }}" class="img-fluid w-100 rounded-top" alt="{{ $berita->judul }}">
                     <div class="packages-info d-flex border border-start-0 border-end-0 position-absolute"
                         style="width: 100%; bottom: 0; left: 0; z-index: 5;">
-                        <small class="flex-fill text-center border-end py-2 px-2"><i class="fa fa-calendar-alt me-2"></i>{{ \Carbon\Carbon::parse($berita->tanggal)->format('d M Y') }}
+                        <small class="flex-fill text-center py-2 px-2"><i class="fa fa-calendar-alt me-2"></i>{{ \Carbon\Carbon::parse($berita->tanggal)->format('d M Y') }}
                         <small class="flex-fill text-center py-2 px-4"><i class="fa fa-user me-2"></i>{{ $berita->author }}</small>
                     </div>
                 </div>
@@ -142,12 +146,14 @@
             </div>
              @endforeach
         </div>
-    </div>
-</div>
+        </div>
+        </div>
+        
+
 <!-- Packages End -->
 
 
-        <!-- Footer Start -->
+         <!-- Footer Start -->
         <div class="container-fluid footer py-5">
             <div class="container py-5">
                 <div class="row g-5">
@@ -189,6 +195,7 @@
                             <a href=""><i class="fas fa-angle-right me-2"></i> Cookie policy</a>
                         </div>
                     </div>
+                   
                 </div>
             </div>
         </div>
@@ -211,7 +218,6 @@
             </div>
         </div>
         <!-- Copyright End -->
-
         <!-- Back to Top -->
         <a href="#" class="btn btn-primary btn-primary-outline-0 btn-md-square back-to-top"><i class="fa fa-arrow-up"></i></a>
         

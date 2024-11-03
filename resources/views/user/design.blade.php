@@ -71,7 +71,7 @@
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu m-0">
-                                <a href="design.html" class="dropdown-item active">pojok design grafis</a>
+                                <a href="design.html" class="dropdown-item active">Agenda</a>
                                 <a href="teknologi.html" class="dropdown-item">pojok teknologi</a>
                                 <a href="404.html" class="dropdown-item">404 Page</a>
                             </div>
@@ -95,105 +95,59 @@
             </div>
         </div>
         <!-- Header End -->
-
-    <!-- Blog Start -->
-    <div class="container-fluid blog py-5">
-        <div class="container py-5">
-            <div class="mx-auto text-center mb-5" style="max-width: 900px;">
-                <h5 class="section-title px-3">Pojok Teknologi</h5>
-                <h1 class="mb-4">Pojok Teknologi</h1>
-                <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti deserunt tenetur sapiente
-                    atque. Magni non explicabo beatae sit, vel reiciendis consectetur numquam id similique sunt error
-                    obcaecati ducimus officia maiores.
-                </p>
-            </div>
-            <div class="row g-4 justify-content-center">
-                <div class="col-lg-4 col-md-6">
-                    <div class="blog-item">
-                        <div class="blog-img">
-                            <div class="blog-img-inner">
-                                <img class="img-fluid w-100 rounded-top" src="user/img/blog-1.jpg" alt="Image">
-                                <div class="blog-icon">
-                                    <a href="#" class="my-auto"><i class="fas fa-link fa-2x text-white"></i></a>
+  <!-- Blog Start -->
+        <div class="container-fluid blog py-5">
+            <div class="container py-5">
+                <div class="mx-auto text-center mb-5" style="max-width: 900px;">
+                    <h5 class="section-title px-3">Agenda</h5>
+                    <h1 class="mb-4">Agenda Terbaru</h1>
+                    <p class="mb-0">Ikuti agenda terkini dan jangan lewatkan berbagai kegiatan penting yang akan datang. Dari seminar hingga workshop, temukan kesempatan untuk belajar, berjejaring, dan memperluas wawasan Anda. Mari bergabung dan jadilah bagian dari setiap momen yang berharga.</p>
+                    <?php //var_dump($agenda) ?>
+                </div>
+                <div class="row g-4 justify-content-center">
+                    <?php foreach ($agenda as $event): ?>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="blog-item">
+                                <div class="blog-img">
+                                    {{-- <div class="blog-img-inner">
+                                        <img class="img-fluid w-100 rounded-top" src="user/img/blog-<?= $event['kategori_id']; ?>.jpg" alt="Image">
+                                        <div class="blog-icon">
+                                            <a href="#" class="my-auto"><i class="fas fa-link fa-2x text-white"></i></a>
+                                        </div>
+                                    </div> --}}
+                                    <div class="blog-info d-flex align-items-center border border-start-0 border-end-0">
+                                        {{-- <small class="flex-fill text-center border-end py-2">
+                                            <i class="fa fa-calendar-alt text-primary me-2"></i><?=// date('d M Y', strtotime($event['tanggal'])); ?>
+                                        </small> --}}
+                                        {{-- <a href="#" class="btn-hover flex-fill text-center text-white border-end py-2">
+                                            <i class="fa fa-thumbs-up text-primary me-2"></i>1.7K
+                                        </a>
+                                        <a href="#" class="btn-hover flex-fill text-center text-white py-2">
+                                            <i class="fa fa-comments text-primary me-2"></i>1K
+                                        </a> --}}
+                                    </div>
+                                </div>
+                                <div class="blog-content border border-top-0 rounded-bottom p-4">
+                                   
+                                    <p class="mb-3"><?= htmlspecialchars($event->user->name); ?></p>
+                                    <strong>
+                                        <a style="font-size: 24px; font-weight: bold;" class="h1"><?= htmlspecialchars($event->kategori->nama_kategori); ?></a><br>
+                                        <a style="font-size: 20px;" class="h3"><?= htmlspecialchars($event['judul']); ?></a>
+                                        
+                                </strong>
+                                    <p class="my-3">tanggal: <?=  date('d M Y', strtotime($event['tanggal'])); ?></p>
+                                    <p class="my-3">Waktu: <?= htmlspecialchars($event['waktu_mulai']) . ' - ' . htmlspecialchars($event['waktu_selesai']); ?></p>
+                                    <p class="my-3">Lokasi: <?= htmlspecialchars($event['lokasi']); ?></p>
+                                    {{-- <a href="#" class="btn btn-primary rounded-pill py-2 px-4">Read More</a> --}}
                                 </div>
                             </div>
-                            <div class="blog-info d-flex align-items-center border border-start-0 border-end-0">
-                                <small class="flex-fill text-center border-end py-2"><i
-                                        class="fa fa-calendar-alt text-primary me-2"></i>28 Jan 2050</small>
-                                <a href="#" class="btn-hover flex-fill text-center text-white border-end py-2"><i
-                                        class="fa fa-thumbs-up text-primary me-2"></i>1.7K</a>
-                                <a href="#" class="btn-hover flex-fill text-center text-white py-2"><i
-                                        class="fa fa-comments text-primary me-2"></i>1K</a>
-                            </div>
                         </div>
-                        <div class="blog-content border border-top-0 rounded-bottom p-4">
-                            <p class="mb-3">Posted By: Royal Hamblin </p>
-                            <a href="#" class="h4">Adventures Trip</a>
-                            <p class="my-3">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam eos
-                            </p>
-                            <a href="#" class="btn btn-primary rounded-pill py-2 px-4">Read More</a>
-                        </div>
-                    </div>
+                    <?php endforeach; ?>
                 </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="blog-item">
-                        <div class="blog-img">
-                            <div class="blog-img-inner">
-                                <img class="img-fluid w-100 rounded-top" src="user/img/blog-2.jpg" alt="Image">
-                                <div class="blog-icon">
-                                    <a href="#" class="my-auto"><i class="fas fa-link fa-2x text-white"></i></a>
-                                </div>
-                            </div>
-                            <div class="blog-info d-flex align-items-center border border-start-0 border-end-0">
-                                <small class="flex-fill text-center border-end py-2"><i
-                                        class="fa fa-calendar-alt text-primary me-2"></i>28 Jan 2050</small>
-                                <a href="#" class="btn-hover flex-fill text-center text-white border-end py-2"><i
-                                        class="fa fa-thumbs-up text-primary me-2"></i>1.7K</a>
-                                <a href="#" class="btn-hover flex-fill text-center text-white py-2"><i
-                                        class="fa fa-comments text-primary me-2"></i>1K</a>
-                            </div>
-                        </div>
-                        <div class="blog-content border border-top-0 rounded-bottom p-4">
-                            <p class="mb-3">Posted By: Royal Hamblin </p>
-                            <a href="#" class="h4">Adventures Trip</a>
-                            <p class="my-3">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam eos
-                            </p>
-                            <a href="#" class="btn btn-primary rounded-pill py-2 px-4">Read More</a>
-                        </div>
-                    </div>
                 </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="blog-item">
-                        <div class="blog-img">
-                            <div class="blog-img-inner">
-                                <img class="img-fluid w-100 rounded-top" src="user/img/blog-3.jpg" alt="Image">
-                                <div class="blog-icon">
-                                    <a href="#" class="my-auto"><i class="fas fa-link fa-2x text-white"></i></a>
-                                </div>
-                            </div>
-                            <div class="blog-info d-flex align-items-center border border-start-0 border-end-0">
-                                <small class="flex-fill text-center border-end py-2"><i
-                                        class="fa fa-calendar-alt text-primary me-2"></i>28 Jan 2050</small>
-                                <a href="#" class="btn-hover flex-fill text-center text-white border-end py-2"><i
-                                        class="fa fa-thumbs-up text-primary me-2"></i>1.7K</a>
-                                <a href="#" class="btn-hover flex-fill text-center text-white py-2"><i
-                                        class="fa fa-comments text-primary me-2"></i>1K</a>
-                            </div>
-                        </div>
-                        <div class="blog-content border border-top-0 rounded-bottom p-4">
-                            <p class="mb-3">Posted By: Royal Hamblin </p>
-                            <a href="#" class="h4">Adventures Trip</a>
-                            <p class="my-3">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam eos
-                            </p>
-                            <a href="#" class="btn btn-primary rounded-pill py-2 px-4">Read More</a>
-                        </div>
-                    </div>
                 </div>
-            </div>
-        </div>
-    </div>
-    <!-- Blog End -->
-
+                
+        <!-- Blog End -->
       
 
         <!-- Footer Start -->

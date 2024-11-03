@@ -74,7 +74,7 @@
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pojok Kita</a>
                         <div class="dropdown-menu m-0">
-                            <a href="destination.html" class="dropdown-item">pojok design grafis</a>
+                            <a href="destination.html" class="dropdown-item">Agenda</a>
                             <a href="tour.html" class="dropdown-item">pojok teknologi</a>
                             <a href="booking.html" class="dropdown-item">Travel Booking</a>
                             <a href="gallery.html" class="dropdown-item">Our Gallery</a>

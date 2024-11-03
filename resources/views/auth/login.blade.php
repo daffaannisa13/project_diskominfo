@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
-    <title>Login Basic - Pages | Diskom Info</title>
+    <title>Login Basic - Pages | DiskomInfo</title>
     <meta name="description" content="" />
 
     <!-- Favicon -->
@@ -40,7 +40,7 @@
               <!-- Logo -->
               <div class="app-brand justify-content-center">
                 <a href="index.html" class="app-brand-link gap-2">
-                  <span class="app-brand-text demo text-body fw-bolder">Diskom Info</span>
+                  <span class="app-brand-text demo text-body fw-bolder">DiskomInfo</span>
                 </a>
               </div>
               <!-- /Logo -->
@@ -56,7 +56,6 @@
                 <div class="mb-3 form-password-toggle">
                   <div class="d-flex justify-content-between">
                     <label class="form-label" for="password">Kata Sandi</label>
-                    <small><a href="#">Lupa Kata Sandi?</a></small>
                   </div>
                   <div class="input-group input-group-merge">
                     <input type="password" id="password" class="form-control" name="password" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" required />
@@ -64,10 +63,6 @@
                   </div>
                 </div>
                 <div class="mb-3">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="remember-me" name="remember" />
-                    <label class="form-check-label" for="remember-me"> Ingat Saya </label>
-                  </div>
                 </div>
                 <div class="mb-3">
                   <button class="btn btn-primary d-grid w-100" type="submit">Masuk</button>

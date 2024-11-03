@@ -3,7 +3,7 @@
 
     <head>
         <meta charset="utf-8">
-        <title>Travela - Tourism Website Template</title>
+        <title>Diskominfo</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="" name="keywords">
         <meta content="" name="description">
@@ -74,7 +74,7 @@
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pojok Kita</a>
                             <div class="dropdown-menu m-0">
-                                <a href="design.html" class="dropdown-item">pojok design grafis</a>
+                                <a href="design.html" class="dropdown-item">Agenda</a>
                                 <a href="teknologi.html" class="dropdown-item">pojok teknologi</a>
                                 <a href="404.html" class="dropdown-item">404 Page</a>
                             </div>
@@ -83,6 +83,9 @@
                     </div>
                 </div>
             </nav>
+        </div>
+                
+                
 
             <!-- Carousel Start -->
             <div class="carousel-header">
@@ -97,8 +100,8 @@
                             <img src="user/img/carousel-2.jpg" class="img-fluid" alt="Image">
                             <div class="carousel-caption">
                                 <div class="p-3" style="max-width: 900px;">
-                                    <h4 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;">Explore The World</h4>
-                                    <h1 class="display-2 text-capitalize text-white mb-4">Let's The World Together!</h1>
+                                    <h4 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;">Diskominfo</h4>
+                                    <h1 class="display-2 text-capitalize text-white mb-4">Purwakarta</h1>
                                     <p class="mb-5 fs-5">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
                                     </p>
                                     <div class="d-flex align-items-center justify-content-center">
@@ -111,8 +114,8 @@
                             <img src="user/img/carousel-1.jpg" class="img-fluid" alt="Image">
                             <div class="carousel-caption">
                                 <div class="p-3" style="max-width: 900px;">
-                                    <h4 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;">Explore The World</h4>
-                                    <h1 class="display-2 text-capitalize text-white mb-4">Find Your Perfect Tour At Travel</h1>
+                                    <h4 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;">Disakominfo</h4>
+                                    <h1 class="display-2 text-capitalize text-white mb-4">Purwakarta</h1>
                                     <p class="mb-5 fs-5">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
                                     </p>
                                     <div class="d-flex align-items-center justify-content-center">
@@ -125,8 +128,8 @@
                             <img src="user/img/carousel-3.jpg" class="img-fluid" alt="Image">
                             <div class="carousel-caption">
                                 <div class="p-3" style="max-width: 900px;">
-                                    <h4 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;">Explore The World</h4>
-                                    <h1 class="display-2 text-capitalize text-white mb-4">You Like To Go?</h1>
+                                    <h4 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;">Disakominfo</h4>
+                                    <h1 class="display-2 text-capitalize text-white mb-4">Purwakarta</h1>
                                     <p class="mb-5 fs-5">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
                                     </p>
                                     <div class="d-flex align-items-center justify-content-center">
@@ -147,7 +150,7 @@
                 </div>
             </div>
             <!-- Carousel End -->
-        </div>
+        
         <!-- Navbar & Hero End -->
 
         <!-- About Start -->
@@ -169,8 +172,8 @@
                          <h5 class="section-about-title pe-3">Kepala Dinas</h5>
                          <h1 class="mb-4">{{ $profil->judul_profil ?? 'Rudi Hartono,S.Ap.' }}</h1>
                 <p class="mb-4">{{ $profil->isi_profil ?? 'Assalamualaikum Wr. Wb.
-Wilujeng Sumping di Website Dinas Komunikasi dan Informatika Kabupaten Purwakarta.
-Website ini salah satu media penyampai informasi dan sebagai jembatan untuk membangun komunikasi interaktif antara pemerintah dengan masyarakat/pengunjung. Harapan kami semoga website Diskominfo dapat memberikan kontribusi dalam meningkatkan pelayanan informasi kepada masyarakat.'}}</p>
+                Wilujeng Sumping di Website Dinas Komunikasi dan Informatika Kabupaten Purwakarta.
+                Website ini salah satu media penyampai informasi dan sebagai jembatan untuk membangun komunikasi interaktif antara pemerintah dengan masyarakat/pengunjung. Harapan kami semoga website Diskominfo dapat memberikan kontribusi dalam meningkatkan pelayanan informasi kepada masyarakat.'}}</p>
                     </div>
                 </div>
             </div>
@@ -190,7 +193,7 @@ Website ini salah satu media penyampai informasi dan sebagai jembatan untuk memb
                     <img src="{{ asset('storage/' . $berita->gambar) }}" class="img-fluid w-100 rounded-top" alt="{{ $berita->judul }}">
                     <div class="packages-info d-flex border border-start-0 border-end-0 position-absolute"
                         style="width: 100%; bottom: 0; left: 0; z-index: 5;">
-                        <small class="flex-fill text-center border-end py-2 px-2"><i class="fa fa-calendar-alt me-2"></i>{{ \Carbon\Carbon::parse($berita->tanggal)->format('d M Y') }}
+                        <small class="flex-fill text-center py-2 px-2"><i class="fa fa-calendar-alt me-2"></i>{{ \Carbon\Carbon::parse($berita->tanggal)->format('d M Y') }}
                         <small class="flex-fill text-center py-2 px-4"><i class="fa fa-user me-2"></i>{{ $berita->author }}</small>
                     </div>
                 </div>
@@ -221,6 +224,7 @@ Website ini salah satu media penyampai informasi dan sebagai jembatan untuk memb
         </div>
     </div>
 </div>
+
 <!-- Packages End -->
 
     <!-- Services Start -->
@@ -413,6 +417,8 @@ Website ini salah satu media penyampai informasi dan sebagai jembatan untuk memb
                             </div>
                         </div>
                     <?php endforeach; ?>
+                </div>
+                </div>
                 </div>
                 
         <!-- Blog End -->
@@ -720,8 +726,7 @@ Website ini salah satu media penyampai informasi dan sebagai jembatan untuk memb
                     </div>
                     </div>
                 </div>
-            </div>
-        </div>
+            </div>  
         <!-- Copyright End -->
 
         <!-- Back to Top -->
