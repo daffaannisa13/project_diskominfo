@@ -32,7 +32,7 @@ Route::get('/layanan.html', [PageController::class, 'layanan'])->name('layanan')
 Route::get('/teknologi.html', [PageController::class, 'teknologi'])->name('teknologi');
 Route::get('/404.html', [PageController::class, 'notFound'])->name('404');
 
-
+Route::post('/store', [PageController::class, 'storekontak'])->name('kontak.storeuser');
 
 /*
 |---------------------------------------------------------------------------

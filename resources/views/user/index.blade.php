@@ -156,13 +156,21 @@
                 <div class="row g-5 align-items-center">
                     <div class="col-lg-5">
                         <div class="h-100" style="border: 50px solid; border-color: transparent #13357B transparent #13357B;">
+                            @if(isset($profil) && $profil->upload_gambar)
                             <img src="{{ asset('storage/' . $profil->upload_gambar) }}" class="img-fluid w-100 h-100" alt="">
+                            @else
+                            <img src="{{ asset('assets/img/avatars/test.jpg') }}"  class="img-fluid w-100 h-100" alt="">
+                            {{-- <p>Gambar tidak tersedia</p> --}}
+                        @endif
+                        
                         </div>
                     </div>
                     <div class="col-lg-7" style="background: linear-gradient(rgba(255, 255, 255, .8), rgba(255, 255, 255, .8)), url(user/img/about-img-1.png);">
                          <h5 class="section-about-title pe-3">Kepala Dinas</h5>
-                         <h1 class="mb-4">{{ $profil->judul_profil }}</h1>
-                <p class="mb-4">{{ $profil->isi_profil }}</p>
+                         <h1 class="mb-4">{{ $profil->judul_profil ?? 'Rudi Hartono,S.Ap.' }}</h1>
+                <p class="mb-4">{{ $profil->isi_profil ?? 'Assalamualaikum Wr. Wb.
+Wilujeng Sumping di Website Dinas Komunikasi dan Informatika Kabupaten Purwakarta.
+Website ini salah satu media penyampai informasi dan sebagai jembatan untuk membangun komunikasi interaktif antara pemerintah dengan masyarakat/pengunjung. Harapan kami semoga website Diskominfo dapat memberikan kontribusi dalam meningkatkan pelayanan informasi kepada masyarakat.'}}</p>
                     </div>
                 </div>
             </div>
@@ -215,7 +223,7 @@
 </div>
 <!-- Packages End -->
 
-      <!-- Services Start -->
+    <!-- Services Start -->
 <div class="container-fluid bg-light service py-5">
     <div class="container py-5">
         <div class="mx-auto text-center mb-5" style="max-width: 900px;">
@@ -223,44 +231,54 @@
             <h1 class="mb-0">Our Services</h1>
         </div>
         <div class="row g-4">
+            <!-- Diskominfo Service -->
             <div class="col-lg-4 col-md-6">
-                <div class="service-content-inner d-flex align-items-center bg-white border border-primary rounded p-4">
-                    <div class="service-icon p-4">
-                        <i class="fa fa-globe fa-4x text-primary"></i>
+                <a href="/diskominfo" class="text-decoration-none">
+                    <div class="service-content-inner d-flex align-items-center bg-white border border-primary rounded p-4">
+                        <div class="service-icon p-4">
+                            <i class="fa fa-globe fa-4x text-primary"></i>
+                        </div>
+                        <div class="service-content">
+                            <h5 class="mb-4">Diskominfo</h5>
+                            {{-- <p class="mb-0">Deskripsi singkat layanan Diskominfo...</p> --}}
+                        </div>
                     </div>
-                    <div class="service-content">
-                        <h5 class="mb-4">Diskominfo</h5>
-                        <p class="mb-0">Dolor sit amet consectetur adipisicing elit. Non alias eum, suscipit expedita corrupti officiis debitis possimus nam laudantium beatae quidem dolore consequuntur voluptate rem reiciendis, omnis sequi harum earum.</p>
-                    </div>
-                </div>
+                </a>
             </div>
 
+            <!-- Layanan Service -->
             <div class="col-lg-4 col-md-6">
-                <div class="service-content-inner d-flex align-items-center bg-white border border-primary rounded p-4">
-                    <div class="service-icon p-4">
-                        <i class="fa fa-hotel fa-4x text-primary"></i>
+                <a href="/layanan" class="text-decoration-none">
+                    <div class="service-content-inner d-flex align-items-center bg-white border border-primary rounded p-4">
+                        <div class="service-icon p-4">
+                            <i class="fa fa-hotel fa-4x text-primary"></i>
+                        </div>
+                        <div class="service-content">
+                            <h5 class="mb-4">Layanan</h5>
+                            {{-- <p class="mb-0">Deskripsi singkat layanan...</p> --}}
+                        </div>
                     </div>
-                    <div class="service-content">
-                        <h5 class="mb-4">Layanan</h5>
-                        <p class="mb-0">Dolor sit amet consectetur adipisicing elit. Non alias eum, suscipit expedita corrupti officiis debitis possimus nam laudantium beatae quidem dolore consequuntur voluptate rem reiciendis, omnis sequi harum earum.</p>
-                    </div>
-                </div>
+                </a>
             </div>
 
+            <!-- PPID Service -->
             <div class="col-lg-4 col-md-6">
-                <div class="service-content-inner d-flex align-items-center bg-white border border-primary rounded p-4">
-                    <div class="service-icon p-4">
-                        <i class="fa fa-user fa-4x text-primary"></i>
+                <a href="https://ppid.purwakartakab.go.id/" class="text-decoration-none">
+                    <div class="service-content-inner d-flex align-items-center bg-white border border-primary rounded p-4">
+                        <div class="service-icon p-4">
+                            <i class="fa fa-user fa-4x text-primary"></i>
+                        </div>
+                        <div class="service-content">
+                            <h5 class="mb-4">PPID</h5>
+                            {{-- <p class="mb-0">Deskripsi singkat layanan PPID...</p> --}}
+                        </div>
                     </div>
-                    <div class="service-content">
-                        <h5 class="mb-4">PPID</h5>
-                        <p class="mb-0">Dolor sit amet consectetur adipisicing elit. Non alias eum, suscipit expedita corrupti officiis debitis possimus nam laudantium beatae quidem dolore consequuntur voluptate rem reiciendis, omnis sequi harum earum.</p>
-                    </div>
-                </div>
+                </a>
             </div>
         </div>
     </div>
 </div>
+
 <!-- Services End -->
 
 
@@ -351,98 +369,52 @@
         <div class="container-fluid blog py-5">
             <div class="container py-5">
                 <div class="mx-auto text-center mb-5" style="max-width: 900px;">
-                    <h5 class="section-title px-3">Pojok Teknologi</h5>
-                    <h1 class="mb-4">Pojok Teknologi</h1>
-                    <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti deserunt tenetur sapiente
-                        atque. Magni non explicabo beatae sit, vel reiciendis consectetur numquam id similique sunt error
-                        obcaecati ducimus officia maiores.
-                    </p>
+                    <h5 class="section-title px-3">Agenda</h5>
+                    <h1 class="mb-4">Agenda Terbaru</h1>
+                    <p class="mb-0">Ikuti agenda terkini dan jangan lewatkan berbagai kegiatan penting yang akan datang. Dari seminar hingga workshop, temukan kesempatan untuk belajar, berjejaring, dan memperluas wawasan Anda. Mari bergabung dan jadilah bagian dari setiap momen yang berharga.</p>
+                    <?php //var_dump($agenda) ?>
                 </div>
                 <div class="row g-4 justify-content-center">
-                    <div class="col-lg-4 col-md-6">
-                        <div class="blog-item">
-                            <div class="blog-img">
-                                <div class="blog-img-inner">
-                                    <img class="img-fluid w-100 rounded-top" src="user/img/blog-1.jpg" alt="Image">
-                                    <div class="blog-icon">
-                                        <a href="#" class="my-auto"><i class="fas fa-link fa-2x text-white"></i></a>
+                    <?php foreach ($agenda as $event): ?>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="blog-item">
+                                <div class="blog-img">
+                                    {{-- <div class="blog-img-inner">
+                                        <img class="img-fluid w-100 rounded-top" src="user/img/blog-<?= $event['kategori_id']; ?>.jpg" alt="Image">
+                                        <div class="blog-icon">
+                                            <a href="#" class="my-auto"><i class="fas fa-link fa-2x text-white"></i></a>
+                                        </div>
+                                    </div> --}}
+                                    <div class="blog-info d-flex align-items-center border border-start-0 border-end-0">
+                                        {{-- <small class="flex-fill text-center border-end py-2">
+                                            <i class="fa fa-calendar-alt text-primary me-2"></i><?=// date('d M Y', strtotime($event['tanggal'])); ?>
+                                        </small> --}}
+                                        {{-- <a href="#" class="btn-hover flex-fill text-center text-white border-end py-2">
+                                            <i class="fa fa-thumbs-up text-primary me-2"></i>1.7K
+                                        </a>
+                                        <a href="#" class="btn-hover flex-fill text-center text-white py-2">
+                                            <i class="fa fa-comments text-primary me-2"></i>1K
+                                        </a> --}}
                                     </div>
                                 </div>
-                                <div class="blog-info d-flex align-items-center border border-start-0 border-end-0">
-                                    <small class="flex-fill text-center border-end py-2"><i
-                                            class="fa fa-calendar-alt text-primary me-2"></i>28 Jan 2050</small>
-                                    <a href="#" class="btn-hover flex-fill text-center text-white border-end py-2"><i
-                                            class="fa fa-thumbs-up text-primary me-2"></i>1.7K</a>
-                                    <a href="#" class="btn-hover flex-fill text-center text-white py-2"><i
-                                            class="fa fa-comments text-primary me-2"></i>1K</a>
+                                <div class="blog-content border border-top-0 rounded-bottom p-4">
+                                   
+                                    <p class="mb-3"><?= htmlspecialchars($event->user->name); ?></p>
+                                    <strong>
+                                        <a style="font-size: 24px; font-weight: bold;" class="h1"><?= htmlspecialchars($event->kategori->nama_kategori); ?></a><br>
+                                        <a style="font-size: 20px;" class="h3"><?= htmlspecialchars($event['judul']); ?></a>
+                                        
+                                </strong>
+                                    <p class="my-3">tanggal: <?=  date('d M Y', strtotime($event['tanggal'])); ?></p>
+                                    <p class="my-3">Waktu: <?= htmlspecialchars($event['waktu_mulai']) . ' - ' . htmlspecialchars($event['waktu_selesai']); ?></p>
+                                    <p class="my-3">Lokasi: <?= htmlspecialchars($event['lokasi']); ?></p>
+                                    {{-- <a href="#" class="btn btn-primary rounded-pill py-2 px-4">Read More</a> --}}
                                 </div>
-                            </div>
-                            <div class="blog-content border border-top-0 rounded-bottom p-4">
-                                <p class="mb-3">Posted By: Royal Hamblin </p>
-                                <a href="#" class="h4">Adventures Trip</a>
-                                <p class="my-3">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam eos
-                                </p>
-                                <a href="#" class="btn btn-primary rounded-pill py-2 px-4">Read More</a>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="blog-item">
-                            <div class="blog-img">
-                                <div class="blog-img-inner">
-                                    <img class="img-fluid w-100 rounded-top" src="user/img/blog-2.jpg" alt="Image">
-                                    <div class="blog-icon">
-                                        <a href="#" class="my-auto"><i class="fas fa-link fa-2x text-white"></i></a>
-                                    </div>
-                                </div>
-                                <div class="blog-info d-flex align-items-center border border-start-0 border-end-0">
-                                    <small class="flex-fill text-center border-end py-2"><i
-                                            class="fa fa-calendar-alt text-primary me-2"></i>28 Jan 2050</small>
-                                    <a href="#" class="btn-hover flex-fill text-center text-white border-end py-2"><i
-                                            class="fa fa-thumbs-up text-primary me-2"></i>1.7K</a>
-                                    <a href="#" class="btn-hover flex-fill text-center text-white py-2"><i
-                                            class="fa fa-comments text-primary me-2"></i>1K</a>
-                                </div>
-                            </div>
-                            <div class="blog-content border border-top-0 rounded-bottom p-4">
-                                <p class="mb-3">Posted By: Royal Hamblin </p>
-                                <a href="#" class="h4">Adventures Trip</a>
-                                <p class="my-3">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam eos
-                                </p>
-                                <a href="#" class="btn btn-primary rounded-pill py-2 px-4">Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="blog-item">
-                            <div class="blog-img">
-                                <div class="blog-img-inner">
-                                    <img class="img-fluid w-100 rounded-top" src="user/img/blog-3.jpg" alt="Image">
-                                    <div class="blog-icon">
-                                        <a href="#" class="my-auto"><i class="fas fa-link fa-2x text-white"></i></a>
-                                    </div>
-                                </div>
-                                <div class="blog-info d-flex align-items-center border border-start-0 border-end-0">
-                                    <small class="flex-fill text-center border-end py-2"><i
-                                            class="fa fa-calendar-alt text-primary me-2"></i>28 Jan 2050</small>
-                                    <a href="#" class="btn-hover flex-fill text-center text-white border-end py-2"><i
-                                            class="fa fa-thumbs-up text-primary me-2"></i>1.7K</a>
-                                    <a href="#" class="btn-hover flex-fill text-center text-white py-2"><i
-                                            class="fa fa-comments text-primary me-2"></i>1K</a>
-                                </div>
-                            </div>
-                            <div class="blog-content border border-top-0 rounded-bottom p-4">
-                                <p class="mb-3">Posted By: Royal Hamblin </p>
-                                <a href="#" class="h4">Adventures Trip</a>
-                                <p class="my-3">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam eos
-                                </p>
-                                <a href="#" class="btn btn-primary rounded-pill py-2 px-4">Read More</a>
-                            </div>
-                        </div>
-                    </div>
+                    <?php endforeach; ?>
                 </div>
-            </div>
-        </div>
+                
         <!-- Blog End -->
 
         <!-- Packages Start -->
@@ -639,7 +611,7 @@
                 </div>
             </div>
             <div class="col-lg-8">
-                <form method="POST" action="{{ route('kontak.store') }}">
+                <form method="POST" action="{{ route('kontak.storeuser') }}">
                     @csrf
                     <div class="row g-3">
                         <div class="col-md-6">
@@ -668,8 +640,8 @@
                         </div>
                         <div class="col-12">
                             <div class="form-floating">
-                                <textarea name="message" class="form-control border-0" placeholder="Leave a message here" id="message" style="height: 160px" required></textarea>
-                                <label for="message">Message</label>
+                                <textarea name="isi" class="form-control border-0" placeholder="Leave a isi here" id="isi" style="height: 160px" required></textarea>
+                                <label for="isi">Message</label>
                             </div>
                         </div>
                         <div class="col-12">
