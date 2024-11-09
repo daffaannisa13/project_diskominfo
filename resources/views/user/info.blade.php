@@ -67,19 +67,21 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto py-0">
                     <a href="/" class="nav-item nav-link">Beranda</a>
-                    <a href="berita.html" class="nav-item nav-link">Berita</a>
-                    <a href="layanan.html" class="nav-item nav-link">Layanan</a>
-                    <a href="info.html" class="nav-item nav-link active">Info Penting</a>
-                    <a href="blog.html" class="nav-item nav-link">Download File</a>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pojok Kita</a>
-                        <div class="dropdown-menu m-0">
-                            <a href="design.html" class="dropdown-item">Agenda</a>
-                            <a href="teknologi.html" class="dropdown-item">pojok teknologi</a>
-                            <a href="404.html" class="dropdown-item">404 Page</a>
-                        </div>
-                    </div>
-                    <a href="contact.html" class="nav-item nav-link">Kontak Kami</a>
+                    <a href="berita.blade.php" class="nav-item nav-link">Berita</a>
+                    <a href="layanan.blade.php" class="nav-item nav-link">Layanan</a>
+                    
+                    <a href="teknologi.blade.php" class="nav-item nav-link">Download File</a>
+                     <a href="design.blade.php" class="nav-item nav-link">Agenda</a>
+                        {{-- <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pojok Kita</a>
+                            <div class="dropdown-menu m-0">
+                                <a href="design.blade.php" class="dropdown-item">Agenda</a>
+                                <a href="teknologi.blade.php" class="dropdown-item">pojok teknologi</a>
+                                <a href="404.blade.php" class="dropdown-item">404 Page</a>
+                            </div>
+                        </div> --}}
+                    {{-- </div> --}}
+                    <a href="contact.blade.php" class="nav-item nav-link">Kontak Kami</a>
                 </div>
             </div>
         </nav>
@@ -90,7 +92,7 @@
             <div class="container text-center py-5" style="max-width: 900px;">
                 <h3 class="text-white display-3 mb-4">Travel Packages</h1>
                 <ol class="breadcrumb justify-content-center mb-0">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item"><a href="index.blade.php">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Pages</a></li>
                     <li class="breadcrumb-item active text-white">Packages</li>
                 </ol>    

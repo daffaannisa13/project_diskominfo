@@ -7,9 +7,11 @@ use App\Models\Pesan;
 use Illuminate\Http\Request;
 use App\Models\Berita;
 use App\Models\Kontak;
+use App\Models\Dokumen;
 use App\Models\Profil;
-use App\Models\KategoriGambar;
 use App\Models\Gambar;
+use App\Models\KategoriGambar;
+use App\Models\KategoriDokumen;
 use Illuminate\Support\Facades\Storage;
 
 class PageController extends Controller
@@ -54,9 +56,9 @@ class PageController extends Controller
 
     public function berita()
     {
-        // Ambil semua berita
+        $kontaks = Kontak::all();
         $beritas = Berita::all();
-        return view('user.berita', compact('beritas'));
+        return view('user.berita', compact('beritas','kontaks'));
     }
 
     public function contact()
@@ -65,10 +67,21 @@ class PageController extends Controller
         return view('user.contact', compact('kontaks'));
     }
 
+         public function detail($id)
+    {
+        var_dump('test');
+        die;
+        $kontaks = Kontak::all();
+        $berita = Berita::findOrFail($id); // Mengambil berita berdasarkan ID
+        return view('user.detail_berita', compact('berita','kontaks')); // Menampilkan view detail
+    }
+
+
     public function design()
     {
+        $kontaks = Kontak::all();
         $agenda = Agenda::all();
-        return view('user.design', compact('agenda'));
+        return view('user.design', compact('agenda','kontaks'));
     }
 
     public function gallery()
@@ -83,13 +96,18 @@ class PageController extends Controller
 
     public function layanan()
     {
-        return view('user.layanan');
+        $kontaks = Kontak::all();
+        return view('user.layanan', compact('kontaks'));
     }
 
-    public function teknologi()
-    {
-        return view('user.teknologi');
-    }
+public function teknologi()
+{
+    $kontaks = Kontak::all();
+    $kategoriDokumen = KategoriDokumen::all(); 
+    $dokumens = Dokumen::all();
+    return view('user.teknologi', compact('dokumens', 'kategoriDokumen','kontaks'));
+}
+
 
     public function notFound()
     {

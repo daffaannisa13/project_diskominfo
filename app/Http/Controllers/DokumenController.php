@@ -53,6 +53,7 @@ class DokumenController extends Controller
         return view('dokumen.show', compact('dokumen'));
     }
 
+
   public function edit(Dokumen $dokumen)
 {
     $kategoriDokumen = KategoriDokumen::all(); 

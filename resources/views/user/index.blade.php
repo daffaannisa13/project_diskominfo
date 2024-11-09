@@ -28,6 +28,111 @@
         <link href="{{ asset('user/css/style.css') }}" rel="stylesheet">
     </head>
 
+    <style>
+    /* Main Page Background Gradient */
+    .main-page {
+        background: linear-gradient(to bottom, rgba(255, 255, 255, 1) 0%, rgba(55, 125, 255, 0.125) 100%);
+        padding-top: 20px;
+        padding-bottom: 50px;
+    }
+
+    /* Typography and Base Styling */
+    body {
+        color: #777;
+        font-family: "Poppins", sans-serif;
+        font-size: 14px;
+        font-weight: 300;
+        line-height: 1.5;
+        margin: 0;
+        background-color: #fff;
+    }
+
+    /* Universal Box Sizing */
+    *,
+    ::after,
+    ::before {
+        box-sizing: border-box;
+    }
+
+    /* Display for Section Elements */
+    section,
+    article,
+    aside,
+    figcaption,
+    figure,
+    footer,
+    header,
+    hgroup,
+    main,
+    nav {
+        display: block;
+    }
+
+    /* News Item Styling */
+    .news-item {
+        display: flex;
+        align-items: center;
+        padding: 15px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .news-item img {
+        width: 100px;
+        height: 80px;
+        margin-right: 15px;
+        object-fit: cover;
+        border-radius: 5px;
+    }
+
+    .news-content {
+        flex: 1;
+    }
+
+    .news-title {
+        font-size: 1.1em;
+        font-weight: bold;
+        color: #007bff;
+        margin: 0;
+        padding: 0;
+    }
+
+    .news-meta {
+        font-size: 0.85em;
+        color: #555;
+        margin: 5px 0;
+    }
+
+    .news-excerpt {
+        color: #555;
+    }
+
+    .media {
+        display: flex;
+        align-items: flex-start;
+    }
+
+    .media-body {
+        flex: 1;
+    }
+
+    .news-title,
+    .text-primary {
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    .news-title:hover,
+    .text-primary:hover {
+        color: #0056b3;
+        text-decoration: underline;
+    }
+
+    .mr-3, .mx-3 {
+    margin-right: 1rem !important;
+}
+</style>
+
+
     <body>
 
         <!-- Spinner Start -->
@@ -69,16 +174,17 @@
                         <a href="/" class="nav-item nav-link active">Beranda</a>
                         <a href="berita.html" class="nav-item nav-link">Berita</a>
                         <a href="layanan.html" class="nav-item nav-link">Layanan</a>
-                        <a href="info.html" class="nav-item nav-link">Info Penting</a>
-                        <a href="blog.html" class="nav-item nav-link">Download File</a>
-                        <div class="nav-item dropdown">
+                        {{-- <a href="info.html" class="nav-item nav-link">Info Penting</a> --}}
+                        <a href="teknologi.html" class="nav-item nav-link">Download File</a>
+                        <a href="design.html" class="nav-item nav-link">Agenda</a>
+                        {{-- <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pojok Kita</a>
                             <div class="dropdown-menu m-0">
                                 <a href="design.html" class="dropdown-item">Agenda</a>
                                 <a href="teknologi.html" class="dropdown-item">pojok teknologi</a>
                                 <a href="404.html" class="dropdown-item">404 Page</a>
                             </div>
-                        </div>
+                        </div> --}}
                         <a href="contact.html" class="nav-item nav-link">Kontak Kami</a>
                     </div>
                 </div>
@@ -180,50 +286,55 @@
         </div>
         <!-- About End -->
 <!-- Packages Start -->
-<div class="container-fluid packages py-5">
-    <div class="container py-5">
-        <div class="mx-auto text-center mb-5" style="max-width: 900px;">
-            <h5 class="section-title px-3">Berita</h5>
-            <h1 class="mb-0">Berita</h1>
-        </div>
-        <div class="packages-carousel owl-carousel">
-             @foreach($beritas as $berita)
-            <div class="packages-item">
-                <div class="packages-img">
-                    <img src="{{ asset('storage/' . $berita->gambar) }}" class="img-fluid w-100 rounded-top" alt="{{ $berita->judul }}">
-                    <div class="packages-info d-flex border border-start-0 border-end-0 position-absolute"
-                        style="width: 100%; bottom: 0; left: 0; z-index: 5;">
-                        <small class="flex-fill text-center py-2 px-2"><i class="fa fa-calendar-alt me-2"></i>{{ \Carbon\Carbon::parse($berita->tanggal)->format('d M Y') }}
-                        <small class="flex-fill text-center py-2 px-4"><i class="fa fa-user me-2"></i>{{ $berita->author }}</small>
-                    </div>
-                </div>
-                <div class="packages-content bg-light">
-                    <div class="p-4 pb-0">
-                        <h5 class="mb-0">{{ $berita->judul }}</h5>
-                        <small class="text-uppercase">Category: {{ $berita->kategori_nama }}</small>
-                        <div class="mb-3">
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
+<div class="container py-5">
+    <div class="text-center mb-5" style="max-width: 900px; margin: 0 auto;">
+        <h5 class="section-title px-3">Berita</h5>
+        <h1 class="mb-0">Berita</h1>
+    </div>
+
+    
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="font-weight-bold mb-4">Berita Terbaru</h3>
                         </div>
-                        <p class="mb-4">{{ Str::limit($berita->isi, 100) }}</p>
-                    </div>
-                    <div class="row bg-primary rounded-bottom mx-0">
-                        <div class="col-6 text-start px-0">
-                            <a href="{{ route('berita.show', $berita->id) }}" class="btn-hover btn text-white py-2 px-4">Read More</a>
+                        <div class="card-body">
+                            <div id="newsfeed">
+                                @foreach ($beritas as $berita)
+                                    <div class="media mb-4">
+                                        <img src="{{ asset('storage/' . $berita->gambar) }}"
+                                             class="mr-3 rounded d-none d-sm-block" 
+                                             alt="{{ $berita->judul }}"
+                                             style="width: 120px; height: 120px; object-fit: cover;">
+                                        <div class="media-body">
+                                            <h5 class="mb-1 font-weight-bold">
+                                                <a href="{{ route('berita.show', $berita->id) }}" 
+                                                   class="text-dark">{{ $berita->judul }}</a>
+                                            </h5>
+                                            <p class="small text-muted mb-2">
+                                                <i class="fa fa-user"></i> {{ $berita->author }} &nbsp;&nbsp;
+                                                <i class="fa fa-calendar"></i>
+                                                {{ \Carbon\Carbon::parse($berita->tanggal)->format('d M Y') }}
+                                            </p>
+                                            <p class="text-justify">
+                                                {{ Str::limit($berita->isi, 90) }}
+                                                <a href="{{ route('berita.show', $berita->id) }}" 
+                                                   class="text-primary">read more »</a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-             @endforeach
         </div>
-    </div>
+    
 </div>
-
 <!-- Packages End -->
-
     <!-- Services Start -->
 <div class="container-fluid bg-light service py-5">
     <div class="container py-5">
@@ -318,7 +429,6 @@
                                 <div class="gallery-content">
                                     <div class="gallery-info">
                                         <h5 class="text-white text-uppercase mb-2">{{ $gambar->kategori->nama_kategori }}</h5>
-                                        <a href="#" class="btn-hover text-white">View All Place <i class="fa fa-arrow-right ms-2"></i></a>
                                     </div>
                                 </div>
                                 <div class="gallery-plus-icon">
@@ -420,7 +530,7 @@
                 
         <!-- Blog End -->
 
-        <!-- Packages Start -->
+        {{-- <!-- Packages Start -->
         <div class="container-fluid packages py-5">
             <div class="container py-5">
                 <div class="mx-auto text-center mb-5" style="max-width: 900px;">
@@ -579,7 +689,7 @@
                 </div>
             </div>
         </div>
-        <!-- Packages End -->
+        <!-- Packages End --> --}}
 
 
         <!-- Contact Start -->
@@ -662,50 +772,22 @@
 
         <!-- Footer Start -->
         <div class="container-fluid footer py-5">
-            <div class="container py-5">
-                <div class="row g-5">
-                    <div class="col-md-6 col-lg-6 col-xl-3">
-                        <div class="footer-item d-flex flex-column">
-                            <h4 class="mb-4 text-white">Get In Touch</h4>
-                            <a href=""><i class="fas fa-home me-2"></i> 123 Street, New York, USA</a>
-                            <a href=""><i class="fas fa-envelope me-2"></i> info@example.com</a>
-                            <a href=""><i class="fas fa-phone me-2"></i> +012 345 67890</a>
-                            <a href="" class="mb-3"><i class="fas fa-print me-2"></i> +012 345 67890</a>
-                            <div class="d-flex align-items-center">
-                                <i class="fas fa-share fa-2x text-white me-2"></i>
-                                <a class="btn-square btn btn-primary rounded-circle mx-1" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn-square btn btn-primary rounded-circle mx-1" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn-square btn btn-primary rounded-circle mx-1" href=""><i class="fab fa-instagram"></i></a>
-                                <a class="btn-square btn btn-primary rounded-circle mx-1" href=""><i class="fab fa-linkedin-in"></i></a>
-                            </div>
-                        </div>
+    <div class="container py-5">
+        <div class="row g-5">
+            @foreach($kontaks as $kontak)
+                <div class="col-md-6 col-lg-6 col-xl-3">
+                    <div class="footer-item d-flex flex-column">
+                        <h4 class="mb-4 text-white">Get In Touch</h4>
+                        <a href=""><i class="fas fa-home me-2"></i> {{ $kontak->alamat ?? 'Address not available' }}</a>
+                        <a href="mailto:{{ $kontak->email ?? '#' }}"><i class="fas fa-envelope me-2"></i> {{ $kontak->email ?? 'Email not available' }}</a>
+                        <a href="tel:{{ $kontak->no_telp ?? '#' }}"><i class="fas fa-phone me-2"></i> {{ $kontak->no_telp ?? 'Phone number not available' }}</a>
                     </div>
-                    <div class="col-md-6 col-lg-6 col-xl-3">
-                        <div class="footer-item d-flex flex-column">
-                            <h4 class="mb-4 text-white">Company</h4>
-                            <a href=""><i class="fas fa-angle-right me-2"></i> About</a>
-                            <a href=""><i class="fas fa-angle-right me-2"></i> Careers</a>
-                            <a href=""><i class="fas fa-angle-right me-2"></i> Blog</a>
-                            <a href=""><i class="fas fa-angle-right me-2"></i> Press</a>
-                            <a href=""><i class="fas fa-angle-right me-2"></i> Gift Cards</a>
-                            <a href=""><i class="fas fa-angle-right me-2"></i> Magazine</a>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-xl-3">
-                        <div class="footer-item d-flex flex-column">
-                            <h4 class="mb-4 text-white">Support</h4>
-                            <a href=""><i class="fas fa-angle-right me-2"></i> Contact</a>
-                            <a href=""><i class="fas fa-angle-right me-2"></i> Legal Notice</a>
-                            <a href=""><i class="fas fa-angle-right me-2"></i> Privacy Policy</a>
-                            <a href=""><i class="fas fa-angle-right me-2"></i> Terms and Conditions</a>
-                            <a href=""><i class="fas fa-angle-right me-2"></i> Sitemap</a>
-                            <a href=""><i class="fas fa-angle-right me-2"></i> Cookie policy</a>
-                        </div>
-                    </div>
-                   
                 </div>
-            </div>
+            @endforeach
         </div>
+    </div>
+</div>
+
         <!-- Footer End -->
         
         <!-- Copyright Start -->

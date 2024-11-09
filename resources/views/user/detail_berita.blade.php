@@ -193,74 +193,20 @@
 
     </div>
 
-    <!-- Header Start -->
-    <div class="container-fluid bg-breadcrumb">
-        <div class="container text-center py-5" style="max-width: 900px;">
-            <h3 class="text-white display-3 mb-4">Berita</h1>
-                <ol class="breadcrumb justify-content-center mb-0">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li class="breadcrumb-item"><a href="#">Pages</a></li>
-                    <li class="breadcrumb-item active text-white">Berita</li>
-                </ol>
-        </div>
-    </div>
-    <!-- Header End -->
-
-  <!-- Packages Start -->
-<div class="container py-5">
-    <div class="text-center mb-5" style="max-width: 900px; margin: 0 auto;">
-        <h5 class="section-title px-3">Berita</h5>
-        <h1 class="mb-0">Berita</h1>
-    </div>
-
-    
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 mx-auto">
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="font-weight-bold mb-4">Berita Terbaru</h3>
-                        </div>
-                        <div class="card-body">
-                            <div id="newsfeed">
-                                @foreach ($beritas as $berita)
-                                    <div class="media mb-4">
-                                        <img src="{{ asset('storage/' . $berita->gambar) }}"
-                                             class="mr-3 rounded d-none d-sm-block" 
-                                             alt="{{ $berita->judul }}"
-                                             style="width: 120px; height: 120px; object-fit: cover;">
-                                        <div class="media-body">
-                                            <h5 class="mb-1 font-weight-bold">
-                                                <a href="{{ route('berita.show', $berita->id) }}" 
-                                                   class="text-dark">{{ $berita->judul }}</a>
-                                            </h5>
-                                            <p class="small text-muted mb-2">
-                                                <i class="fa fa-user"></i> {{ $berita->author }} &nbsp;&nbsp;
-                                                <i class="fa fa-calendar"></i>
-                                                {{ \Carbon\Carbon::parse($berita->tanggal)->format('d M Y') }}
-                                            </p>
-                                            <p class="text-justify">
-                                                {{ Str::limit($berita->isi, 90) }}
-                                                <a href="{{ route('berita.show', $berita->id) }}" 
-                                                   class="text-primary">read more »</a>
-                                            </p>
-                                        </div>
-                                    </div>
-                                @endforeach
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <div class="container py-5">
+        <div class="card">
+            <div class="card-header">
+                <h3>{{ $berita->judul }}</h3>
+                <p class="text-muted">By {{ $berita->author }} on {{ \Carbon\Carbon::parse($berita->tanggal)->format('d M Y') }}</p>
+            </div>
+            <div class="card-body">
+                <img src="{{ asset('storage/' . $berita->gambar) }}" alt="{{ $berita->judul }}" class="img-fluid mb-3">
+                <p>{{ $berita->isi }}</p>
             </div>
         </div>
-    
-</div>
-<!-- Packages End -->
+    </div>
 
-
-
-
-    <!-- Footer Start -->
+  <!-- Footer Start -->
     <div class="container-fluid footer py-5">
     <div class="container py-5">
         <div class="row g-5">

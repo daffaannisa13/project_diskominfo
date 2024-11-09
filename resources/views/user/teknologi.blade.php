@@ -28,6 +28,19 @@
         <link href="{{ asset('user/css/style.css') }}" rel="stylesheet">
     </head>
 
+    <!-- CSS tambahan untuk efek hover seperti di web yang Anda referensikan -->
+<style>
+    .styled-link {
+        color: #007bff; /* Warna biru terang seperti link */
+        text-decoration: none;
+    }
+
+    .styled-link:hover {
+        color: black; /* Warna hitam saat hover */
+        text-decoration: underline; /* Garis bawah saat hover */
+    }
+</style>
+
     <body>
 
         <!-- Spinner Start -->
@@ -69,16 +82,18 @@
                         <a href="/" class="nav-item nav-link">Home</a>
                         <a href="berita.html" class="nav-item nav-link">Berita</a>
                         <a href="layanan.html" class="nav-item nav-link">Layanan</a>
-                        <a href="info.html" class="nav-item nav-link">Info Penting</a>
-                        <a href="blog.html" class="nav-item nav-link">Download File</a>
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">Pages</a>
+                        
+                        <a href="teknologi.html" class="nav-item nav-link">Download File</a>
+                         <a href="design.html" class="nav-item nav-link">Agenda</a>
+                        {{-- <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pojok Kita</a>
                             <div class="dropdown-menu m-0">
-                                <a href="design.html" class="dropdown-item">pojok design grafis</a>
-                                <a href="teknologi.html" class="dropdown-item active">pojok teknologi</a>
+                                <a href="design.html" class="dropdown-item">Agenda</a>
+                                <a href="teknologi.html" class="dropdown-item">pojok teknologi</a>
                                 <a href="404.html" class="dropdown-item">404 Page</a>
                             </div>
-                        </div>
+                        </div> --}}
+                        {{-- </div> --}}
                         <a href="contact.html" class="nav-item nav-link">Kontak Kami</a>
                     </div>
                 </div>
@@ -99,150 +114,64 @@
         </div>
         <!-- Header End -->
 
-    <!-- Blog Start -->
-    <div class="container-fluid blog py-5">
-        <div class="container py-5">
-            <div class="mx-auto text-center mb-5" style="max-width: 900px;">
-                <h5 class="section-title px-3">Pojok Teknologi</h5>
-                <h1 class="mb-4">Pojok Teknologi</h1>
-                <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti deserunt tenetur sapiente
-                    atque. Magni non explicabo beatae sit, vel reiciendis consectetur numquam id similique sunt error
-                    obcaecati ducimus officia maiores.
-                </p>
-            </div>
-            <div class="row g-4 justify-content-center">
-                <div class="col-lg-4 col-md-6">
-                    <div class="blog-item">
-                        <div class="blog-img">
-                            <div class="blog-img-inner">
-                                <img class="img-fluid w-100 rounded-top" src="user/img/blog-1.jpg" alt="Image">
-                                <div class="blog-icon">
-                                    <a href="#" class="my-auto"><i class="fas fa-link fa-2x text-white"></i></a>
-                                </div>
-                            </div>
-                            <div class="blog-info d-flex align-items-center border border-start-0 border-end-0">
-                                <small class="flex-fill text-center border-end py-2"><i
-                                        class="fa fa-calendar-alt text-primary me-2"></i>28 Jan 2050</small>
-                                <a href="#" class="btn-hover flex-fill text-center text-white border-end py-2"><i
-                                        class="fa fa-thumbs-up text-primary me-2"></i>1.7K</a>
-                                <a href="#" class="btn-hover flex-fill text-center text-white py-2"><i
-                                        class="fa fa-comments text-primary me-2"></i>1K</a>
-                            </div>
-                        </div>
-                        <div class="blog-content border border-top-0 rounded-bottom p-4">
-                            <p class="mb-3">Posted By: Royal Hamblin </p>
-                            <a href="#" class="h4">Adventures Trip</a>
-                            <p class="my-3">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam eos
-                            </p>
-                            <a href="#" class="btn btn-primary rounded-pill py-2 px-4">Read More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="blog-item">
-                        <div class="blog-img">
-                            <div class="blog-img-inner">
-                                <img class="img-fluid w-100 rounded-top" src="user/img/blog-2.jpg" alt="Image">
-                                <div class="blog-icon">
-                                    <a href="#" class="my-auto"><i class="fas fa-link fa-2x text-white"></i></a>
-                                </div>
-                            </div>
-                            <div class="blog-info d-flex align-items-center border border-start-0 border-end-0">
-                                <small class="flex-fill text-center border-end py-2"><i
-                                        class="fa fa-calendar-alt text-primary me-2"></i>28 Jan 2050</small>
-                                <a href="#" class="btn-hover flex-fill text-center text-white border-end py-2"><i
-                                        class="fa fa-thumbs-up text-primary me-2"></i>1.7K</a>
-                                <a href="#" class="btn-hover flex-fill text-center text-white py-2"><i
-                                        class="fa fa-comments text-primary me-2"></i>1K</a>
-                            </div>
-                        </div>
-                        <div class="blog-content border border-top-0 rounded-bottom p-4">
-                            <p class="mb-3">Posted By: Royal Hamblin </p>
-                            <a href="#" class="h4">Adventures Trip</a>
-                            <p class="my-3">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam eos
-                            </p>
-                            <a href="#" class="btn btn-primary rounded-pill py-2 px-4">Read More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="blog-item">
-                        <div class="blog-img">
-                            <div class="blog-img-inner">
-                                <img class="img-fluid w-100 rounded-top" src="user/img/blog-3.jpg" alt="Image">
-                                <div class="blog-icon">
-                                    <a href="#" class="my-auto"><i class="fas fa-link fa-2x text-white"></i></a>
-                                </div>
-                            </div>
-                            <div class="blog-info d-flex align-items-center border border-start-0 border-end-0">
-                                <small class="flex-fill text-center border-end py-2"><i
-                                        class="fa fa-calendar-alt text-primary me-2"></i>28 Jan 2050</small>
-                                <a href="#" class="btn-hover flex-fill text-center text-white border-end py-2"><i
-                                        class="fa fa-thumbs-up text-primary me-2"></i>1.7K</a>
-                                <a href="#" class="btn-hover flex-fill text-center text-white py-2"><i
-                                        class="fa fa-comments text-primary me-2"></i>1K</a>
-                            </div>
-                        </div>
-                        <div class="blog-content border border-top-0 rounded-bottom p-4">
-                            <p class="mb-3">Posted By: Royal Hamblin </p>
-                            <a href="#" class="h4">Adventures Trip</a>
-                            <p class="my-3">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam eos
-                            </p>
-                            <a href="#" class="btn btn-primary rounded-pill py-2 px-4">Read More</a>
-                        </div>
-                    </div>
+
+
+      <div class="container py-5">
+    <div class="text-center mb-5" style="max-width: 900px; margin: 0 auto;">
+        <h5 class="section-title px-3">File</h5>
+        <h1 class="mb-0">Daftar Dokumen</h1>
+    </div>
+<div class="container d-flex justify-content-center" style="padding: 20px;">
+    <div class="row w-75">
+        <ul class="list-group">
+            <!-- Header Row -->
+            <div class="alert alert-success text-center py-2 mb-2">
+                <div class="row">
+                    <div class="col-2">No.</div>
+                    <div class="col-5">Judul File</div>
+                    <div class="col-5">Kategori</div>
                 </div>
             </div>
+
+            <!-- Dynamic Content from Database -->
+            @foreach($dokumens as $index => $dokumen)
+                <div class="alert alert-{{ $index % 2 == 0 ? 'info' : 'warning' }} py-2 mb-2">
+                    <div class="row">
+                        <div class="col-2 text-center">{{ $index + 1 }}</div>
+                        <div class="col-5 text-center">
+                            <a href="{{ $dokumen->url }}" target="_blank" class="styled-link">
+                                {{ $dokumen->judul }}
+                            </a>
+                        </div>
+                        <div class="col-5 text-center">{{ $dokumen->kategori->nama_kategori ?? 'Tidak Ada Kategori' }}</div>
+                    </div>
+                </div>
+            @endforeach
+        </ul>
+    </div>
+</div>
+</div>
+
+
+
+
+       <div class="container-fluid footer py-5">
+    <div class="container py-5">
+        <div class="row g-5">
+            @foreach($kontaks as $kontak)
+                <div class="col-md-6 col-lg-6 col-xl-3">
+                    <div class="footer-item d-flex flex-column">
+                        <h4 class="mb-4 text-white">Get In Touch</h4>
+                        <a href=""><i class="fas fa-home me-2"></i> {{ $kontak->alamat ?? 'Address not available' }}</a>
+                        <a href="mailto:{{ $kontak->email ?? '#' }}"><i class="fas fa-envelope me-2"></i> {{ $kontak->email ?? 'Email not available' }}</a>
+                        <a href="tel:{{ $kontak->no_telp ?? '#' }}"><i class="fas fa-phone me-2"></i> {{ $kontak->no_telp ?? 'Phone number not available' }}</a>
+                    </div>
+                </div>
+            @endforeach
         </div>
     </div>
-    <!-- Blog End -->
+</div>
 
-
-        <!-- Footer Start -->
-        <div class="container-fluid footer py-5">
-            <div class="container py-5">
-                <div class="row g-5">
-                    <div class="col-md-6 col-lg-6 col-xl-3">
-                        <div class="footer-item d-flex flex-column">
-                            <h4 class="mb-4 text-white">Get In Touch</h4>
-                            <a href=""><i class="fas fa-home me-2"></i> 123 Street, New York, USA</a>
-                            <a href=""><i class="fas fa-envelope me-2"></i> info@example.com</a>
-                            <a href=""><i class="fas fa-phone me-2"></i> +012 345 67890</a>
-                            <a href="" class="mb-3"><i class="fas fa-print me-2"></i> +012 345 67890</a>
-                            <div class="d-flex align-items-center">
-                                <i class="fas fa-share fa-2x text-white me-2"></i>
-                                <a class="btn-square btn btn-primary rounded-circle mx-1" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn-square btn btn-primary rounded-circle mx-1" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn-square btn btn-primary rounded-circle mx-1" href=""><i class="fab fa-instagram"></i></a>
-                                <a class="btn-square btn btn-primary rounded-circle mx-1" href=""><i class="fab fa-linkedin-in"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-xl-3">
-                        <div class="footer-item d-flex flex-column">
-                            <h4 class="mb-4 text-white">Company</h4>
-                            <a href=""><i class="fas fa-angle-right me-2"></i> About</a>
-                            <a href=""><i class="fas fa-angle-right me-2"></i> Careers</a>
-                            <a href=""><i class="fas fa-angle-right me-2"></i> Blog</a>
-                            <a href=""><i class="fas fa-angle-right me-2"></i> Press</a>
-                            <a href=""><i class="fas fa-angle-right me-2"></i> Gift Cards</a>
-                            <a href=""><i class="fas fa-angle-right me-2"></i> Magazine</a>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-xl-3">
-                        <div class="footer-item d-flex flex-column">
-                            <h4 class="mb-4 text-white">Support</h4>
-                            <a href=""><i class="fas fa-angle-right me-2"></i> Contact</a>
-                            <a href=""><i class="fas fa-angle-right me-2"></i> Legal Notice</a>
-                            <a href=""><i class="fas fa-angle-right me-2"></i> Privacy Policy</a>
-                            <a href=""><i class="fas fa-angle-right me-2"></i> Terms and Conditions</a>
-                            <a href=""><i class="fas fa-angle-right me-2"></i> Sitemap</a>
-                            <a href=""><i class="fas fa-angle-right me-2"></i> Cookie policy</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
         <!-- Footer End -->
         
         <!-- Copyright Start -->

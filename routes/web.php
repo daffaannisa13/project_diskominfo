@@ -35,6 +35,8 @@ Route::get('/404.html', [PageController::class, 'notFound'])->name('404');
 
 Route::post('/store', [PageController::class, 'storekontak'])->name('kontak.storeuser');
 
+Route::get('/berita/detail/{id}', [PageController::class, 'detail'])->name('berita.detail');
+
 /*
 |---------------------------------------------------------------------------
 | Web Routes
@@ -74,6 +76,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/berita/{berita}/edit', [BeritaController::class, 'edit'])->name('berita.edit');
     Route::put('/berita/{berita}', [BeritaController::class, 'update'])->name('berita.update');
     Route::delete('/berita/{berita}', [BeritaController::class, 'destroy'])->name('berita.destroy');
+    
 
     // Rute untuk Dokumen
     Route::get('/dokumen', [DokumenController::class, 'index'])->name('dokumen.index');
@@ -216,3 +219,4 @@ Route::delete('/bidang/{bidang}', [BidangController::class, 'destroy'])->name('b
 
 
 });
+
