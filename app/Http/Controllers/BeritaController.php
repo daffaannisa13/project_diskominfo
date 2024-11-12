@@ -7,6 +7,8 @@ use App\Models\KategoriBerita;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use HTMLPurifier;
+use HTMLPurifier_Config;
 
 class BeritaController extends Controller
 {
@@ -28,51 +30,61 @@ class BeritaController extends Controller
         return view('berita.create', compact('kategoriBerita'));
     }
 
-    public function store(Request $request)
-    {
-        // Validate the input
-        $validated = $request->validate([
-            'judul' => 'required|string|max:255',
-            'isi' => 'required',
-            'tanggal' => 'required|date',
-            'kategori_id' => 'required|exists:kategori_berita,id',
-            'gambar' => 'nullable|image|max:2048', // Validasi gambar
-        ]);
-    
-        // Get the selected category name
-        $kategori = KategoriBerita::find($validated['kategori_id']);
-        $validated['kategori_nama'] = $kategori->nama_kategori;
-    
-        // Handle file upload for 'gambar'
-        if ($request->hasFile('gambar')) {
-            // Store the image in storage/app/public/gambar
-            $gambarPath = $request->file('gambar')->store('gambar', 'public'); // Specify 'public' disk
-            $validated['gambar'] = $gambarPath; // Store the relative path (public/gambar/filename.jpg)
-        }
-        
-        // Set 'users_id' and 'author' from the authenticated user
-        $validated['users_id'] = Auth()->id();
-        $validated['author'] = auth()->user()->name;
-    
-        // Create a new instance of Berita
-        $berita = new Berita();
-        
-        // Set properties manually
-        $berita->judul = $validated['judul'];
-        $berita->isi = $validated['isi'];
-        $berita->tanggal = $validated['tanggal'];
-        $berita->kategori_id = $validated['kategori_id'];
-        $berita->kategori_nama = $validated['kategori_nama'];
-        $berita->gambar = $validated['gambar'] ?? null;  // Handle optional 'gambar'
-        $berita->users_id = $validated['users_id'];
-        $berita->author = $validated['author'];
-        
-        // Save the instance
-        $berita->save();
-        
-        // Redirect with success message
-        return redirect()->route('berita.index')->with('success', 'Berita berhasil ditambahkan');
+  public function store(Request $request)
+{
+    // Validate the input
+    $validated = $request->validate([
+        'judul' => 'required|string|max:255',
+        'isi' => 'required',
+        'isi_p' => 'nullable|string',  // Adding validation for 'isi_p'
+        'tanggal' => 'required|date',
+        'kategori_id' => 'required|exists:kategori_berita,id',
+        'gambar' => 'nullable|image|max:2048', // Validate image
+    ]);
+
+    // Sanitize 'isi' using HTMLPurifier
+    $config = HTMLPurifier_Config::createDefault();
+    $purifier = new HTMLPurifier($config);
+    $validated['isi'] = $purifier->purify($request->input('isi'));
+
+    // Sanitize 'isi_p' using HTMLPurifier if it's provided
+    if ($request->has('isi_p')) {
+        $validated['isi_p'] = $purifier->purify($request->input('isi_p'));
     }
+
+    // Get the selected category name
+    $kategori = KategoriBerita::find($validated['kategori_id']);
+    $validated['kategori_nama'] = $kategori->nama_kategori;
+
+    // Handle file upload for 'gambar'
+    if ($request->hasFile('gambar')) {
+        // Store the image in storage/app/public/gambar
+        $gambarPath = $request->file('gambar')->store('gambar', 'public');
+        $validated['gambar'] = $gambarPath; // Store the relative path
+    }
+
+    // Set 'users_id' and 'author' from the authenticated user
+    $validated['users_id'] = Auth()->id();
+    $validated['author'] = auth()->user()->name;
+
+    // Create and save a new Berita instance
+    $berita = new Berita();
+    $berita->judul = $validated['judul'];
+    $berita->isi = $validated['isi'];
+    $berita->isi_p = $validated['isi_p'] ?? null;  // Ensure 'isi_p' is nullable
+    $berita->tanggal = $validated['tanggal'];
+    $berita->kategori_id = $validated['kategori_id'];
+    $berita->kategori_nama = $validated['kategori_nama'];
+    $berita->gambar = $validated['gambar'] ?? null;
+    $berita->users_id = $validated['users_id'];
+    $berita->author = $validated['author'];
+
+    // Save the Berita entry
+    $berita->save();
+
+    // Redirect with success message
+    return redirect()->route('berita.index')->with('success', 'Berita berhasil ditambahkan');
+}
 
     public function show(Berita $berita)
     {
@@ -86,20 +98,31 @@ class BeritaController extends Controller
 
     public function update(Request $request, Berita $berita)
 {
-    // Validasi input
+    // Validate the input
     $validated = $request->validate([
         'judul' => 'required|string|max:255',
         'isi' => 'required',
+        'isi_p' => 'nullable|string',  // Adding validation for 'isi_p'
         'tanggal' => 'required|date',
         'kategori_id' => 'required|exists:kategori_berita,id',
-        'gambar' => 'nullable|image|max:2048', // Validasi gambar
+        'gambar' => 'nullable|image|max:2048', // Validate image
     ]);
 
-    // Ambil nama kategori berdasarkan kategori_id
+    // Sanitize 'isi' using HTMLPurifier
+    $config = HTMLPurifier_Config::createDefault();
+    $purifier = new HTMLPurifier($config);
+    $validated['isi'] = $purifier->purify($request->input('isi'));
+
+    // Sanitize 'isi_p' using HTMLPurifier if it's provided
+    if ($request->has('isi_p')) {
+        $validated['isi_p'] = $purifier->purify($request->input('isi_p'));
+    }
+
+    // Get the category name
     $kategori = KategoriBerita::find($validated['kategori_id']);
     $validated['kategori_nama'] = $kategori->nama_kategori;
 
-    // Jika ada file gambar yang di-upload, simpan file gambar
+    // Handle file upload for 'gambar'
     if ($request->hasFile('gambar')) {
         // Delete old image if it exists
         if ($berita->gambar) {
@@ -108,13 +131,13 @@ class BeritaController extends Controller
 
         // Store the new image
         $gambarPath = $request->file('gambar')->store('gambar', 'public');
-        $validated['gambar'] = $gambarPath; // Store the relative path
+        $validated['gambar'] = $gambarPath;
     }
 
     // Update berita
     $berita->update($validated);
 
-    // Redirect ke index berita dengan pesan sukses
+    // Redirect to berita index with a success message
     return redirect()->route('berita.index')->with('success', 'Berita berhasil diperbarui');
 }
 

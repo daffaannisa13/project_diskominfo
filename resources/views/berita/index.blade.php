@@ -58,39 +58,60 @@
                             </tr>
 
                             <!-- Modal untuk Show -->
-                            <div class="modal fade" id="showModal{{ $berita->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Detail Berita</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <strong>Judul:</strong> {{ $berita->judul }}<br>
-                                            <strong>Isi:</strong> {{ $berita->isi }}<br>
-                                            <strong>Isi Pendukung:</strong> {{ $berita->isi_p }}<br> <!-- Show isi_p -->
-                                            <strong>Tanggal:</strong> {{ $berita->tanggal->format('d-m-Y') }}<br>
-                                            <strong>Kategori:</strong> {{ $berita->kategori_nama }}<br>
-                                            <strong>Author:</strong> {{ $berita->author }}<br>
-                                            <strong>Gambar:</strong><br>
-                                            @if ($berita->gambar)
-                                                <img src="{{ asset('storage/' . $berita->gambar) }}" alt="Gambar" class="img-fluid">
-                                            @else
-                                                No Image
-                                            @endif
-                                            @if ($berita->img_slider)
-                                                <strong>Slider Image:</strong><br>
-                                                <img src="{{ asset('storage/' . $berita->img_slider) }}" alt="Slider Image" class="img-fluid">
-                                            @else
-                                                No Slider Image
-                                            @endif
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        </div>
-                                    </div>
-                                </div>
+                           <!-- Modal untuk Show -->
+<div class="modal fade" id="showModal{{ $berita->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered"> <!-- Large, centered modal -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Detail Berita</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <!-- Scrollable modal body with limited height -->
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p><strong>Judul:</strong> {{ $berita->judul }}</p>
+                        <p><strong>Isi:</strong></p>
+                        <div class="isi-berita overflow-auto" style="max-height: 300px;">
+                            {!! $berita->isi !!}
+                        </div>
+                        <p><strong>Isi Pendukung:</strong></p>
+                        <div class="isi-pendukung overflow-auto" style="max-height: 300px;">
+                            {!! $berita->isi_p !!}
+                        </div>
+                        <p><strong>Tanggal:</strong> {{ $berita->tanggal->format('d-m-Y') }}</p>
+                        <p><strong>Kategori:</strong> {{ $berita->kategori_nama }}</p>
+                        <p><strong>Author:</strong> {{ $berita->author }}</p>
+                    </div>
+                    <div class="col-md-6">
+                        @if($berita->gambar)
+                            <div class="text-center mt-3 mb-2">
+                                <strong>Gambar:</strong><br>
+                                <img src="{{ asset('storage/' . $berita->gambar) }}" class="img-fluid rounded" alt="Gambar Berita" style="max-width: 100%;">
                             </div>
+                        @else
+                            <p>No Image</p>
+                        @endif
+                        @if($berita->img_slider)
+                            <div class="text-center mt-3 mb-2">
+                                <strong>Slider Image:</strong><br>
+                                <img src="{{ asset('storage/' . $berita->img_slider) }}" class="img-fluid rounded" alt="Slider Image" style="max-width: 100%;">
+                            </div>
+                        @else
+                            <p>No Slider Image</p>
+                        @endif
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
                             @endforeach
                         </tbody>
                     </table>

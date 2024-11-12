@@ -44,7 +44,7 @@
                 </a>
               </div>
               <!-- /Logo -->
-              <h4 class="mb-2">Welcome to Diskom Info! 👋</h4>
+              <h4 class="mb-2">Welcome to DiskomInfo! 👋</h4>
               <p class="mb-4">Please sign-in to your account and start the adventure</p>
 
               <form id="formAuthentication" class="mb-3" action="{{ route('login') }}" method="POST">

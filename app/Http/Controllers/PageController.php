@@ -16,16 +16,18 @@ use Illuminate\Support\Facades\Storage;
 
 class PageController extends Controller
 {
-    public function index()
-    {
-        $kontaks = Kontak::all();
-        $profil = Profil::orderBy('created_at', 'asc')->first(); // Get the oldest profile
-        $beritas = Berita::all();
-        $agenda = Agenda::all();
-        $gambars = Gambar::with('kategori', 'user')->get();
-        $kategoriGambar = KategoriGambar::all(); // Fetch all categories
-        return view('user.index', compact('beritas', 'kontaks', 'profil', 'kategoriGambar', 'gambars','agenda'));
-    }
+public function index()
+{
+    $kontaks = Kontak::all();
+    $profil = Profil::orderBy('created_at', 'asc')->first(); // Get the oldest profile
+    $beritas = Berita::latest()->take(5)->get(); // Get the 5 most recent berita
+    $agenda = Agenda::all();
+    $gambars = Gambar::with('kategori', 'user')->get();
+    $kategoriGambar = KategoriGambar::all(); // Fetch all categories
+    
+    return view('user.index', compact('beritas', 'kontaks', 'profil', 'kategoriGambar', 'gambars', 'agenda'));
+}
+
     public function storekontak(Request $request)
 {
  
@@ -54,12 +56,13 @@ class PageController extends Controller
 }
 
 
-    public function berita()
-    {
-        $kontaks = Kontak::all();
-        $beritas = Berita::all();
-        return view('user.berita', compact('beritas','kontaks'));
-    }
+public function berita()
+{
+    $kontaks = Kontak::all();
+    $beritas = Berita::orderBy('created_at', 'desc')->get(); // Order beritas by newest first
+    return view('user.berita', compact('beritas', 'kontaks'));
+}
+
 
     public function contact()
     {
@@ -67,14 +70,19 @@ class PageController extends Controller
         return view('user.contact', compact('kontaks'));
     }
 
-         public function detail($id)
-    {
-        var_dump('test');
-        die;
-        $kontaks = Kontak::all();
-        $berita = Berita::findOrFail($id); // Mengambil berita berdasarkan ID
-        return view('user.detail_berita', compact('berita','kontaks')); // Menampilkan view detail
-    }
+        public function detail($id)
+{
+    $kontaks = Kontak::all();
+    $berita = Berita::findOrFail($id); // Mengambil berita berdasarkan ID
+    return view('user.detail_berita', compact('berita', 'kontaks')); // Menampilkan view detail
+}
+
+public function detailprofil($id)
+{
+    $kontaks = Kontak::all();
+    $profile = Profil::findOrFail($id); // Use singular $profile for a single record
+    return view('user.detail_profile', compact('profile', 'kontaks')); // Pass as $profile
+}
 
 
     public function design()
@@ -86,12 +94,17 @@ class PageController extends Controller
 
     public function gallery()
     {
-        return view('user.gallery');
+        $gambars = Gambar::with('kategori', 'user')->get();
+        $kategoriGambar = KategoriGambar::all();
+        $kontaks = Kontak::all(); 
+        return view('user.gallery', compact('kategoriGambar' , 'gambars', 'kontaks'));
     }
 
-    public function info()
+    public function profill()
     {
-        return view('user.info');
+        $kontaks = Kontak::all();
+        $profiles = Profil::all();
+        return view('user.profile', compact('profiles','kontaks'));
     }
 
     public function layanan()

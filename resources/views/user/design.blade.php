@@ -27,6 +27,14 @@
         <!-- Template Stylesheet -->
         <link href="{{ asset('user/css/style.css') }}" rel="stylesheet">
     </head>
+    <style>
+        
+.navbar-brand img {
+    height: 150px ;
+    width: auto ;
+    margin-right: 10px;
+}
+    </style>
 
     <body>
 
@@ -52,12 +60,12 @@
         </div>
 
         <!-- Navbar & Hero Start -->
-        <div class="container-fluid position-relative p-0">
-            <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
-                <a href="" class="navbar-brand p-0">
-                    <h1 class="m-0"><i class="fa fa-map-marker-alt me-3"></i>Travela</h1>
-                    <!-- <img src="img/logo.png" alt="Logo"> -->
-                </a>
+       <div class="container-fluid position-relative p-0">
+    <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+       <a href="#" class="navbar-brand">
+    <img src="{{ asset('assets/img/logo.png') }}" alt="Logo">
+</a>
+
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                     <span class="fa fa-bars"></span>
                 </button>
@@ -65,6 +73,7 @@
                     <div class="navbar-nav ms-auto py-0">
                         <a href="/" class="nav-item nav-link">Home</a>
                         <a href="berita.html" class="nav-item nav-link">Berita</a>
+                        <a href="gallery.html" class="nav-item nav-link">Gallery</a>
                         <a href="layanan.html" class="nav-item nav-link">Layanan</a>
                         
                         <a href="teknologi.html" class="nav-item nav-link">Download File</a>
@@ -88,11 +97,11 @@
         <!-- Header Start -->
         <div class="container-fluid bg-breadcrumb">
             <div class="container text-center py-5" style="max-width: 900px;">
-                <h3 class="text-white display-3 mb-4">Travel Destination</h1>
+                <h3 class="text-white display-3 mb-4">Agenda</h1>
                 <ol class="breadcrumb justify-content-center mb-0">
                     <li class="breadcrumb-item"><a href="index.html">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Pages</a></li>
-                    <li class="breadcrumb-item active text-white">Destination</li>
+                    <li class="breadcrumb-item active text-white">Agenda</li>
                 </ol>    
             </div>
         </div>

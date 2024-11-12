@@ -4,9 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Profil;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use HTMLPurifier;
+use HTMLPurifier_Config;
 
 class ProfilController extends Controller
 {
+    
     public function index()
     {
         $profils = Profil::all();
@@ -26,10 +30,17 @@ class ProfilController extends Controller
             'upload_gambar' => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
         ]);
 
+        // Sanitize 'isi_profil' using HTMLPurifier
+        $config = HTMLPurifier_Config::createDefault();
+        $purifier = new HTMLPurifier($config);
+        $validated['isi_profil'] = $purifier->purify($request->isi_profil);
+
+        // Handle file upload if provided
         if ($request->hasFile('upload_gambar')) {
             $validated['upload_gambar'] = $request->file('upload_gambar')->store('images', 'public');
         }
 
+        // Create the profile with sanitized data
         Profil::create($validated);
 
         return redirect()->route('profil.index')->with('success', 'Profil berhasil ditambahkan');
@@ -45,40 +56,40 @@ class ProfilController extends Controller
         return view('profil.edit', compact('profil'));
     }
 
-public function update(Request $request, Profil $profil)
-{
-    $validated = $request->validate([
-        'judul_profil' => 'required|string|max:255',
-        'isi_profil' => 'required|string',
-        'upload_gambar' => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
-    ]);
+ public function update(Request $request, Profil $profil)
+    {
+        $validated = $request->validate([
+            'judul_profil' => 'required|string|max:255',
+            'isi_profil' => 'required|string',
+            'upload_gambar' => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
+        ]);
 
-    // Check if a new image is uploaded
-    if ($request->hasFile('upload_gambar')) {
-        // Hapus gambar lama jika ada
-        if ($profil->upload_gambar) {
-            \Storage::disk('public')->delete($profil->upload_gambar);
+        // Sanitize 'isi_profil' using HTMLPurifier
+        $config = HTMLPurifier_Config::createDefault();
+        $purifier = new HTMLPurifier($config);
+        $validated['isi_profil'] = $purifier->purify($request->isi_profil);
+
+        // Handle file upload if provided
+        if ($request->hasFile('upload_gambar')) {
+            // Delete the old image if exists
+            if ($profil->upload_gambar) {
+                \Storage::disk('public')->delete($profil->upload_gambar);
+            }
+            // Store new image
+            $validated['upload_gambar'] = $request->file('upload_gambar')->store('images', 'public');
         }
-        // Store new image
-        $validated['upload_gambar'] = $request->file('upload_gambar')->store('images', 'public');
-    } else {
-        // If no new image is uploaded, check if there is an existing image
-        if ($profil->upload_gambar) {
-            // Delete the existing image if there is no new image
-            \Storage::disk('public')->delete($profil->upload_gambar);
-            // Set upload_gambar to null to remove the old image reference
-            $validated['upload_gambar'] = null;
-        } else {
-            // If there's no existing image, keep the upload_gambar key unset
-            unset($validated['upload_gambar']);
+
+        // If no new image is uploaded, keep the old image
+        if (!$request->hasFile('upload_gambar') && $profil->upload_gambar) {
+            $validated['upload_gambar'] = $profil->upload_gambar;
         }
+
+        // Update the profile with validated data
+        $profil->update($validated);
+
+        return redirect()->route('profil.index')->with('success', 'Profil berhasil diperbarui');
     }
 
-    // Update the profil with the validated data
-    $profil->update($validated);
-
-    return redirect()->route('profil.index')->with('success', 'Profil berhasil diperbarui');
-}
 
 
 

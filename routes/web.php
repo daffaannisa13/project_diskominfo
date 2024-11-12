@@ -28,14 +28,15 @@ Route::get('/berita.html', [PageController::class, 'berita'])->name('berita');
 Route::get('/contact.html', [PageController::class, 'contact'])->name('contact');
 Route::get('/design.html', [PageController::class, 'design'])->name('design');
 Route::get('/gallery.html', [PageController::class, 'gallery'])->name('gallery');
-Route::get('/info.html', [PageController::class, 'info'])->name('info');
+Route::get('/profil.html', [PageController::class, 'profill'])->name('profil');
 Route::get('/layanan.html', [PageController::class, 'layanan'])->name('layanan');
 Route::get('/teknologi.html', [PageController::class, 'teknologi'])->name('teknologi');
 Route::get('/404.html', [PageController::class, 'notFound'])->name('404');
 
 Route::post('/store', [PageController::class, 'storekontak'])->name('kontak.storeuser');
 
-Route::get('/berita/detail/{id}', [PageController::class, 'detail'])->name('berita.detail');
+Route::get('/tampilan/detail/{id}', [PageController::class, 'detail'])->name('tampilan.detail');
+Route::get('/profile/detail/{id}', [PageController::class, 'detailprofil'])->name('tampilan.detailprofil');
 
 /*
 |---------------------------------------------------------------------------

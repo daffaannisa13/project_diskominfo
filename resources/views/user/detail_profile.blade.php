@@ -27,116 +27,84 @@
     <!-- Template Stylesheet -->
     <link href="{{ asset('user/css/style.css') }}" rel="stylesheet">
 </head>
-<style>
-    /* Main Page Background Gradient */
-    .main-page {
-        background: linear-gradient(to bottom, rgba(255, 255, 255, 1) 0%, rgba(55, 125, 255, 0.125) 100%);
-        padding-top: 20px;
-        padding-bottom: 50px;
-    }
-
-    /* Typography and Base Styling */
-    body {
-        color: #777;
-        font-family: "Poppins", sans-serif;
-        font-size: 14px;
-        font-weight: 300;
-        line-height: 1.5;
-        margin: 0;
-        background-color: #fff;
-    }
-
-    /* Universal Box Sizing */
-    *,
-    ::after,
-    ::before {
-        box-sizing: border-box;
-    }
-
-    /* Display for Section Elements */
-    section,
-    article,
-    aside,
-    figcaption,
-    figure,
-    footer,
-    header,
-    hgroup,
-    main,
-    nav {
-        display: block;
-    }
-
-    /* News Item Styling */
-    .news-item {
-        display: flex;
-        align-items: center;
-        padding: 15px;
-        border-bottom: 1px solid #ddd;
-    }
-
-    .news-item img {
-        width: 100px;
-        height: 80px;
-        margin-right: 15px;
-        object-fit: cover;
-        border-radius: 5px;
-    }
-
-    .news-content {
-        flex: 1;
-    }
-
-    .news-title {
-        font-size: 1.1em;
-        font-weight: bold;
-        color: #007bff;
-        margin: 0;
-        padding: 0;
-    }
-
-    .news-meta {
-        font-size: 0.85em;
-        color: #555;
-        margin: 5px 0;
-    }
-
-    .news-excerpt {
-        color: #555;
-    }
-
-    .media {
-        display: flex;
-        align-items: flex-start;
-    }
-
-    .media-body {
-        flex: 1;
-    }
-
-    .news-title,
-    .text-primary {
-        font-weight: bold;
-        text-decoration: none;
-    }
-
-    .news-title:hover,
-    .text-primary:hover {
-        color: #0056b3;
-        text-decoration: underline;
-    }
-
-    .mr-3, .mx-3 {
-    margin-right: 1rem !important;
-}
+  <style>
+        .pl-md-3, .px-md-3 {
+            padding-left: 1rem !important;
+        }
+        .pr-md-3, .px-md-3 {
+            padding-right: 1rem !important;
+        }
+        .pl-0, .px-0 {
+            padding-left: 0 !important;
+        }
+        .pr-0, .px-0 {
+            padding-right: 0 !important;
+        }
+        .col {
+            position: relative;
+            width: 100%;
+            padding-right: 15px;
+            padding-left: 15px;
+            flex-basis: 0;
+            flex-grow: 1;
+            max-width: 100%;
+        }
+        .card-header:first-child {
+            border-radius: calc(.25rem - 1px) calc(.25rem - 1px) 0 0;
+        }
+        .card-header, .card-footer {
+            background-color: #fff;
+        }
+        .card-header {
+            padding: .75rem 1.25rem;
+            border-bottom: 1px solid rgba(0, 0, 0, .125);
+        }
+        .card-title {
+            margin-bottom: .75rem;
+        }
+        .main-page {
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 1) 0%, rgba(55, 125, 255, 0.125) 100%);
+            padding-top: 20px;
+            padding-bottom: 50px;
+        }
+        body {
+            color: #777;
+            font-family: "Poppins", sans-serif;
+            font-size: 14px;
+            line-height: 1.5;
+            background-color: #fff;
+        }
+        .news-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+        .news-item img {
+            width: 100px;
+            height: 80px;
+            margin-right: 15px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        .news-content {
+            flex: 1;
+        }
+        .news-title {
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #007bff;
+        }
+        .card img {
+            width: 100%;
+        }
+        
 .navbar-brand img {
     height: 150px ;
     width: auto ;
     margin-right: 10px;
 }
-
-
-</style>
+    </style>
 
 <body>
 
@@ -166,12 +134,13 @@
     <!-- Topbar End -->
 
     <!-- Navbar & Hero Start -->
-    <div class="container-fluid position-relative p-0">
-        <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
-            <a href="" class="navbar-brand p-0">
-                {{-- <h1 class="m-0"><i class="fa fa-map-marker-alt me-3"></i>Travela</h1> --}}
-                <img src="{{ asset('assets/img/logo.png') }}" alt="Logo">
-            </a>
+   <div class="container-fluid position-relative p-0">
+    <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+       <a href="#" class="navbar-brand">
+    <img src="{{ asset('assets/img/logo.png') }}" alt="Logo">
+</a>
+
+
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="fa fa-bars"></span>
             </button>
@@ -181,10 +150,10 @@
                     <a href="berita.html" class="nav-item nav-link active">Berita</a>
                     <a href="gallery.html" class="nav-item nav-link">Gallery</a>
                     <a href="layanan.html" class="nav-item nav-link">Layanan</a>
-                    
+
                     <a href="teknologi.html" class="nav-item nav-link">Download File</a>
                     <a href="design.html" class="nav-item nav-link">Agenda</a>
-                        {{-- <div class="nav-item dropdown">
+                    {{-- <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pojok Kita</a>
                             <div class="dropdown-menu m-0">
                                 <a href="design.html" class="dropdown-item">Agenda</a>
@@ -197,77 +166,45 @@
                 </div>
             </div>
         </nav>
+
+
     </div>
 
     <!-- Header Start -->
     <div class="container-fluid bg-breadcrumb">
         <div class="container text-center py-5" style="max-width: 900px;">
-            <h3 class="text-white display-3 mb-4">Berita</h1>
+            <h3 class="text-white display-3 mb-4">Detail Profil</h1>
                 <ol class="breadcrumb justify-content-center mb-0">
                     <li class="breadcrumb-item"><a href="index.html">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Pages</a></li>
-                    <li class="breadcrumb-item active text-white">Berita</li>
+                    <li class="breadcrumb-item active text-white">Detail Profil</li>
                 </ol>
         </div>
     </div>
     <!-- Header End -->
 
-  <!-- Packages Start -->
+<!-- Detail Profil Start -->
 <div class="container py-5">
-    <div class="text-center mb-5" style="max-width: 900px; margin: 0 auto;">
-        <h5 class="section-title px-3">Berita</h5>
-        <h1 class="mb-0">Berita</h1>
+    <div class="text-center mb-5">
+        <h5 class="section-title px-3">Detail Profile</h5>
+        <h1>{{ $profile->judul_profil }}</h1>
     </div>
-
-    
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 mx-auto">
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="font-weight-bold mb-4">Berita Terbaru</h3>
-                        </div>
-                        <div class="card-body">
-                            <div id="newsfeed">
-                                @foreach ($beritas as $berita)
-                                    <div class="media mb-4">
-                                        <img src="{{ asset('storage/' . $berita->gambar) }}"
-                                             class="mr-3 rounded d-none d-sm-block" 
-                                             alt="{{ $berita->judul }}"
-                                             style="width: 120px; height: 120px; object-fit: cover;">
-                                        <div class="media-body">
-                                            <h5 class="mb-1 font-weight-bold">
-                                                <a href="{{ route('berita.show', $berita->id) }}" 
-                                                   class="text-dark">{{ $berita->judul }}</a>
-                                            </h5>
-                                            <p class="small text-muted mb-2">
-                                                <i class="fa fa-user"></i> {{ $berita->author }} &nbsp;&nbsp;
-                                                <i class="fa fa-calendar"></i>
-                                                {{ \Carbon\Carbon::parse($berita->tanggal)->format('d M Y') }}
-                                            </p>
-                                            <p class="text-justify">
-                                                {{ Str::limit($berita->isi, 90) }}
-                                                <a href="{{ route('tampilan.detail', $berita->id) }}" 
-                                                   class="text-primary">read more »</a>
-                                            </p>
-                                        </div>
-                                    </div>
-                                @endforeach
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div>
+        <div class="text-center">
+            <img src="{{ asset('storage/' . $profile->upload_gambar) }}" alt="{{ $profile->judul_profil }}" class="img-fluid mb-3" style="max-width: 500px;">
         </div>
-    
+
+        <p><strong>Tanggal:</strong> {{ \Carbon\Carbon::parse($profile->created_at)->format('d M Y') }}</p>
+        
+        <!-- Display isi_profil as HTML -->
+        <div>{!! $profile->isi_profil !!}</div>
+    </div>
 </div>
-<!-- Packages End -->
 
 
 
-
-    <!-- Footer Start -->
-    <div class="container-fluid footer py-5">
+  <!-- Footer Start -->
+      <div class="container-fluid footer py-5">
     <div class="container py-5">
         <div class="row g-5">
             @foreach($kontaks as $kontak)
@@ -284,7 +221,7 @@
     </div>
 </div>
 
-    <!-- Footer End -->
+        <!-- Footer End -->
 
     <!-- Copyright Start -->
     <div class="container-fluid copyright text-body py-4">

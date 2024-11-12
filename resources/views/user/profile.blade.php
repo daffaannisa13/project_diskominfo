@@ -28,25 +28,6 @@
         <link href="{{ asset('user/css/style.css') }}" rel="stylesheet">
     </head>
 
-    <!-- CSS tambahan untuk efek hover seperti di web yang Anda referensikan -->
-<style>
-    .styled-link {
-        color: #007bff; /* Warna biru terang seperti link */
-        text-decoration: none;
-    }
-
-    .styled-link:hover {
-        color: black; /* Warna hitam saat hover */
-        text-decoration: underline; /* Garis bawah saat hover */
-    }
-    
-.navbar-brand img {
-    height: 150px ;
-    width: auto ;
-    margin-right: 10px;
-}
-</style>
-
     <body>
 
         <!-- Spinner Start -->
@@ -72,26 +53,26 @@
     
     
     <!-- Topbar End -->
-
-        <!-- Navbar & Hero Start -->
-        <div class="container-fluid position-relative p-0">
+    
+    <!-- Navbar & Hero Start -->
+   <div class="container-fluid position-relative p-0">
     <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
        <a href="#" class="navbar-brand">
     <img src="{{ asset('assets/img/logo.png') }}" alt="Logo">
 </a>
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                    <span class="fa fa-bars"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="fa fa-bars"></span>
+            </button>
+           <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0">
-                        <a href="/" class="nav-item nav-link">Home</a>
+                        <a href="/" class="nav-item nav-link">Beranda</a>
                         <a href="berita.html" class="nav-item nav-link">Berita</a>
                         <a href="gallery.html" class="nav-item nav-link">Gallery</a>
                         <a href="layanan.html" class="nav-item nav-link">Layanan</a>
-                        
-                        <a href="teknologi.html" class="nav-item nav-link active">Download File</a>
-                         <a href="design.html" class="nav-item nav-link">Agenda</a>
+                        {{-- <a href="info.html" class="nav-item nav-link">Info Penting</a> --}}
+                        <a href="teknologi.html" class="nav-item nav-link">Download File</a>
+                        <a href="design.html" class="nav-item nav-link">Agenda</a>
                         {{-- <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pojok Kita</a>
                             <div class="dropdown-menu m-0">
@@ -100,69 +81,57 @@
                                 <a href="404.html" class="dropdown-item">404 Page</a>
                             </div>
                         </div> --}}
-                        {{-- </div> --}}
                         <a href="contact.html" class="nav-item nav-link">Kontak Kami</a>
                     </div>
                 </div>
-            </nav>
-        </div>
-        <!-- Navbar & Hero End -->
-
-        <!-- Header Start -->
-        <div class="container-fluid bg-breadcrumb">
-            <div class="container text-center py-5" style="max-width: 900px;">
-                <h3 class="text-white display-3 mb-4">Dokumen</h1>
+        </nav>
+    </div>
+    <!-- Navbar & Hero End -->
+    <!-- Header Start -->
+    <div class="container-fluid bg-breadcrumb">
+        <div class="container text-center py-5" style="max-width: 900px;">
+            <h3 class="text-white display-3 mb-4">Profil</h1>
                 <ol class="breadcrumb justify-content-center mb-0">
                     <li class="breadcrumb-item"><a href="index.html">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Pages</a></li>
-                    <li class="breadcrumb-item active text-white">Dokumen</li>
-                </ol>    
+                    <li class="breadcrumb-item active text-white">Profil</li>
+                </ol>
+        </div>
+    </div>
+    <!-- Header End -->
+
+        <div class="container py-5">
+    <div class="text-center mb-5" style="max-width: 900px; margin: 0 auto;">
+        <h5 class="section-title px-3">Profil</h5>
+        <h1 class="mb-0">Profil</h1>
+    </div>
+
+     <div class="container">
+    @foreach($profiles as $profile)
+        <div class="row"><!-- item -->
+             <div class="col-md-2 col-sm-2 d-flex justify-content-center"><!-- company logo -->
+                <img src="{{ Storage::url($profile->upload_gambar) }}" 
+                     class="img-thumbnail" 
+                     style="max-width: 200px; height: auto;" 
+                     alt="{{ $profile->judul_profil }}">
+            </div>
+            <div class="col-md-10 col-xs-12 col-sm-10"><!-- company detail -->
+                <h4 class="margin-bottom-10">
+                    <a href="{{ url('profile', $profile->id) }}">{{ $profile->judul_profil }}</a>
+                </h4>
+                <p>{{ \Illuminate\Support\Str::limit(strip_tags($profile->isi_profil), 100) }}</p>
+                     <a href="{{ route('tampilan.detailprofil', $profile->id) }}"  class="btn btn-sm">Selengkapnya...<i class="fa fa-arrow-right"></i></a>
+                </p>
             </div>
         </div>
-        <!-- Header End -->
-
-
-
-      <div class="container py-5">
-    <div class="text-center mb-5" style="max-width: 900px; margin: 0 auto;">
-        <h5 class="section-title px-3">File</h5>
-        <h1 class="mb-0">Daftar Dokumen</h1>
-    </div>
-<div class="container d-flex justify-content-center" style="padding: 20px;">
-    <div class="row w-75">
-        <ul class="list-group">
-            <!-- Header Row -->
-            <div class="alert alert-success text-center py-2 mb-2">
-                <div class="row">
-                    <div class="col-2">No.</div>
-                    <div class="col-5">Judul File</div>
-                    <div class="col-5">Kategori</div>
-                </div>
-            </div>
-
-            <!-- Dynamic Content from Database -->
-            @foreach($dokumens as $index => $dokumen)
-                <div class="alert alert-{{ $index % 2 == 0 ? 'info' : 'warning' }} py-2 mb-2">
-                    <div class="row">
-                        <div class="col-2 text-center">{{ $index + 1 }}</div>
-                        <div class="col-5 text-center">
-                            <a href="{{ $dokumen->url }}" target="_blank" class="styled-link">
-                                {{ $dokumen->judul }}
-                            </a>
-                        </div>
-                        <div class="col-5 text-center">{{ $dokumen->kategori->nama_kategori ?? 'Tidak Ada Kategori' }}</div>
-                    </div>
-                </div>
-            @endforeach
-        </ul>
-    </div>
+        <hr>
+    @endforeach
 </div>
 </div>
 
 
-
-
-       <div class="container-fluid footer py-5">
+         <!-- Footer Start -->
+      <div class="container-fluid footer py-5">
     <div class="container py-5">
         <div class="row g-5">
             @foreach($kontaks as $kontak)
@@ -194,6 +163,7 @@
                         <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
                         Designed By <a class="text-white" href="https://htmlcodex.com">HTML Codex</a> Distributed By <a href="https://themewagon.com">ThemeWagon</a>
                     </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -213,5 +183,6 @@
         
         <!-- Template Javascript -->
         <script src="{{ asset('user/js/main.js') }}"></script>
+    </body>
 
 </html>

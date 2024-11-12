@@ -130,6 +130,9 @@
     .mr-3, .mx-3 {
     margin-right: 1rem !important;
 }
+
+
+
 </style>
 
 
@@ -159,13 +162,14 @@
 
         <!-- Topbar End -->
 
-        <!-- Navbar & Hero Start -->
-        <div class="container-fluid position-relative p-0">
-            <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
-                <a href="" class="navbar-brand p-0">
-                    <h1 class="m-0"><i class="fa fa-map-marker-alt me-3"></i>Travela</h1>
-                    <!-- <img src="img/logo.png" alt="Logo"> -->
-                </a>
+      <!-- Navbar & Hero Start -->
+<div class="container-fluid position-relative p-0">
+    <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+       <a href="#" class="navbar-brand">
+    <img src="{{ asset('assets/img/logo.png') }}" alt="Logo">
+
+
+        </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                     <span class="fa fa-bars"></span>
                 </button>
@@ -173,6 +177,7 @@
                     <div class="navbar-nav ms-auto py-0">
                         <a href="/" class="nav-item nav-link active">Beranda</a>
                         <a href="berita.html" class="nav-item nav-link">Berita</a>
+                        <a href="gallery.html" class="nav-item nav-link">Gallery</a>
                         <a href="layanan.html" class="nav-item nav-link">Layanan</a>
                         {{-- <a href="info.html" class="nav-item nav-link">Info Penting</a> --}}
                         <a href="teknologi.html" class="nav-item nav-link">Download File</a>
@@ -203,7 +208,7 @@
                     </ol>
                     <div class="carousel-inner" role="listbox">
                         <div class="carousel-item active">
-                            <img src="user/img/carousel-2.jpg" class="img-fluid" alt="Image">
+                            <img src="https://www.garisjabar.com/wp-content/uploads/2023/11/IMG_20231116_131252-scaled.webp" class="img-fluid" alt="Image">
                             <div class="carousel-caption">
                                 <div class="p-3" style="max-width: 900px;">
                                     <h4 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;">Diskominfo</h4>
@@ -217,7 +222,7 @@
                             </div>
                         </div>
                         <div class="carousel-item">
-                            <img src="user/img/carousel-1.jpg" class="img-fluid" alt="Image">
+                            <img src="https://sergap.co.id/wp-content/uploads/2024/11/SS.jpg" class="img-fluid" alt="Image">
                             <div class="carousel-caption">
                                 <div class="p-3" style="max-width: 900px;">
                                     <h4 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;">Disakominfo</h4>
@@ -231,7 +236,7 @@
                             </div>
                         </div>
                         <div class="carousel-item">
-                            <img src="user/img/carousel-3.jpg" class="img-fluid" alt="Image">
+                            <img src="https://radarindonesiaonline.com/wp-content/uploads/2024/11/ca0b238c-89f9-410f-bda5-b764603a532d.jpg" class="img-fluid" alt="Image">
                             <div class="carousel-caption">
                                 <div class="p-3" style="max-width: 900px;">
                                     <h4 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;">Disakominfo</h4>
@@ -320,7 +325,7 @@
                                             </p>
                                             <p class="text-justify">
                                                 {{ Str::limit($berita->isi, 90) }}
-                                                <a href="{{ route('berita.show', $berita->id) }}" 
+                                                <a href="{{ route('tampilan.detail', $berita->id) }}" 
                                                    class="text-primary">read more »</a>
                                             </p>
                                         </div>
@@ -345,7 +350,7 @@
         <div class="row g-4">
             <!-- Diskominfo Service -->
             <div class="col-lg-4 col-md-6">
-                <a href="/diskominfo" class="text-decoration-none">
+                <a href="/profil.html" class="text-decoration-none">
                     <div class="service-content-inner d-flex align-items-center bg-white border border-primary rounded p-4">
                         <div class="service-icon p-4">
                             <i class="fa fa-globe fa-4x text-primary"></i>

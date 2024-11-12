@@ -24,7 +24,7 @@
                             </div>
                         </div>
 
-                        <!-- Isi Profil -->
+                        <!-- Isi Profil (with CKEditor) -->
                         <div class="row mb-3">
                             <label class="col-sm-2 col-form-label" for="isi_profil">Isi Profil</label>
                             <div class="col-sm-10">
@@ -59,4 +59,10 @@
         </div>
     </div>
 </div>
+
+<!-- Include CKEditor script -->
+<script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace('isi_profil');  // Initializes CKEditor on the textarea
+</script>
 @endsection

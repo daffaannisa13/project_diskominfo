@@ -36,6 +36,17 @@
                             </div>
                         </div>
 
+                        <!-- Isi Pendukung (CKEditor) -->
+                        <div class="row mb-3">
+                            <label class="col-sm-2 col-form-label" for="isi_p">Isi Pendukung</label>
+                            <div class="col-sm-10">
+                                <textarea name="isi_p" id="isi_p" class="form-control" rows="5">{{ old('isi_p', $berita->isi_p) }}</textarea>
+                                @error('isi_p')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
+                        </div>
+
                         <!-- Tanggal -->
                         <div class="row mb-3">
                             <label class="col-sm-2 col-form-label" for="tanggal">Tanggal</label>
@@ -54,9 +65,7 @@
                                 <select name="kategori_id" id="kategori_id" class="form-select" required>
                                     <option value="">-- Pilih Kategori --</option>
                                     @foreach ($kategoriBerita as $kategori)
-                                        <option value="{{ $kategori->id }}" {{ $berita->kategori_id == $kategori->id ? 'selected' : '' }}>
-                                            {{ $kategori->nama_kategori }}
-                                        </option>
+                                        <option value="{{ $kategori->id }}" {{ $berita->kategori_id == $kategori->id ? 'selected' : '' }}>{{ $kategori->nama_kategori }}</option>
                                     @endforeach
                                 </select>
                                 @error('kategori_id')
@@ -100,4 +109,13 @@
         </div>
     </div>
 </div>
+
+<script src="https://cdn.ckeditor.com/ckeditor5/34.1.0/classic/ckeditor.js"></script>
+<script>
+    ClassicEditor
+        .create(document.querySelector('#isi_p'))
+        .catch(error => {
+            console.error(error);
+        });
+</script>
 @endsection

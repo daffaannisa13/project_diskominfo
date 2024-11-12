@@ -35,11 +35,11 @@
                             </div>
                         </div>
 
-                        <!-- Isi Pendukung -->
+                        <!-- Isi Pendukung (CKEditor) -->
                         <div class="row mb-3">
                             <label class="col-sm-2 col-form-label" for="isi_p">Isi Pendukung</label>
                             <div class="col-sm-10">
-                                <textarea name="isi_p" class="form-control" rows="5">{{ old('isi_p') }}</textarea>
+                                <textarea name="isi_p" id="isi_p" class="form-control" rows="5">{{ old('isi_p') }}</textarea>
                                 @error('isi_p')
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror
@@ -108,4 +108,15 @@
         </div>
     </div>
 </div>
+
+<!-- CKEditor Script -->
+<script src="https://cdn.ckeditor.com/ckeditor5/34.1.0/classic/ckeditor.js"></script>
+<script>
+    ClassicEditor
+        .create(document.querySelector('#isi_p'))
+        .catch(error => {
+            console.error(error);
+        });
+</script>
+
 @endsection
