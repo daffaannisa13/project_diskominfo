@@ -7,10 +7,14 @@ use App\Models\Pesan;
 use Illuminate\Http\Request;
 use App\Models\Berita;
 use App\Models\Kontak;
+use App\Models\SosialMedia;
 use App\Models\Dokumen;
 use App\Models\Profil;
 use App\Models\Gambar;
 use App\Models\KategoriGambar;
+use App\Models\Video;
+use App\Models\DeskripsiSistem;
+use App\Models\KategoriVideo;
 use App\Models\KategoriDokumen;
 use Illuminate\Support\Facades\Storage;
 
@@ -19,14 +23,27 @@ class PageController extends Controller
 public function index()
 {
     $kontaks = Kontak::all();
+    $sosial = SosialMedia::all();
     $profil = Profil::orderBy('created_at', 'asc')->first(); // Get the oldest profile
     $beritas = Berita::latest()->take(5)->get(); // Get the 5 most recent berita
     $agenda = Agenda::all();
-    $gambars = Gambar::with('kategori', 'user')->get();
-    $kategoriGambar = KategoriGambar::all(); // Fetch all categories
-    
-    return view('user.index', compact('beritas', 'kontaks', 'profil', 'kategoriGambar', 'gambars', 'agenda'));
+    $gambars = Gambar::with('kategori', 'user')->latest()->take(4)->get();
+    $kategoriGambar = KategoriGambar::all(); // Fetch all image categories
+   $deskripsiSistems = DeskripsiSistem::latest()->first();
+
+    return view('user.index', compact(
+        'beritas',
+        'kontaks',
+        'profil',
+        'kategoriGambar',
+        'gambars',
+        'agenda',
+        'sosial',
+        'deskripsiSistems',
+        
+    ));
 }
+
 
     public function storekontak(Request $request)
 {
@@ -59,37 +76,47 @@ public function index()
 public function berita()
 {
     $kontaks = Kontak::all();
-    $beritas = Berita::orderBy('created_at', 'desc')->get(); // Order beritas by newest first
-    return view('user.berita', compact('beritas', 'kontaks'));
+    $sosial = SosialMedia::all();
+    $beritas = Berita::orderBy('created_at', 'desc')->get();
+    $deskripsiSistems = DeskripsiSistem::all();
+    return view('user.berita', compact('beritas', 'kontaks', 'sosial', 'deskripsiSistems'));
 }
 
 
     public function contact()
     {
         $kontaks = Kontak::all();
-        return view('user.contact', compact('kontaks'));
+        $sosial = SosialMedia::all();
+        $deskripsiSistems = DeskripsiSistem::all();
+        return view('user.contact', compact('kontaks', 'sosial', 'deskripsiSistems'));
     }
 
         public function detail($id)
 {
     $kontaks = Kontak::all();
-    $berita = Berita::findOrFail($id); // Mengambil berita berdasarkan ID
-    return view('user.detail_berita', compact('berita', 'kontaks')); // Menampilkan view detail
+    $sosial = SosialMedia::all();
+    $berita = Berita::findOrFail($id); 
+    $deskripsiSistems = DeskripsiSistem::all();
+    return view('user.detail_berita', compact('berita', 'kontaks', 'sosial', 'deskripsiSistems'));
 }
 
 public function detailprofil($id)
 {
     $kontaks = Kontak::all();
-    $profile = Profil::findOrFail($id); // Use singular $profile for a single record
-    return view('user.detail_profile', compact('profile', 'kontaks')); // Pass as $profile
+    $profile = Profil::findOrFail($id);
+    $sosial = SosialMedia::all();
+    $deskripsiSistems = DeskripsiSistem::all();
+    return view('user.detail_profile', compact('profile', 'kontaks', 'sosial', 'deskripsiSistems'));
 }
 
 
     public function design()
     {
         $kontaks = Kontak::all();
+        $sosial = SosialMedia::all();
         $agenda = Agenda::all();
-        return view('user.design', compact('agenda','kontaks'));
+        $deskripsiSistems = DeskripsiSistem::all();
+        return view('user.design', compact('agenda','kontaks', 'sosial', 'deskripsiSistems'));
     }
 
     public function gallery()
@@ -97,20 +124,26 @@ public function detailprofil($id)
         $gambars = Gambar::with('kategori', 'user')->get();
         $kategoriGambar = KategoriGambar::all();
         $kontaks = Kontak::all(); 
-        return view('user.gallery', compact('kategoriGambar' , 'gambars', 'kontaks'));
+        $sosial = SosialMedia::all();
+        $deskripsiSistems = DeskripsiSistem::all();
+        return view('user.gallery', compact('kategoriGambar' , 'gambars', 'kontaks', 'sosial', 'deskripsiSistems'));
     }
 
     public function profill()
     {
         $kontaks = Kontak::all();
+        $sosial = SosialMedia::all();
         $profiles = Profil::all();
-        return view('user.profile', compact('profiles','kontaks'));
+        $deskripsiSistems = DeskripsiSistem::all();
+        return view('user.profile', compact('profiles','kontaks','sosial', 'deskripsiSistems'));
     }
 
     public function layanan()
     {
         $kontaks = Kontak::all();
-        return view('user.layanan', compact('kontaks'));
+        $sosial = SosialMedia::all();
+        $deskripsiSistems = DeskripsiSistem::all();
+        return view('user.layanan', compact('kontaks', 'sosial','deskripsiSistems'));
     }
 
 public function teknologi()
@@ -118,12 +151,19 @@ public function teknologi()
     $kontaks = Kontak::all();
     $kategoriDokumen = KategoriDokumen::all(); 
     $dokumens = Dokumen::all();
-    return view('user.teknologi', compact('dokumens', 'kategoriDokumen','kontaks'));
+    $sosial = SosialMedia::all();
+    $deskripsiSistems = DeskripsiSistem::all();
+    return view('user.teknologi', compact('dokumens', 'kategoriDokumen','kontaks','sosial', 'deskripsiSistems'));
 }
 
 
-    public function notFound()
+    public function video()
     {
-        return view('user.404');
+        $videos = Video::with('kategori', 'user')->get(); 
+    $kategoriVideo = KategoriVideo::all(); 
+    $kontaks = Kontak::all(); 
+    $sosial = SosialMedia::all();
+    $deskripsiSistems = DeskripsiSistem::all();
+        return view('user.video',  compact('kategoriVideo' , 'videos', 'kontaks','sosial', 'deskripsiSistems'));
     }
 }

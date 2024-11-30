@@ -33,6 +33,7 @@
 
       <!-- Config -->
       <script src="{{ asset('assets/js/config.js') }}"></script>
+     
     </head>
     <body>
       <div class="layout-wrapper layout-content-navbar">

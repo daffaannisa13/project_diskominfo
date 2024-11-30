@@ -31,7 +31,7 @@ Route::get('/gallery.html', [PageController::class, 'gallery'])->name('gallery')
 Route::get('/profil.html', [PageController::class, 'profill'])->name('profil');
 Route::get('/layanan.html', [PageController::class, 'layanan'])->name('layanan');
 Route::get('/teknologi.html', [PageController::class, 'teknologi'])->name('teknologi');
-Route::get('/404.html', [PageController::class, 'notFound'])->name('404');
+Route::get('/video.html', [PageController::class, 'video'])->name('video');
 
 Route::post('/store', [PageController::class, 'storekontak'])->name('kontak.storeuser');
 

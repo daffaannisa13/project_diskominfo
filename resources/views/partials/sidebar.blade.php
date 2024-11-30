@@ -1,16 +1,51 @@
+<?php
+// Konfigurasi koneksi database
+$host = 'localhost';
+$dbname = 'diskominfo';
+$username = 'root';
+$password = '';
+
+try {
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("Koneksi gagal: " . $e->getMessage());
+}
+
+// Query untuk mengambil logo_backend, alias, dan deskripsi dari tabel deskripsi_sistem
+$query = "SELECT logo_backend, alias, deskripsi FROM deskripsi_sistem LIMIT 1";
+$stmt = $pdo->query($query);
+$deskripsiSistem = $stmt->fetch(PDO::FETCH_ASSOC);
+
+// Menyimpan path logo_backend jika ada
+$logoPath = $deskripsiSistem['logo_backend'] ?? null;
+?>
+
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
-    <div class="app-brand demo">
-        <a href="{{ url('/') }}" class="app-brand-link">
-            <span class="app-brand-logo demo">
-                <!-- SVG logo -->
+    <div class="app-brand demo" style="display: flex; justify-content: center; align-items: center;">
+        <a href="/" class="app-brand-link">
+            <span class="app-brand-logo demo" style="text-align: center;">
+                <!-- Menampilkan logo dari database atau default logo jika tidak ada -->
+                <?php if ($logoPath): ?>
+                    <img src="{{ asset('storage/' . $logoPath) }}" alt="Logo Backend" style="width: 60px; height: auto; display: block; margin: 0 auto;" />
+                <?php else: ?>
+                    <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" style="width: 60px; height: auto; display: block; margin: 0 auto;" />
+                <?php endif; ?>
             </span>
-            <span class="app-brand-text demo menu-text fw-bolder ms-2"
-                style="text-transform: capitalize;">Diskominfo</span>
-        </a>
-        <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
-            <i class="bx bx-chevron-left bx-sm align-middle"></i>
         </a>
     </div>
+    <div class="app-info" style="text-align: center; padding-top: 5px;">
+        <!-- Menampilkan alias jika ada -->
+        <?php if (isset($deskripsiSistem['alias']) && !empty($deskripsiSistem['alias'])): ?>
+            <p style="font-size: 14px; font-weight: bold; margin: 0;"><?php echo htmlspecialchars($deskripsiSistem['alias']); ?></p>
+        <?php endif; ?>
+        <!-- Menampilkan deskripsi jika ada -->
+        <?php if (isset($deskripsiSistem['deskripsi']) && !empty($deskripsiSistem['deskripsi'])): ?>
+            <p style="font-size: 12px; color: #666; margin: 0;"><?php echo htmlspecialchars($deskripsiSistem['deskripsi']); ?></p>
+        <?php endif; ?>
+    </div>
+
+
     <div class="menu-inner-shadow"></div>
     <ul class="menu-inner py-1">
         <!-- Dashboard -->
@@ -209,6 +244,7 @@
     </ul>
 </aside>
 
+
 <script>
     document.querySelectorAll('.menu-toggle').forEach(function(toggle) {
         toggle.addEventListener('click', function(e) {
@@ -217,6 +253,7 @@
             subMenu.classList.toggle('show'); // Show the menu on click
         });
     });
+    
 </script>
 <style>
     .menu-sub.collapse {

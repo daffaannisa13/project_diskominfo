@@ -28,7 +28,7 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td><strong>{{ $profil->judul_profil }}</strong></td>
-                                <td>{{ Str::limit($profil->isi_profil, 50) }}...</td>
+                                <td>   {!! Str::limit(strip_tags($profil->isi_profil), 50) !!}...</td>
                                 <td>
                                     @if($profil->upload_gambar)
                                         <img src="{{ asset('storage/'.$profil->upload_gambar) }}" class="img-fluid" alt="Gambar Profil" style="width: 50px; height: auto;">
