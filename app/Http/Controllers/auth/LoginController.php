@@ -28,7 +28,7 @@ class LoginController extends Controller
         }
 
         // Jika login gagal, redirect kembali ke halaman login dengan pesan error
-        return back()->withErrors(['loginError' => 'Username atau Password salah!']);
+       return redirect()->back()->with('error', 'Nama pengguna atau kata sandi salah.');
     }
 
      public function logout(Request $request)

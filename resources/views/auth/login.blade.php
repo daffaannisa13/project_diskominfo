@@ -37,6 +37,15 @@
           <!-- Login -->
           <div class="card">
             <div class="card-body">
+              
+              <!-- Alert for Errors -->
+              @if(session('error'))
+              <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Error!</strong> {{ session('error') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+              @endif
+
               <!-- Logo -->
               <div class="app-brand justify-content-center">
                 <a href="index.html" class="app-brand-link gap-2">
