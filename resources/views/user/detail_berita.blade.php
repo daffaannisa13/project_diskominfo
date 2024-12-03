@@ -136,48 +136,65 @@
     <!-- Navbar & Hero Start -->
 <div class="container-fluid position-relative p-0">
     <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
-        <div class="navbar-content">
-            @foreach($deskripsiSistems as $deskripsiSistem)
-                <div class="navbar-item">
-                    <img src="{{ asset('storage/' . $deskripsiSistem->logo_frontend) }}" 
-                         alt="{{ $deskripsiSistem->alias }}" 
-                         style="width: 50px; height: 50px;">
-                    <h5 class="text-white">{{ $deskripsiSistem->alias }}</h5>
-                    <p class="text-white">{{ $deskripsiSistem->deskripsi }}</p>
-                </div>
-            @endforeach
+        <div class="navbar-content text-center"> <!-- Memastikan konten terpusat -->
+            {{-- @foreach($deskripsiSistems as $deskripsiSistem) --}}
+               <div class="navbar-item">
+    @if(isset($deskripsiSistems->logo_frontend) && !empty($deskripsiSistems->logo_frontend))
+        <img src="{{ asset('storage/' . $deskripsiSistems->logo_frontend) }}" 
+             alt="{{ $deskripsiSistems->alias }}" 
+             style="width: 70px; height: 70px; margin-bottom: 2px;">
+    @else
+        <img src="{{ asset('assets/img/logo.png') }}" 
+             alt="Logo Default" 
+             style="width: 70px; height: 70px; margin-bottom: 2px;">
+    @endif
+
+    @if(isset($deskripsiSistems->alias) && !empty($deskripsiSistems->alias))
+        <h5 class="text-white" style="font-size: 16px; margin-top: 5px; margin-bottom: 1px;">{{ $deskripsiSistems->alias }}</h5>
+        @else
+        <h5 class="text-white" style="font-size: 16px; margin-top: 5px; margin-bottom: 5px;">
+            Diskominfo
+        </h5>
+    @endif
+
+    @if(isset($deskripsiSistems->deskripsi) && !empty($deskripsiSistems->deskripsi))
+        <p class="text-white" style="font-size: 12px; margin-top: 0; margin-bottom: 0;">{{ $deskripsiSistems->deskripsi }}</p>
+        @else
+        <p class="text-white" style="font-size: 12px; margin-top: 0; margin-bottom: 0;"> Dinas Komunikasi dan Informatika</p>
+    @endif
+</div>
+
+            {{-- @endforeach --}}
         </div>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                <span class="fa fa-bars"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <div class="navbar-nav ms-auto py-0">
-                    <a href="/" class="nav-item nav-link">Home</a>
-                    
-                    <a href="layanan.html" class="nav-item nav-link">Layanan</a>
 
-                     <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">Informasi</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="fa fa-bars"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav ms-auto py-0">
+                        <a href="/" class="nav-item nav-link active">Home</a>
+                        <a href="layanan.html" class="nav-item nav-link">Layanan</a>
+                        {{-- <a href="info.html" class="nav-item nav-link">Info Penting</a> --}}
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Informasi</a>
                             <div class="dropdown-menu m-0">
                                 <a href="design.html" class="dropdown-item">Agenda</a>
                                 <a href="teknologi.html" class="dropdown-item">Dokumen</a>
-                                <a href="berita.html" class="dropdown-item active">Berita</a>
+                                <a href="berita.html" class="dropdown-item">Berita</a>
                             </div>
                         </div>
-                         <div class="nav-item dropdown">
+                        <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Gallery</a>
                             <div class="dropdown-menu m-0">
                                 <a href="gallery.html" class="dropdown-item">Foto</a>
                                 <a href="video.html" class="dropdown-item">Video</a>
                             </div>
                         </div>
-                    <a href="contact.html" class="nav-item nav-link">Kontak Kami</a>
+                        <a href="contact.html" class="nav-item nav-link">Kontak Kami</a>
+                    </div>
                 </div>
-            </div>
-        </nav>
-
-
+            </nav>
     </div>
 
     <!-- Header Start -->
@@ -220,83 +237,120 @@
     
         <!-- Footer Start -->
         <div class="container-fluid footer py-5">
-    <div class="container py-5">
-        <div class="row g-5">
-            @foreach($kontaks as $kontak)
-                <div class="col-md-6 col-lg-6 col-xl-3">
-                    <div class="footer-item d-flex flex-column">
-                        <h4 class="mb-4 text-white">Get In Touch</h4>
-                         <a href="">
-            <i class="fas fa-map-marker-alt"></i> {{ $kontak->alamat ?? 'Address not available' }}
-        </a>
-                        <a href="mailto:{{ $kontak->email ?? '#' }}"><i class="fas fa-envelope me-2"></i> {{ $kontak->email ?? 'Email not available' }}</a>
-                        <a href="tel:{{ $kontak->no_telp ?? '#' }}"><i class="fas fa-phone me-2"></i> {{ $kontak->no_telp ?? 'Phone number not available' }}</a>
-                        <br>
-                        @endforeach
+            <div class="container py-5">
+                <div class="row g-5">
+                    <!-- Bagian Kiri: Logo dan Deskripsi Sistem -->
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item d-flex flex-column text-center">
+                            <center>
+                            @if(isset($deskripsiSistems->logo_frontend) && !empty($deskripsiSistems->logo_frontend))
+                                <img src="{{ asset('storage/' . $deskripsiSistems->logo_frontend) }}" 
+                                     alt="{{ $deskripsiSistems->alias }}" 
+                                     style="width: 70px; height: 70px; margin-bottom: 10px;">
+                            @else
+                                <img src="{{ asset('assets/img/logo.png') }}" 
+                                     alt="Logo Default" 
+                                     style="width: 70px; height: 70px; margin-bottom: 10px;">
+                            @endif
+                        </center>
+                            @if(isset($deskripsiSistems->alias) && !empty($deskripsiSistems->alias))
+                                <h5 class="text-white" style="font-size: 16px; margin-top: 5px; margin-bottom: 5px;">
+                                    {{ $deskripsiSistems->alias }}
+                                </h5>
+                                @else
+                                <h5 class="text-white" style="font-size: 16px; margin-top: 5px; margin-bottom: 5px;">
+                                    Diskominfo
+                                </h5>
+                            @endif
+                            @if(isset($deskripsiSistems->deskripsi) && !empty($deskripsiSistems->deskripsi))
+                                <p class="text-white" style="font-size: 12px; margin-top: 0; margin-bottom: 0;">
+                                    {{ $deskripsiSistems->deskripsi }}
+                                </p>
+                                @else
+                                <p class="text-white" style="font-size: 16px; margin-top: 5px; margin-bottom: 5px;">
+                                    Dinas Komunikasi dan Informatika
+                                </p>
+                            @endif
+                        </div>
                     </div>
-                    
+        
+                    <!-- Bagian Tengah: Get In Touch -->
+                    @foreach($kontaks as $kontak)
+                        <div class="col-md-6 col-lg-6 col-xl-3">
+                            <div class="footer-item d-flex flex-column">
+                                <h4 class="mb-4 text-white">Get In Touch</h4>
+                                <a href="">
+                                    <i class="fas fa-map-marker-alt"></i> {{ $kontak->alamat ?? 'Address not available' }}
+                                </a>
+                                <a href="mailto:{{ $kontak->email ?? '#' }}">
+                                    <i class="fas fa-envelope me-2"></i> {{ $kontak->email ?? 'Email not available' }}
+                                </a>
+                                <a href="tel:{{ $kontak->no_telp ?? '#' }}">
+                                    <i class="fas fa-phone me-2"></i> {{ $kontak->no_telp ?? 'Phone number not available' }}
+                                </a>
+                            </div>
+                        </div>
+                    @endforeach
+        
+                    <!-- Bagian Menu -->
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item d-flex flex-column">
+                            <h4 class="mb-4 text-white">Menu</h4>
+                            <a href="/"><i class="fas fa-angle-right me-2"></i> Home</a>
+                            <a href="layanan.html"><i class="fas fa-angle-right me-2"></i> Layanan</a>
+                            <!-- Dropdown Informasi -->
+                            <div class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown">
+                                    <i class="fas fa-angle-right me-2"></i> Informasi
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="design.html">Agenda</a></li>
+                                    <li><a class="dropdown-item" href="teknologi.html">Dokumen</a></li>
+                                    <li><a class="dropdown-item" href="berita.html">Berita</a></li>
+                                </ul>
+                            </div>
+                            <!-- Dropdown Galeri -->
+                            <div class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown">
+                                    <i class="fas fa-angle-right me-2"></i> Galeri
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="gallery.html">Foto</a></li>
+                                    <li><a class="dropdown-item" href="video.html">Video</a></li>
+                                </ul>
+                            </div>
+                            <a href="contact.html"><i class="fas fa-angle-right me-2"></i> Kontak Kami</a>
+                        </div>
+                    </div>
+        
+                    <!-- Bagian Sosial Media -->
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item d-flex flex-column">
+                            <h4 class="mb-4 text-white">Sosial Media</h4>
+                            @foreach($sosial as $sosials)
+                                <div class="d-flex align-items-center mb-2">
+                                    <a class="btn-square btn btn-primary rounded-circle me-2" href="{{ $sosials->url ?? '#' }}" target="_blank">
+                                        @if($sosials->icon == 'instagram')
+                                            <i class="fab fa-instagram"></i>
+                                        @elseif($sosials->icon == 'youtube')
+                                            <i class="fab fa-youtube"></i>
+                                        @elseif($sosials->icon == 'twitter')
+                                            <i class="fab fa-twitter"></i>
+                                        @else
+                                            <i class="fas fa-globe"></i>
+                                        @endif
+                                    </a>
+                                    <span class="text-white">{{ $sosials->nama }}</span>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
                 </div>
-            <div class="col-md-6 col-lg-6 col-xl-3">
-    <div class="footer-item d-flex flex-column">
-        <h4 class="mb-4 text-white">Menu</h4>
-        <a href="/"><i class="fas fa-angle-right me-2"></i> Home</a>
-        <a href="layanan.html"><i class="fas fa-angle-right me-2"></i> Layanan</a>
-        <div class="dropdown">
-            <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="fas fa-angle-right me-2"></i> Informasi
-            </a>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="design.html" style="color: rgb(0, 0, 0);">Agenda</a></li>
-                <li><a class="dropdown-item" href="teknologi.html" style="color: rgb(0, 0, 0);">Dokumen</a></li>
-                <li><a class="dropdown-item" href="berita.html" style="color: rgb(0, 0, 0);">Berita</a></li>
-            </ul>
-        </div>
-        <div class="dropdown">
-            <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="fas fa-angle-right me-2"></i> Galeri
-            </a>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="gallery.html" style="color: rgb(0, 0, 0);">Foto</a></li>
-                <li><a class="dropdown-item" href="video.html" style="color: rgb(0, 0, 0);">Video</a></li>
-            </ul>
-        </div>
-
-        <a href="contact.html"><i class="fas fa-angle-right me-2"></i> Kontak Kami</a>
-    </div>
-</div>
-
-<div class="col-md-6 col-lg-6 col-xl-3">
-    <div class="footer-item d-flex flex-column">
-        <h4 class="mb-4 text-white">Sosial Media</h4>
-        @foreach($sosial as $sosials)
-            <div class="d-flex align-items-center mb-2">
-                <a class="btn-square btn btn-primary rounded-circle me-2" href="{{ $sosials->url ?? '#' }}" target="_blank">
-                    <!-- Check the icon of the social media and render the appropriate icon -->
-                    @if($sosials->icon == 'instagram')
-                        <i class="fab fa-instagram"></i>
-                    @elseif($sosials->icon == 'youtube')
-                        <i class="fab fa-youtube"></i>
-                    @elseif($sosials->icon == 'twitter')
-                        <i class="fab fa-twitter"></i>
-                    @else
-                        <i class="fas fa-globe"></i> <!-- Fallback icon if icon name is not matched -->
-                    @endif
-                </a>
-                <span class="text-white">{{ $sosials->nama }}</span> <!-- Display the name of the social media -->
             </div>
-        @endforeach
-    </div>
-</div>
-
-
-
-</div>
-    </div>
-</div>
-
+        </div>
         <!-- Footer End -->
     <!-- Copyright Start -->
-        <div class="container-fluid copyright text-body py-4">
+        {{-- <div class="container-fluid copyright text-body py-4">
             <div class="container">
                 <div class="row g-4 align-items-center">
                     <div class="col-md-6 text-center text-md-end mb-md-0">
@@ -311,7 +365,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <!-- Copyright End -->
     <!-- Back to Top -->
     <a href="#" class="btn btn-primary btn-primary-outline-0 btn-md-square back-to-top"><i
