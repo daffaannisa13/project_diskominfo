@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('profil', function (Blueprint $table) {
+         Schema::create('layanans', function (Blueprint $table) {
             $table->id();
-            $table->string('judul_profil');
-            $table->text('isi_profil');
+            $table->string('judul_layanan');
+            $table->text('isi_layanan');
             $table->string('upload_gambar')->nullable();
             $table->string('file')->nullable();
             $table->timestamps();
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('profil');
+        Schema::dropIfExists('layanans');
     }
 };

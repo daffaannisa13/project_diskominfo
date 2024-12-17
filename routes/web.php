@@ -20,6 +20,7 @@ use App\Http\Controllers\DeskripsiSistemController;
 use App\Http\Controllers\BidangController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LayananController;
 
 use App\Http\Controllers\PageController;
 
@@ -219,5 +220,12 @@ Route::put('/bidang/{bidang}', [BidangController::class, 'update'])->name('bidan
 Route::delete('/bidang/{bidang}', [BidangController::class, 'destroy'])->name('bidang.destroy');
 
 
+Route::get('/layanan', [LayananController::class, 'index'])->name('layanan.index');
+Route::get('/layanan/create', [LayananController::class, 'create'])->name('layanan.create');
+Route::post('/layanan', [LayananController::class, 'store'])->name('layanan.store');
+Route::get('/layanan/{layanan}', [LayananController::class, 'show'])->name('layanan.show');
+Route::get('/layanan/{layanan}/edit', [LayananController::class, 'edit'])->name('layanan.edit');
+Route::put('/layanan/{layanan}', [LayananController::class, 'update'])->name('layanan.update');
+Route::delete('/layanan/{layanan}', [LayananController::class, 'destroy'])->name('layanan.destroy');
 });
 

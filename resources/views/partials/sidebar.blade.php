@@ -192,12 +192,20 @@ $logoPath = $deskripsiSistem['logo_backend'] ?? null;
         </li>
 
         <!-- Deskripsi Sistem -->
-        <li class="menu-item">
-            <a href="{{ url('/deskripsi-sistem') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-info-circle"></i>
-                <div>Deskripsi Sistem</div>
-            </a>
-        </li>
+<li class="menu-item">
+    <a href="{{ url('/deskripsi-sistem') }}" class="menu-link">
+        <i class="menu-icon tf-icons bx bx-book-open"></i> <!-- Updated icon -->
+        <div>Deskripsi Sistem</div>
+    </a>
+</li>
+
+<!-- Layanan -->
+<li class="menu-item">
+    <a href="{{ url('/layanan') }}" class="menu-link">
+        <i class="menu-icon tf-icons bx bx-cog"></i> <!-- Updated icon -->
+        <div>Layanan</div>
+    </a>
+</li>
 
 
 

@@ -6,33 +6,29 @@
         <div class="col-xxl">
             <div class="card mb-4">
                 <div class="card-header d-flex align-items-center justify-content-between">
-                    <h5 class="mb-0">Tambah Profil</h5>
-                    <small class="text-muted float-end">Form untuk menambah profil baru</small>
+                    <h5 class="mb-0">Tambah Layanan</h5>
+                    <small class="text-muted float-end">Form untuk menambah layanan baru</small>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('profil.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('layanan.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
 
-                        <!-- Judul Profil -->
-                        <div class="row mb-3">
-                            <label class="col-sm-2 col-form-label" for="judul_profil">Judul Profil</label>
-                            <div class="col-sm-10">
-                                <input type="text" name="judul_profil" id="judul_profil" class="form-control" value="{{ old('judul_profil') }}" required>
-                                @error('judul_profil')
-                                    <div class="text-danger mt-1">{{ $message }}</div>
-                                @enderror
-                            </div>
+                        <!-- Judul Layanan -->
+                        <div class="mb-3">
+                            <label for="judul_layanan" class="form-label">Judul Layanan</label>
+                            <input type="text" name="judul_layanan" id="judul_layanan" class="form-control" value="{{ old('judul_layanan') }}" required>
+                            @error('judul_layanan')
+                                <small class="text-danger">{{ $message }}</small>
+                            @enderror
                         </div>
 
-                        <!-- Isi Profil (with CKEditor) -->
-                        <div class="row mb-3">
-                            <label class="col-sm-2 col-form-label" for="isi_profil">Isi Profil</label>
-                            <div class="col-sm-10">
-                                <textarea name="isi_profil" id="isi_profil" class="form-control" rows="5" required>{{ old('isi_profil') }}</textarea>
-                                @error('isi_profil')
-                                    <div class="text-danger mt-1">{{ $message }}</div>
-                                @enderror
-                            </div>
+                        <!-- Isi Layanan (with CKEditor) -->
+                        <div class="mb-3">
+                            <label for="isi_layanan" class="form-label">Isi Layanan</label>
+                            <textarea name="isi_layanan" id="isi_layanan" class="form-control" rows="5" required>{{ old('isi_layanan') }}</textarea>
+                            @error('isi_layanan')
+                                <small class="text-danger">{{ $message }}</small>
+                            @enderror
                         </div>
 
                         <!-- Upload Gambar -->
@@ -60,11 +56,9 @@
                         </div>
 
                         <!-- Tombol Submit -->
-                        <div class="row justify-content-end">
-                            <div class="col-sm-10">
-                                <button type="submit" class="btn btn-primary">Simpan</button>
-                                <a href="{{ route('profil.index') }}" class="btn btn-secondary ms-2">Kembali</a>
-                            </div>
+                        <div class="d-flex justify-content-end">
+                            <button type="submit" class="btn btn-primary">Simpan</button>
+                            <a href="{{ route('layanan.index') }}" class="btn btn-secondary ms-2">Kembali</a>
                         </div>
                     </form>
                 </div>
@@ -76,6 +70,6 @@
 <!-- Include CKEditor script -->
 <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
 <script>
-    CKEDITOR.replace('isi_profil');  // Initializes CKEditor on the textarea
+    CKEDITOR.replace('isi_layanan');  // Initializes CKEditor on the textarea
 </script>
 @endsection

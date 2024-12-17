@@ -211,7 +211,6 @@
     </div>
     <!-- Header End -->
 
-<!-- Detail Profil Start -->
 <div class="container py-5">
     <div class="text-center mb-5">
         <h5 class="section-title px-3">Detail Profile</h5>
@@ -226,6 +225,32 @@
         
         <!-- Display isi_profil as HTML -->
         <div>{!! $profile->isi_profil !!}</div>
+
+        
+      <!-- Tombol untuk file -->
+@if(isset($profile->file) && !empty($profile->file))
+    <div class="text-center mt-4">
+        @php
+            $fileExtension = pathinfo($profile->file, PATHINFO_EXTENSION);
+        @endphp
+
+        @if($fileExtension == 'pdf')
+            <a href="{{ asset('storage/' . $profile->file) }}" class="btn btn-primary" target="_blank">
+                <i class="fa fa-eye me-2"></i>Lihat PDF
+            </a>
+        @elseif(in_array($fileExtension, ['doc', 'docx']))
+            <a href="{{ asset('storage/' . $profile->file) }}" class="btn btn-secondary" download>
+                <i class="fa fa-download me-2"></i>Unduh Dokumen
+            </a>
+        @else
+            <a href="{{ asset('storage/' . $profile->file) }}" class="btn btn-secondary" target="_blank">
+                <i class="fa fa-eye me-2"></i>Lihat File Lainnya
+            </a>
+        @endif
+    </div>
+@else
+    <p class="text-center mt-4 text-danger">Tidak ada file yang tersedia untuk diunduh.</p>
+@endif
     </div>
 </div>
 

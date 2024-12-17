@@ -295,30 +295,29 @@
         <!-- Navbar & Hero End -->
 
         <!-- About Start -->
-        <div class="container-fluid about py-5">
-            <div class="container py-5">
-                <div class="row g-5 align-items-center">
-                    <div class="col-lg-5">
-                        <div class="h-100" style="border: 50px solid; border-color: transparent #13357B transparent #13357B;">
-                            @if(isset($profil) && $profil->upload_gambar)
-                            <img src="{{ asset('storage/' . $profil->upload_gambar) }}" class="img-fluid w-100 h-100" alt="">
-                            @else
-                            <img src="{{ asset('assets/img/avatars/test.jpg') }}"  class="img-fluid w-100 h-100" alt="">
-                            {{-- <p>Gambar tidak tersedia</p> --}}
-                        @endif
-                        
-                        </div>
-                    </div>
-                    <div class="col-lg-7" style="background: linear-gradient(rgba(255, 255, 255, .8), rgba(255, 255, 255, .8)), url(user/img/about-img-1.png);">
-                         <h5 class="section-about-title pe-3">Kepala Dinas</h5>
-                         <h1 class="mb-4">{{ $profil->judul_profil ?? 'Rudi Hartono,S.Ap.' }}</h1>
-                <p class="mb-4">{{ $profil->isi_profil ?? 'Assalamualaikum Wr. Wb.
-                Wilujeng Sumping di Website Dinas Komunikasi dan Informatika Kabupaten Purwakarta.
-                Website ini salah satu media penyampai informasi dan sebagai jembatan untuk membangun komunikasi interaktif antara pemerintah dengan masyarakat/pengunjung. Harapan kami semoga website Diskominfo dapat memberikan kontribusi dalam meningkatkan pelayanan informasi kepada masyarakat.'}}</p>
-                    </div>
+       <div class="container-fluid about py-5">
+    <div class="container py-5">
+        <div class="row g-5 align-items-center">
+            <div class="col-lg-5">
+                <div class="h-100" style="border: 50px solid; border-color: transparent #13357B transparent #13357B;">
+                    @if(isset($profil) && $profil->upload_gambar)
+                        <img src="{{ asset('storage/' . $profil->upload_gambar) }}" class="img-fluid w-100 h-100" alt="">
+                    @else
+                        <img src="{{ asset('assets/img/avatars/test.jpg') }}" class="img-fluid w-100 h-100" alt="">
+                    @endif
                 </div>
             </div>
+            <div class="col-lg-7" style="background: linear-gradient(rgba(255, 255, 255, .8), rgba(255, 255, 255, .8)), url(user/img/about-img-1.png);">
+                <h5 class="section-about-title pe-3">Kepala Dinas</h5>
+                <h1 class="mb-4">{{ $profil->judul_profil ?? 'Rudi Hartono,S.Ap.' }}</h1>
+                <p class="mb-4">
+                    {!! $profil->isi_profil ?? 'Assalamualaikum Wr. Wb. Wilujeng Sumping di Website Dinas Komunikasi dan Informatika Kabupaten Purwakarta. Website ini salah satu media penyampai informasi dan sebagai jembatan untuk membangun komunikasi interaktif antara pemerintah dengan masyarakat/pengunjung. Harapan kami semoga website Diskominfo dapat memberikan kontribusi dalam meningkatkan pelayanan informasi kepada masyarakat.' !!}
+                </p>
+            </div>
         </div>
+    </div>
+</div>
+
         <!-- About End -->
 <!-- Packages Start -->
 <div class="container py-5">
