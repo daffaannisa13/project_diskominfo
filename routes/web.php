@@ -31,6 +31,7 @@ Route::get('/design.html', [PageController::class, 'design'])->name('design');
 Route::get('/gallery.html', [PageController::class, 'gallery'])->name('gallery');
 Route::get('/profil.html', [PageController::class, 'profill'])->name('profil');
 Route::get('/layanan.html', [PageController::class, 'layanan'])->name('layanan');
+Route::get('/layan.html', [PageController::class, 'layanans'])->name('layanans');
 Route::get('/teknologi.html', [PageController::class, 'teknologi'])->name('teknologi');
 Route::get('/video.html', [PageController::class, 'video'])->name('video');
 
@@ -38,6 +39,7 @@ Route::post('/store', [PageController::class, 'storekontak'])->name('kontak.stor
 
 Route::get('/tampilan/detail/{id}', [PageController::class, 'detail'])->name('tampilan.detail');
 Route::get('/profile/detail/{id}', [PageController::class, 'detailprofil'])->name('tampilan.detailprofil');
+Route::get('/layanan/detail/{id}', [PageController::class, 'detaillayanan'])->name('tampilan.detaillayanan');
 
 /*
 |---------------------------------------------------------------------------

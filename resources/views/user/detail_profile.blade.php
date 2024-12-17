@@ -174,24 +174,24 @@
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0">
                         <a href="/" class="nav-item nav-link active">Home</a>
-                        <a href="layanan.html" class="nav-item nav-link">Layanan</a>
+                        <a href="/layanan.html" class="nav-item nav-link">Layanan</a>
                         {{-- <a href="info.html" class="nav-item nav-link">Info Penting</a> --}}
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Informasi</a>
                             <div class="dropdown-menu m-0">
-                                <a href="design.html" class="dropdown-item">Agenda</a>
-                                <a href="teknologi.html" class="dropdown-item">Dokumen</a>
-                                <a href="berita.html" class="dropdown-item">Berita</a>
+                                <a href="/design.html" class="dropdown-item">Agenda</a>
+                                <a href="/teknologi.html" class="dropdown-item">Dokumen</a>
+                                <a href="/berita.html" class="dropdown-item">Berita</a>
                             </div>
                         </div>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Gallery</a>
                             <div class="dropdown-menu m-0">
-                                <a href="gallery.html" class="dropdown-item">Foto</a>
-                                <a href="video.html" class="dropdown-item">Video</a>
+                                <a href="/gallery.html" class="dropdown-item">Foto</a>
+                                <a href="/video.html" class="dropdown-item">Video</a>
                             </div>
                         </div>
-                        <a href="contact.html" class="nav-item nav-link">Kontak Kami</a>
+                        <a href="/contact.html" class="nav-item nav-link">Kontak Kami</a>
                     </div>
                 </div>
             </nav>
@@ -203,7 +203,7 @@
         <div class="container text-center py-5" style="max-width: 900px;">
             <h3 class="text-white display-3 mb-4">Detail Profil</h1>
                 <ol class="breadcrumb justify-content-center mb-0">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item"><a href="/">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Pages</a></li>
                     <li class="breadcrumb-item active text-white">Detail Profil</li>
                 </ol>
@@ -319,16 +319,16 @@
                         <div class="footer-item d-flex flex-column">
                             <h4 class="mb-4 text-white">Menu</h4>
                             <a href="/"><i class="fas fa-angle-right me-2"></i> Home</a>
-                            <a href="layanan.html"><i class="fas fa-angle-right me-2"></i> Layanan</a>
+                            <a href="/layanan.html"><i class="fas fa-angle-right me-2"></i> Layanan</a>
                             <!-- Dropdown Informasi -->
                             <div class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown">
                                     <i class="fas fa-angle-right me-2"></i> Informasi
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="design.html">Agenda</a></li>
-                                    <li><a class="dropdown-item" href="teknologi.html">Dokumen</a></li>
-                                    <li><a class="dropdown-item" href="berita.html">Berita</a></li>
+                                    <li><a class="dropdown-item" href="/design.html">Agenda</a></li>
+                                    <li><a class="dropdown-item" href="/teknologi.html">Dokumen</a></li>
+                                    <li><a class="dropdown-item" href="/berita.html">Berita</a></li>
                                 </ul>
                             </div>
                             <!-- Dropdown Galeri -->
@@ -337,11 +337,11 @@
                                     <i class="fas fa-angle-right me-2"></i> Galeri
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="gallery.html">Foto</a></li>
-                                    <li><a class="dropdown-item" href="video.html">Video</a></li>
+                                    <li><a class="dropdown-item" href="/gallery.html">Foto</a></li>
+                                    <li><a class="dropdown-item" href="/video.html">Video</a></li>
                                 </ul>
                             </div>
-                            <a href="contact.html"><i class="fas fa-angle-right me-2"></i> Kontak Kami</a>
+                            <a href="/contact.html"><i class="fas fa-angle-right me-2"></i> Kontak Kami</a>
                         </div>
                     </div>
         

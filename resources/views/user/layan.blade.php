@@ -123,7 +123,7 @@
         <div class="container text-center py-5" style="max-width: 900px;">
             <h3 class="text-white display-3 mb-4">Profil</h1>
                 <ol class="breadcrumb justify-content-center mb-0">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item"><a href="/">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Pages</a></li>
                     <li class="breadcrumb-item active text-white">Profil</li>
                 </ol>
@@ -133,25 +133,25 @@
 
         <div class="container py-5">
     <div class="text-center mb-5" style="max-width: 900px; margin: 0 auto;">
-        <h5 class="section-title px-3">Profil</h5>
-        <h1 class="mb-0">Profil</h1>
+        <h5 class="section-title px-3">Layanan</h5>
+        <h1 class="mb-0">Layanan</h1>
     </div>
 
      <div class="container">
-    @foreach($profiles as $profile)
+    @foreach($layanans as $layan)
         <div class="row"><!-- item -->
              <div class="col-md-2 col-sm-2 d-flex justify-content-center"><!-- company logo -->
-                <img src="{{ Storage::url($profile->upload_gambar) }}" 
+                <img src="{{ Storage::url($layan->upload_gambar) }}" 
                      class="img-thumbnail" 
                      style="max-width: 200px; height: auto;" 
-                     alt="{{ $profile->judul_profil }}">
+                     alt="{{ $layan->judul_layanan }}">
             </div>
             <div class="col-md-10 col-xs-12 col-sm-10"><!-- company detail -->
                 <h4 class="margin-bottom-10">
-                    <a href="{{ url('profile', $profile->id) }}">{{ $profile->judul_profil }}</a>
+                    <a href="{{ url('layans', $layan->id) }}">{{ $layan->judul_layanan }}</a>
                 </h4>
-                <p>{{ \Illuminate\Support\Str::limit(strip_tags($profile->isi_profil), 100) }}</p>
-                     <a href="{{ route('tampilan.detailprofil', $profile->id) }}"  class="btn btn-sm">Selengkapnya...<i class="fa fa-arrow-right"></i></a>
+                <p>{{ \Illuminate\Support\Str::limit(strip_tags($layan->isi_layanan), 100) }}</p>
+                     <a href="{{ route('tampilan.detaillayanan', $layan->id) }}"  class="btn btn-sm">Selengkapnya...<i class="fa fa-arrow-right"></i></a>
                 </p>
             </div>
         </div>

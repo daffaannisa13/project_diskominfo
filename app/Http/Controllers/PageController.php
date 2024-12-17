@@ -13,6 +13,7 @@ use App\Models\Profil;
 use App\Models\Gambar;
 use App\Models\KategoriGambar;
 use App\Models\Video;
+use App\Models\Layanan;
 use App\Models\DeskripsiSistem;
 use App\Models\KategoriVideo;
 use App\Models\KategoriDokumen;
@@ -107,6 +108,25 @@ public function detailprofil($id)
     $sosial = SosialMedia::all();
     $deskripsiSistems = DeskripsiSistem::all();
     return view('user.detail_profile', compact('profile', 'kontaks', 'sosial', 'deskripsiSistems'));
+}
+
+public function detaillayanan($id)
+{
+    $kontaks = Kontak::all();
+    $layananss = Layanan::findOrFail($id);
+    $sosial = SosialMedia::all();
+    $deskripsiSistems = DeskripsiSistem::all();
+    return view('user.detail_layanan', compact('layananss', 'kontaks', 'sosial', 'deskripsiSistems'));
+}
+
+
+public function layanans()
+{
+    $kontaks = Kontak::all();
+    $layanans = Layanan::all();
+    $sosial = SosialMedia::all();
+    $deskripsiSistems = DeskripsiSistem::all();
+    return view('user.layan', compact('layanans', 'kontaks', 'sosial', 'deskripsiSistems'));
 }
 
 

@@ -203,24 +203,24 @@
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0">
                         <a href="/" class="nav-item nav-link active">Home</a>
-                        <a href="layanan.html" class="nav-item nav-link">Layanan</a>
+                        <a href="/layanan.html" class="nav-item nav-link">Layanan</a>
                         {{-- <a href="info.html" class="nav-item nav-link">Info Penting</a> --}}
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Informasi</a>
                             <div class="dropdown-menu m-0">
-                                <a href="design.html" class="dropdown-item">Agenda</a>
-                                <a href="teknologi.html" class="dropdown-item">Dokumen</a>
-                                <a href="berita.html" class="dropdown-item">Berita</a>
+                                <a href="/design.html" class="dropdown-item">Agenda</a>
+                                <a href="/teknologi.html" class="dropdown-item">Dokumen</a>
+                                <a href="/berita.html" class="dropdown-item">Berita</a>
                             </div>
                         </div>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Gallery</a>
                             <div class="dropdown-menu m-0">
-                                <a href="gallery.html" class="dropdown-item">Foto</a>
-                                <a href="video.html" class="dropdown-item">Video</a>
+                                <a href="/gallery.html" class="dropdown-item">Foto</a>
+                                <a href="/video.html" class="dropdown-item">Video</a>
                             </div>
                         </div>
-                        <a href="contact.html" class="nav-item nav-link">Kontak Kami</a>
+                        <a href="/contact.html" class="nav-item nav-link">Kontak Kami</a>
                     </div>
                 </div>
             </nav>
@@ -394,7 +394,7 @@
 
             <!-- Layanan Service -->
             <div class="col-lg-4 col-md-6">
-                <a href="/layanan" class="text-decoration-none">
+                <a href="/layan.html" class="text-decoration-none">
                     <div class="service-content-inner d-flex align-items-center bg-white border border-primary rounded p-4">
                         <div class="service-icon p-4">
                             <i class="fa fa-hotel fa-4x text-primary"></i>

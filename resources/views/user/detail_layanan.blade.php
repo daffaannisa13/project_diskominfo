@@ -174,14 +174,14 @@
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0">
                         <a href="/" class="nav-item nav-link">Home</a>
-                        <a href="/layanan.html" class="nav-item nav-link">Layanan</a>
+                        <a href="/layanan.html" class="nav-item nav-link active">Layanan</a>
                         {{-- <a href="info.html" class="nav-item nav-link">Info Penting</a> --}}
                         <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">Informasi</a>
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Informasi</a>
                             <div class="dropdown-menu m-0">
                                 <a href="/design.html" class="dropdown-item">Agenda</a>
                                 <a href="/teknologi.html" class="dropdown-item">Dokumen</a>
-                                <a href="/berita.html" class="dropdown-item active">Berita</a>
+                                <a href="/berita.html" class="dropdown-item">Berita</a>
                             </div>
                         </div>
                         <div class="nav-item dropdown">
@@ -195,46 +195,68 @@
                     </div>
                 </div>
             </nav>
+
     </div>
 
     <!-- Header Start -->
     <div class="container-fluid bg-breadcrumb">
         <div class="container text-center py-5" style="max-width: 900px;">
-            <h3 class="text-white display-3 mb-4">Detail Berita</h1>
+            <h3 class="text-white display-3 mb-4">Detail Layanan</h1>
                 <ol class="breadcrumb justify-content-center mb-0">
                     <li class="breadcrumb-item"><a href="/">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Pages</a></li>
-                    <li class="breadcrumb-item active text-white">Detail Berita</li>
+                    <li class="breadcrumb-item active text-white">Detail Layanan</li>
                 </ol>
         </div>
     </div>
     <!-- Header End -->
 
-        <!-- Berita Detail Start -->
 <div class="container py-5">
     <div class="text-center mb-5">
-        <h5 class="section-title px-3">Detail berita</h5>
-
-                <h1>{{ $berita->judul }}</h1>
-                 </div>
-            <div class="card-body">
-                <div class="text-center">
-                    <img src="{{ asset('storage/' . $berita->gambar) }}" alt="{{ $berita->judul }}"  class="img-fluid mb-3" style="max-width: 500px;">
-                    </div>
-                    <div class="col px-0 px-md-3">
-                    <p><i class="fa fa-user"></i> {{ $berita->author }}</p>
-                    <p><i class="fa fa-calendar"></i> {{ \Carbon\Carbon::parse($berita->tanggal)->format('d M Y') }}</p>
-                </div>
-                 <p>{!! $berita->isi_p !!}</p>
-
-                
-            </div>
-        </div>
+        <h5 class="section-title px-3">Detail Layanan</h5>
+        <h1>{{ $layananss->judul_layanan }}</h1>
     </div>
-    <!-- Berita Detail End -->
+    <div>
+        <div class="text-center">
+            <img src="{{ asset('storage/' . $layananss->upload_gambar) }}" alt="{{ $layananss->judul_layanan }}" class="img-fluid mb-3" style="max-width: 500px;">
+        </div>
+
+        <p><strong>Tanggal:</strong> {{ \Carbon\Carbon::parse($layananss->created_at)->format('d M Y') }}</p>
+        
+        <!-- Display isi_layanan as HTML -->
+        <div>{!! $layananss->isi_layanan !!}</div>
+
+        
+      <!-- Tombol untuk file -->
+@if(isset($layananss->file) && !empty($layananss->file))
+    <div class="text-center mt-4">
+        @php
+            $fileExtension = pathinfo($layananss->file, PATHINFO_EXTENSION);
+        @endphp
+
+        @if($fileExtension == 'pdf')
+            <a href="{{ asset('storage/' . $layananss->file) }}" class="btn btn-primary" target="_blank">
+                <i class="fa fa-eye me-2"></i>Lihat PDF
+            </a>
+        @elseif(in_array($fileExtension, ['doc', 'docx']))
+            <a href="{{ asset('storage/' . $layananss->file) }}" class="btn btn-secondary" download>
+                <i class="fa fa-download me-2"></i>Unduh Dokumen
+            </a>
+        @else
+            <a href="{{ asset('storage/' . $layananss->file) }}" class="btn btn-secondary" target="_blank">
+                <i class="fa fa-eye me-2"></i>Lihat File Lainnya
+            </a>
+        @endif
+    </div>
+@else
+    <p class="text-center mt-4 text-danger">Tidak ada file yang tersedia untuk diunduh.</p>
+@endif
+    </div>
+</div>
 
 
-    
+
+  
         <!-- Footer Start -->
         <div class="container-fluid footer py-5">
             <div class="container py-5">
@@ -349,7 +371,8 @@
             </div>
         </div>
         <!-- Footer End -->
-    <!-- Copyright Start -->
+
+   <!-- Copyright Start -->
         {{-- <div class="container-fluid copyright text-body py-4">
             <div class="container">
                 <div class="row g-4 align-items-center">
