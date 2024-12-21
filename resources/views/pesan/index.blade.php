@@ -39,9 +39,9 @@
                                         <i class="bx bx-show"></i>
                                     </button>
 
-                                    <a href="{{ route('pesan.edit', $pesan->id) }}" class="btn btn-sm btn-warning">
+                                    {{-- <a href="{{ route('pesan.edit', $pesan->id) }}" class="btn btn-sm btn-warning">
                                         <i class="bx bx-pencil"></i>
-                                    </a>
+                                    </a> --}}
 
                                     <form action="{{ route('pesan.destroy', $pesan->id) }}" method="POST" class="d-inline">
                                         @csrf

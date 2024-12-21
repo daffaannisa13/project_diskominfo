@@ -10,21 +10,19 @@ class KategoriDokumenController extends Controller
 {
     public function index()
     {
-        $kategoriDokumens = KategoriDokumen::with('user')->get(); // Get all kategori dokumen with related user data
+        $kategoriDokumens = KategoriDokumen::all(); // Get all kategori dokumen with related user data
         return view('kategori_dokumen.index', compact('kategoriDokumens'));
     }
 
     public function create()
     {
-        $users = User::all(); // Fetch all users for the dropdown
-        return view('kategori_dokumen.create', compact('users'));
+        return view('kategori_dokumen.create');
     }
 
     public function store(Request $request)
     {
         $validated = $request->validate([
             'nama_kategori' => 'required|string|max:255',
-            'users_id' => 'required|exists:users,id', // Ensure a valid user is selected
         ]);
 
         KategoriDokumen::create($validated);
@@ -39,15 +37,13 @@ class KategoriDokumenController extends Controller
 
     public function edit(KategoriDokumen $kategoriDokumen)
     {
-        $users = User::all(); // Get all users for dropdown in edit form
-        return view('kategori_dokumen.edit', compact('kategoriDokumen', 'users'));
+        return view('kategori_dokumen.edit', compact('kategoriDokumen'));
     }
 
     public function update(Request $request, KategoriDokumen $kategoriDokumen)
     {
         $validated = $request->validate([
             'nama_kategori' => 'required|string|max:255',
-            'users_id' => 'required|exists:users,id', // Ensure valid user is selected
         ]);
 
         $kategoriDokumen->update($validated);

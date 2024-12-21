@@ -56,23 +56,7 @@
                                     </div>
                                 </div>
 
-                                <!-- Pilih User Field -->
-                                <div class="row mb-3">
-                                    <label class="col-sm-2 col-form-label" for="users_id">Pilih User</label>
-                                    <div class="col-sm-10">
-                                        <select name="users_id" id="users_id" class="form-select" required>
-                                            <option value="">-- Pilih User --</option>
-                                            @foreach ($users as $user)
-                                                <option value="{{ $user->id }}" {{ old('users_id', $dokumen->users_id) == $user->id ? 'selected' : '' }}>
-                                                    {{ $user->name }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                        @error('users_id')
-                                            <small class="text-danger">{{ $message }}</small>
-                                        @enderror
-                                    </div>
-                                </div>
+                               
 
                                 <!-- Action Buttons -->
                                 <div class="row justify-content-end">

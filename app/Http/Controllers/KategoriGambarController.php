@@ -18,18 +18,16 @@ class KategoriGambarController extends Controller
         return view('kategori_gambar.create');
     }
 
-    public function store(Request $request)
+     public function store(Request $request)
     {
         $validated = $request->validate([
             'nama_kategori' => 'required|string|max:255',
-            'url' => 'required|url', // Menyimpan URL gambar langsung, tidak melalui upload
         ]);
 
         KategoriGambar::create($validated);
 
         return redirect()->route('kategori-gambar.index')->with('success', 'Kategori gambar berhasil ditambahkan');
     }
-
     public function show(KategoriGambar $kategoriGambar)
     {
         return view('kategori_gambar.show', compact('kategoriGambar'));
@@ -40,11 +38,10 @@ class KategoriGambarController extends Controller
         return view('kategori_gambar.edit', compact('kategoriGambar'));
     }
 
-    public function update(Request $request, KategoriGambar $kategoriGambar)
+      public function update(Request $request, KategoriGambar $kategoriGambar)
     {
         $validated = $request->validate([
             'nama_kategori' => 'required|string|max:255',
-            'url' => 'nullable|url', // Validasi bahwa input adalah URL
         ]);
 
         $kategoriGambar->update($validated);

@@ -18,7 +18,6 @@
                             <tr>
                                 <th>#</th>
                                 <th>Nama Kategori</th>
-                                <th>User</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -27,7 +26,6 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td><strong>{{ $kategori->nama_kategori }}</strong></td>
-                                <td>{{ $kategori->user->name }}</td> <!-- Display the user who created the category -->
                                 <td>
                                     <!-- Show details button -->
                                     <button type="button" class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#showModal{{ $kategori->id }}">
@@ -58,8 +56,6 @@
                                         </div>
                                         <div class="modal-body">
                                             <strong>Nama Kategori:</strong> {{ $kategori->nama_kategori }}
-                                            <br>
-                                            <strong>Nama User:</strong> {{ $kategori->user->name }}
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>

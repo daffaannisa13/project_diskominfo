@@ -61,13 +61,13 @@ class UserController extends Controller
     // Update the specified user in storage
     public function update(Request $request, $id)
     {
-        // Validate the request
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'username' => 'required|string|max:255|unique:users,username,' . $id,
-            'bidang_id' => 'required|exists:bidang,id',
-            'password' => 'nullable|string|min:8|confirmed', // Optional new password validation
-        ]);
+       $request->validate([
+    'name' => 'required|string|max:255',
+    'username' => 'required|string|max:255|unique:users,username,' . $id,
+    'bidang_id' => 'required|exists:bidang,id',
+    'password' => 'nullable|string|min:8|confirmed', // Validasi konfirmasi password
+]);
+
 
         $user = User::findOrFail($id);
         $user->name = $request->name;

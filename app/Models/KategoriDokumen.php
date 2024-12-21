@@ -15,7 +15,6 @@ class KategoriDokumen extends Model
 
     protected $fillable = [
         'nama_kategori',
-        'users_id',
     ];
 
     public function dokumens()

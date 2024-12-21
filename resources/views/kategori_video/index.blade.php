@@ -18,7 +18,6 @@
                             <tr>
                                 <th>#</th>
                                 <th>Nama Kategori</th>
-                                <th>Video URL</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -27,9 +26,6 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td><strong>{{ $video->nama_kategori }}</strong></td>
-                                <td>
-                                    <a href="{{ $video->url }}" target="_blank" class="long-url">{{ $video->url }}</a>
-                                </td>
                                 <td>
                                     <button type="button" class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#showModal{{ $video->id }}">
                                         <i class="bx bx-show"></i>
@@ -57,9 +53,6 @@
                                         </div>
                                         <div class="modal-body text-start"> <!-- Align text to the left -->
                                             <p><strong>Nama Kategori:</strong> {{ $video->nama_kategori }}</p>
-                                            <p><strong>Video URL:</strong>
-                                                <a href="{{ $video->url }}" target="_blank" class="long-url-modal">{{ $video->url }}</a>
-                                            </p>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
@@ -77,15 +70,6 @@
 </div>
 
 <style>
-    /* CSS untuk memotong teks URL yang terlalu panjang */
-    .long-url, .long-url-modal {
-        display: inline-block;
-        max-width: 200px; /* Sesuaikan dengan lebar yang diinginkan */
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        vertical-align: middle;
-    }
 
     /* Memperbaiki jarak teks dalam modal */
     .modal-body p {

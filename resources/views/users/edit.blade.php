@@ -66,6 +66,19 @@
                             </div>
                         </div>
 
+                        <!-- Konfirmasi Password -->
+<div class="mb-3 row">
+    <label class="col-sm-2 col-form-label" for="password_confirmation">Konfirmasi Password</label>
+    <div class="col-sm-10">
+        <input type="password" name="password_confirmation" id="password_confirmation" class="form-control">
+        <small class="text-muted">Masukkan ulang password baru untuk konfirmasi.</small>
+        @error('password_confirmation')
+            <small class="text-danger">{{ $message }}</small>
+        @enderror
+    </div>
+</div>
+
+
                         <!-- Tombol Submit -->
                         <div class="row justify-content-end">
                             <div class="col-sm-10">

@@ -21,18 +21,16 @@ class KategoriVideoController extends Controller
         return view('kategori_video.create');
     }
 
-    public function store(Request $request)
+     public function store(Request $request)
     {
         // Validate the incoming request
         $request->validate([
             'nama_kategori' => 'required|string|max:255',
-            'url' => 'required|url' // Validates that the input is a valid URL
         ]);
 
         // Create a new category video record
         KategoriVideo::create([
             'nama_kategori' => $request->nama_kategori,
-            'url' => $request->url // Store the URL
         ]);
 
         // Redirect with success message
@@ -54,7 +52,7 @@ class KategoriVideoController extends Controller
     }
 
 
-    public function update(Request $request, $id)
+     public function update(Request $request, $id)
     {
         // Temukan kategori video berdasarkan id
         $kategoriVideo = KategoriVideo::findOrFail($id);
@@ -62,16 +60,10 @@ class KategoriVideoController extends Controller
         // Validasi input
         $request->validate([
             'nama_kategori' => 'required|string|max:255',
-            'url' => 'nullable|url',
         ]);
 
         // Perbarui detail kategori
         $kategoriVideo->nama_kategori = $request->input('nama_kategori');
-
-        // Hanya perbarui URL jika ada
-        if ($request->filled('url')) {
-            $kategoriVideo->url = $request->input('url');
-        }
 
         // Simpan perubahan
         $kategoriVideo->save();

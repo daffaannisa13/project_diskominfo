@@ -13,7 +13,6 @@ return new class extends Migration {
         Schema::create('kategori_dokumen', function (Blueprint $table) {
             $table->id();
             $table->string('nama_kategori');
-            $table->foreignId('users_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

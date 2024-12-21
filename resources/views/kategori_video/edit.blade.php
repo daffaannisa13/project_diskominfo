@@ -44,20 +44,6 @@
                                     </div>
                                 </div>
 
-                                <div class="row mb-3">
-                                    <label class="col-sm-2 col-form-label" for="url">URL Video</label>
-                                    <div class="col-sm-10">
-                                        <input type="url" class="form-control" id="url" name="url"
-                                            placeholder="Masukkan URL video" value="{{ old('url', $kategoriVideo->url) }}"
-                                            required />
-                                        <small class="form-text text-muted">Masukkan URL video yang valid (contoh:
-                                            https://example.com/video.mp4).</small>
-                                        @error('url')
-                                            <small class="text-danger">{{ $message }}</small>
-                                        @enderror
-                                    </div>
-                                </div>
-
                                 <div class="row justify-content-end">
                                     <div class="col-sm-10">
                                         <button type="submit" class="btn btn-primary">Simpan</button>

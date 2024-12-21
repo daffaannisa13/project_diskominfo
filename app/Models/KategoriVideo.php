@@ -15,7 +15,6 @@ class KategoriVideo extends Model
 
     protected $fillable = [
         'nama_kategori',
-        'url',
     ];
 
     public function videos()

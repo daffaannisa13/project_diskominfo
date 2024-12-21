@@ -15,7 +15,6 @@ return new class extends Migration {
             $table->string('judul');
             $table->string('url');
             $table->foreignId('kategori_id')->constrained('kategori_dokumen')->onDelete('cascade');
-            $table->foreignId('users_id')->constrained('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

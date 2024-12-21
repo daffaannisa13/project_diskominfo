@@ -13,7 +13,6 @@ class KategoriGambar extends Model
 
     protected $fillable = [
         'nama_kategori',
-        'url',
     ];
 
     public function gambars()

@@ -24,38 +24,41 @@
                             </div>
                         </div>
 
-                        <!-- Isi -->
+                     
+                         <!-- Isi Pendukung (CKEditor) -->
                         <div class="row mb-3">
                             <label class="col-sm-2 col-form-label" for="isi">Isi Berita</label>
                             <div class="col-sm-10">
-                                <textarea name="isi" class="form-control" rows="5" required>{{ old('isi') }}</textarea>
+                                <textarea name="isi" id="isi" class="form-control" rows="5">{{ old('isi') }}</textarea>
                                 @error('isi')
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror
                             </div>
                         </div>
 
-                        <!-- Isi Pendukung (CKEditor) -->
-                        <div class="row mb-3">
-                            <label class="col-sm-2 col-form-label" for="isi_p">Isi Pendukung</label>
-                            <div class="col-sm-10">
-                                <textarea name="isi_p" id="isi_p" class="form-control" rows="5">{{ old('isi_p') }}</textarea>
-                                @error('isi_p')
-                                    <small class="text-danger">{{ $message }}</small>
-                                @enderror
-                            </div>
-                        </div>
 
-                        <!-- Tanggal -->
-                        <div class="row mb-3">
-                            <label class="col-sm-2 col-form-label" for="tanggal">Tanggal</label>
-                            <div class="col-sm-10">
-                                <input type="date" name="tanggal" class="form-control" value="{{ old('tanggal') }}" required>
-                                @error('tanggal')
-                                    <small class="text-danger">{{ $message }}</small>
-                                @enderror
-                            </div>
-                        </div>
+                        <!-- Tanggal (Readonly) -->
+<div class="row mb-3">
+    <label class="col-sm-2 col-form-label" for="tanggal">Tanggal</label>
+    <div class="col-sm-10">
+        <input type="date" name="tanggal" id="tanggal" class="form-control" value="{{ old('tanggal', $berita->tanggal ?? now()->format('Y-m-d')) }}" readonly>
+        @error('tanggal')
+            <small class="text-danger">{{ $message }}</small>
+        @enderror
+    </div>
+</div>
+
+<div class="row mb-3">
+    <label class="col-sm-2 col-form-label" for="author">Author</label>
+    <div class="col-sm-10">
+        <input type="text" name="author" class="form-control" value="{{ old('author') }}" required>
+        @error('author')
+            <small class="text-danger">{{ $message }}</small>
+        @enderror
+    </div>
+</div>
+
+
 
                         <!-- Nama Kategori -->
                         <div class="row mb-3">
@@ -84,17 +87,6 @@
                             </div>
                         </div>
 
-                        <!-- Gambar Slider -->
-                        <div class="row mb-3">
-                            <label class="col-sm-2 col-form-label" for="img_slider">Upload Gambar Slider</label>
-                            <div class="col-sm-10">
-                                <input type="file" name="img_slider" class="form-control" accept="image/*">
-                                @error('img_slider')
-                                    <small class="text-danger">{{ $message }}</small>
-                                @enderror
-                            </div>
-                        </div>
-
                         <!-- Tombol Submit -->
                         <div class="row justify-content-end">
                             <div class="col-sm-10">
@@ -109,14 +101,14 @@
     </div>
 </div>
 
+
 <!-- CKEditor Script -->
 <script src="https://cdn.ckeditor.com/ckeditor5/34.1.0/classic/ckeditor.js"></script>
 <script>
     ClassicEditor
-        .create(document.querySelector('#isi_p'))
+        .create(document.querySelector('#isi'))
         .catch(error => {
             console.error(error);
         });
 </script>
-
 @endsection

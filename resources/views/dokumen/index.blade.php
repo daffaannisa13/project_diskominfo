@@ -20,7 +20,7 @@
                                 <th>Judul</th>
                                 <th>URL</th>
                                 <th>Kategori</th>
-                                <th>User</th>
+                                
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -31,7 +31,7 @@
                                 <td><strong>{{ $dokumen->judul }}</strong></td>
                                 <td><a href="{{ $dokumen->url }}" target="_blank" class="long-url">{{ $dokumen->url }}</a></td>
                                 <td>{{ $dokumen->kategori->nama_kategori }}</td>
-                                <td>{{ $dokumen->user->name }}</td>
+                                
                                 <td>
                                     <!-- Button to show modal -->
                                     <button type="button" class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#showModal{{ $dokumen->id }}">
@@ -64,7 +64,7 @@
                                             <p><strong>Judul:</strong> {{ $dokumen->judul }}</p>
                                             <p><strong>URL:</strong> <a href="{{ $dokumen->url }}" target="_blank" class="long-url-modal">{{ $dokumen->url }}</a></p>
                                             <p><strong>Kategori:</strong> {{ $dokumen->kategori->nama_kategori }}</p>
-                                            <p><strong>Nama User:</strong> {{ $dokumen->user->name }}</p>
+                                            
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>

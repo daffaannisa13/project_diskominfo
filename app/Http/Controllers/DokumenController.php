@@ -6,23 +6,23 @@ namespace App\Http\Controllers;
 
 use App\Models\Dokumen;
 use App\Models\KategoriDokumen;
-use App\Models\User;
+
 use Illuminate\Http\Request;
 
 class DokumenController extends Controller
 {
    public function index()
 {
-    $dokumens = Dokumen::with('kategori', 'user')->get();
+    $dokumens = Dokumen::with('kategori')->get();
     return view('dokumen.index', compact('dokumens'));
 }
 
 
     public function create()
     {
-        $users = User::all(); // Fetch all users
+        
         $kategoris = KategoriDokumen::all(); // Fetch all categories
-        return view('dokumen.create', compact('users', 'kategoris'));
+        return view('dokumen.create', compact('kategoris'));
     }
 
     public function store(Request $request)
@@ -31,7 +31,7 @@ class DokumenController extends Controller
             'judul' => 'required|string|max:255',
             'url' => 'required|url',
             'kategori_id' => 'required|exists:kategori_dokumen,id',
-            'users_id' => 'required|exists:users,id',
+            
         ]);
     
         // Create a new Dokumen instance
@@ -39,7 +39,7 @@ class DokumenController extends Controller
         $dokumen->judul = $validated['judul'];
         $dokumen->url = $validated['url'];
         $dokumen->kategori_id = $validated['kategori_id'];
-        $dokumen->users_id = $validated['users_id'];
+        
     // dd($dokumen );
         // Save the Dokumen instance
         $dokumen->save();
@@ -57,8 +57,8 @@ class DokumenController extends Controller
   public function edit(Dokumen $dokumen)
 {
     $kategoriDokumen = KategoriDokumen::all(); 
-    $users = User::all(); 
-    return view('dokumen.edit', compact('dokumen', 'kategoriDokumen', 'users'));
+    
+    return view('dokumen.edit', compact('dokumen', 'kategoriDokumen'));
 }
 
 
@@ -69,7 +69,6 @@ class DokumenController extends Controller
             'judul' => 'required|string|max:255',
             'url' => 'required|url',
             'kategori_id' => 'required|exists:kategori_dokumen,id',
-            'users_id' => 'required|exists:users,id',
         ]);
 
         $dokumen->update($validated);
