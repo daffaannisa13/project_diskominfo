@@ -276,10 +276,9 @@
                                                 {{ \Carbon\Carbon::parse($berita->tanggal)->format('d M Y') }}
                                             </p>
                                             <p class="text-justify">
-                                                {{ Str::limit($berita->isi, 90) }}
-                                                <a href="{{ route('tampilan.detail', $berita->id) }}" 
-                                                   class="text-primary">read more »</a>
-                                            </p>
+    {{ Str::limit(strip_tags($berita->isi), 90) }}
+    <a href="{{ route('tampilan.detail', $berita->id) }}" class="text-primary">read more »</a>
+</p>
                                         </div>
                                     </div>
                                 @endforeach

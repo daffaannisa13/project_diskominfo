@@ -225,7 +225,7 @@
                     <p><i class="fa fa-user"></i> {{ $berita->author }}</p>
                     <p><i class="fa fa-calendar"></i> {{ \Carbon\Carbon::parse($berita->tanggal)->format('d M Y') }}</p>
                 </div>
-                 <p>{!! $berita->isi_p !!}</p>
+                 <p>{!! $berita->isi !!}</p>
 
                 
             </div>
